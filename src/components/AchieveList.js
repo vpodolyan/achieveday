@@ -1,0 +1,23 @@
+import React, { PropTypes } from 'react'
+import Achievement from './Achievement'
+
+const AchieveList = ({ achieves }) => (
+  <ul>
+    {achieves.map(achievmnt =>
+      <Achievement
+        key={achievmnt.id}
+        {...achievmnt}
+      />
+    )}
+  </ul>
+)
+
+AchieveList.propTypes = {
+  achieves: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  // onTodoClick: PropTypes.func.isRequired
+}
+
+export default AchieveList
