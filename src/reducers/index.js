@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
+import achievements form './achievements'
 
-
-
-export default combineReducers({ test: (state = {}, action) => state })
+export default combineReducers({ achievements })

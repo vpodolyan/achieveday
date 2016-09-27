@@ -10,7 +10,10 @@ export default function achievements(state = {}, action) {
                     text: action.text
                 }
             ]
+        case types.REMOVE_ACHIEVEMENT:
+            return state.filter((a) => a.id !== action.id);
         default:
+            return state;
 
     }
 }

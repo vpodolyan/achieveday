@@ -1,5 +1,5 @@
 import expect from 'expect'
-import { addAchievement } from '../../src/actions'
+import { addAchievement, removeAchievement } from '../../src/actions'
 import achievements from '../../src/reducers/achievements'
 
 describe('achievements reducer', () => {
@@ -32,5 +32,25 @@ describe('achievements reducer', () => {
         ]
 
         expect(achievements(beforeState, addAchievement(3, newAchText))).toEqual(afterState);
+    }),
+
+    it('should remove achievement', () => {
+        const beforeState = [
+            {
+                id: 1,
+                text: 'text1'
+            },
+            {
+                id: 2,
+                text: 'text2'
+            }
+        ]
+
+        const afterState = [{
+                id: 2,
+                text: 'text2'
+            }]
+
+        expect(achievements(beforeState, removeAchievement(1))).toEqual(afterState);
     })
 })
