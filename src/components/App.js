@@ -5,8 +5,8 @@ import NewAchievement from '../containers/NewAchievement'
 
 const App = () => (
   <div>
-    <NewAchievement />
     <DayAchievements />
+    <NewAchievement />
   </div>
 )
 

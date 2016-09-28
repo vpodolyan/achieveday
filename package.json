@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register",
     "test:watch": "npm test -- --watch"
   },
@@ -30,14 +30,18 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-register": "^6.3.13",
     "cross-env": "^1.0.7",
+    "css-loader": "^0.25.0",
     "enzyme": "^2.0.0",
     "expect": "^1.6.0",
     "express": "^4.13.3",
+    "html-webpack-plugin": "^2.22.0",
     "mocha": "^2.2.5",
     "node-libs-browser": "^0.5.2",
     "react-addons-test-utils": "^0.14.7",
+    "style-loader": "^0.13.1",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
+    "webpack-dev-server": "^1.16.1",
     "webpack-hot-middleware": "^2.9.1"
   }
 }
