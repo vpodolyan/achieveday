@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
-import achievements form './achievements'
+import achievements from './achievements'
 
 export default combineReducers({ achievements })

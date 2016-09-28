@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import Achievement from './Achievement'
 
-const AchieveList = ({ achieves }) => (
+const AchieveList = ({ achievements }) => (
   <ul>
-    {achieves.map(achievmnt =>
+    {achievements.map(achievmnt =>
       <Achievement
         key={achievmnt.id}
         {...achievmnt}
@@ -13,7 +13,7 @@ const AchieveList = ({ achieves }) => (
 )
 
 AchieveList.propTypes = {
-  achieves: PropTypes.arrayOf(PropTypes.shape({
+  achievements: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,

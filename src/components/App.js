@@ -1,12 +1,12 @@
 import React from 'react'
 
-import AchieveList from "./AchieveList"
+import DayAchievements from '../containers/DayAchievements'
 import NewAchievement from '../containers/NewAchievement'
 
 const App = () => (
   <div>
-    <AchieveList achieves={[]}/>
     <NewAchievement />
+    <DayAchievements />
   </div>
 )
 

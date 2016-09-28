@@ -1,12 +1,20 @@
 import * as types from '../actions/types'
 
-export default function achievements(state = {}, action) {
+const initialState = [
+    {
+        id: 1,
+        text: 'test text'
+    }
+]
+
+export default function achievements(state = initialState, action) {
     switch (action.type) {
         case types.ADD_ACHIEVEMENT:
+            const lastAchivId = state[state.length - 1].id + 1;
             return [
                 ...state,
                 {
-                    id: action.id,
+                    id: lastAchivId,
                     text: action.text
                 }
             ]

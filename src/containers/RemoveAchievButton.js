@@ -1,6 +1,5 @@
-import React from 'react'
 import { connect } from 'react-redux'
-import { addAchievement } from '../actions'
+import { removeAchievement } from '../actions'
 
 let newAchivId = 0;
 

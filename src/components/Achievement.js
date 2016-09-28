@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 const Achievement = ({id, text}) => (
-    <span>{text}</span>
+    <li>{text}</li>
 )
 
 Achievement.PropTypes = {
