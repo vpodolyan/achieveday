@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addAchievement } from '../actions'
 
-let newAchivId = 0;
-
 let NewAchievement = ({ dispatch }) => {
   let input
 
@@ -14,7 +12,7 @@ let NewAchievement = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addAchievement(newAchivId++, input.value))
+        dispatch(addAchievement(input.value))
         input.value = ''
       }}>
         <input ref={node => {
