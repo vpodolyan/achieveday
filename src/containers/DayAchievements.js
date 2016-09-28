@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import AchieveList from '../components/AchieveList'
+import {removeAchievement} from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -7,8 +8,17 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAchivDelete: (id) => {
+      dispatch(removeAchievement(id))
+    }
+  }
+}
+
 const DayAchievements = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(AchieveList)
 
 export default DayAchievements

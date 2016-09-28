@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 import Achievement from './Achievement'
 
-const AchieveList = ({ achievements }) => (
+const AchieveList = ({ achievements, onAchivDelete }) => (
   <ul>
     {achievements.map(achievmnt =>
       <Achievement
         key={achievmnt.id}
         {...achievmnt}
+        onAchivDelete={onAchivDelete}
       />
     )}
   </ul>
@@ -17,7 +18,7 @@ AchieveList.propTypes = {
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  // onTodoClick: PropTypes.func.isRequired
+  onAchivDelete: PropTypes.func.isRequired
 }
 
 export default AchieveList

@@ -1,9 +1,8 @@
 import * as types from './types'
 
-export const addAchievement = (id, text) => {
+export const addAchievement = (text) => {
   return {
     type: types.ADD_ACHIEVEMENT,
-    id,
     text
   }
 }

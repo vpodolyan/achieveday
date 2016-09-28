@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react'
 
-const Achievement = ({id, text}) => (
-    <li>{text}</li>
+const Achievement = ({id, text, onAchivDelete}) => (
+    <li>
+        <span>{text}</span>
+        <a href='#' onClick={() => onAchivDelete(id)}>delete</a>
+    </li>
 )
 
 Achievement.PropTypes = {

@@ -31,7 +31,19 @@ describe('achievements reducer', () => {
             }
         ]
 
-        expect(achievements(beforeState, addAchievement(3, newAchText))).toEqual(afterState);
+        expect(achievements(beforeState, addAchievement(newAchText))).toEqual(afterState);
+    }),
+
+    it('should properly add first achievemnt', () => {
+        const beforeState = []
+
+        const newAchText = 'new cool achievement'
+        const afterState = [{
+                id: 1,
+                text: newAchText
+            }]
+
+        expect(achievements(beforeState, addAchievement(newAchText))).toEqual(afterState);
     }),
 
     it('should remove achievement', () => {

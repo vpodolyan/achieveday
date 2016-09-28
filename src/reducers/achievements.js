@@ -10,7 +10,7 @@ const initialState = [
 export default function achievements(state = initialState, action) {
     switch (action.type) {
         case types.ADD_ACHIEVEMENT:
-            const lastAchivId = state[state.length - 1].id + 1;
+            const lastAchivId = state.length > 0 ? state[state.length - 1].id + 1 : 1;
             return [
                 ...state,
                 {
