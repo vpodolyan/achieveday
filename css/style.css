@@ -6,6 +6,10 @@ input {
     font-size: 28px;
 }
 
+.no-borders {
+    border: none;
+}
+
 .add-btn {
     height: 50px;
     font-size: 28px;
@@ -16,4 +20,8 @@ input {
 
 .add-btn:hover {
     text-decoration: none;
+}
+
+.date-picker {
+    
 }
