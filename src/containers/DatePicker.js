@@ -61,13 +61,15 @@ class DatePicker extends React.Component {
         const { dispatch } = this.props;
         return (
             <div className='date-picker no-borders' onMouseDown={(e)=> this.onContainerMouseDown(e)}>
+                <span className="date-picker__arrow"> &lt; </span>
                 <input type='text'
-                    className=''
+                    className='date-picker__input no-borders text-center'
                     ref='input'
                     value={this.state.value.toLocaleDateString()}
                     onFocus={(e) => this.onInputFocus(e) }
                     onBlur={(e) => this.onInputBlur(e) }
                 />
+                <span className="date-picker__arrow"> &gt; </span>
                 { this.state.visible &&
                     <div style={{ position: 'relative' }}>
                         <DayPicker className='date-picker__calendar'

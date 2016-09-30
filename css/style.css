@@ -22,6 +22,11 @@ input {
     text-decoration: none;
 }
 
-.date-picker {
-    
+.date-picker__arrow {
+    display: inline-block;
+    font-size: 28px;
+}
+
+.date-picker__input {
+    font-size: 28px;
 }
