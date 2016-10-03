@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register",
+    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register -r ignore-styles -r jsdom-global/register",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
@@ -37,6 +37,9 @@
     "expect": "^1.6.0",
     "express": "^4.13.3",
     "html-webpack-plugin": "^2.22.0",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "9.6.0",
+    "jsdom-global": "2.1.0",
     "mocha": "^2.2.5",
     "node-libs-browser": "^0.5.2",
     "react-addons-test-utils": "^0.14.7",
