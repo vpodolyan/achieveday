@@ -1,2 +1,4 @@
 export const ADD_ACHIEVEMENT = "ADD_ACHIEVEMENT";
 export const REMOVE_ACHIEVEMENT = "REMOVE_ACHIEVEMENT";
+export const NEXT_DATE = "NEXT_DATE";
+export const PREV_DATE = "PREVIOUS_DATE";

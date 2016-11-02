@@ -5,6 +5,9 @@ import { localeUtils } from '../utils/i18n'
 import DayPicker from 'react-day-picker'
 import '../../node_modules/react-day-picker/lib/style.css'
 
+const PREV_DATE = 'left';
+const NEXT_DATE = 'right';
+
 class DatePicker extends React.Component {
     constructor() {
         super();
@@ -57,11 +60,20 @@ class DatePicker extends React.Component {
         this.setState({ value: day, visible: false })
     }
 
+    onArrowMouseDown(e, direction) {
+        if (direction === PREV_DATE) {
+            console.log("CLICK")
+            this.setState({ value: new Date(new Date() - 86400000), visible: this.state.visible })
+
+            this.refs.input.value = this.state.value.toLocaleDateString()
+        }
+    }
+
     render() {
         const { dispatch } = this.props;
         return (
-            <div className='date-picker no-borders' onMouseDown={(e)=> this.onContainerMouseDown(e)}>
-                <span className="date-picker__arrow"> &lt; </span>
+            <div className='date-picker no-borders' onMouseDown={(e) => this.onContainerMouseDown(e)}>
+                <span className="date-picker__arrow-left" onClick={(e) => this.onArrowMouseDown(e, PREV_DATE)}> &lt; </span>
                 <input type='text'
                     className='date-picker__input no-borders text-center'
                     ref='input'
