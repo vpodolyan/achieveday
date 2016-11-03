@@ -2,11 +2,11 @@ import React from 'react'
 
 import DayAchievements from '../containers/DayAchievements'
 import NewAchievement from '../containers/NewAchievement'
-import DatePicker from '../containers/DatePicker'
+import DatePickerContainer from '../containers/DatePickerContainer'
 
 const App = () => (
   <div>
-    <DatePicker />
+    <DatePickerContainer />
     <DayAchievements />
     <NewAchievement />
   </div>

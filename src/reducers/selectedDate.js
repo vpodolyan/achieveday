@@ -1,10 +1,8 @@
 import * as types from '../actions/types'
 
 const initialState = {
-    value: new Date().toLocaleDateString()
+    value: new Date()
 }
-
-const currentDate = new Date();
 
 export default function selectedDate(state = initialState, action) {
     switch (action.type) {

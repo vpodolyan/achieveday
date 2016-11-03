@@ -1,21 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux'
+import React, { PropTypes } from 'react';
 import { localeUtils } from '../utils/i18n'
 
 import DayPicker from 'react-day-picker'
 import '../../node_modules/react-day-picker/lib/style.css'
 
-const PREV_DATE = 'left';
-const NEXT_DATE = 'right';
+import { NEXT_DATE, PREV_DATE } from '../../src/actions/types'
 
-class DatePicker extends React.Component {
-    constructor() {
-        super();
 
-        this.state = {
-            value: new Date(),
-            visible: false
-        }
+export default class DatePicker extends React.Component {
+    constructor(props) {
+        super(props);
+
+        console.log("PROPS = ", props)
+
+        this.state = {}
     }
 
     componentWillUnmount() {
@@ -73,11 +71,11 @@ class DatePicker extends React.Component {
         const { dispatch } = this.props;
         return (
             <div className='date-picker no-borders' onMouseDown={(e) => this.onContainerMouseDown(e)}>
-                <span className="date-picker__arrow-left" onClick={(e) => this.onArrowMouseDown(e, PREV_DATE)}> &lt; </span>
+                <span className="date-picker__arrow-left" onClick={(e) => this.props.onDateSwitch(PREV_DATE) }> &lt; </span>
                 <input type='text'
                     className='date-picker__input no-borders text-center'
                     ref='input'
-                    value={this.state.value.toLocaleDateString()}
+                    value={this.props.selectedDate.value.toLocaleDateString()}
                     onFocus={(e) => this.onInputFocus(e) }
                     onBlur={(e) => this.onInputBlur(e) }
                 />
@@ -99,6 +97,9 @@ class DatePicker extends React.Component {
     }
 }
 
-DatePicker = connect()(DatePicker)
-
-export default DatePicker
+DatePicker.propTypes = {
+    selectedDate: PropTypes.shape({
+        value: PropTypes.objectOf(Date)
+    }),
+    onDateSwitch: PropTypes.func.isRequired
+}

@@ -13,3 +13,9 @@ export const removeAchievement = (id) => {
     id: id
   }
 }
+
+export const switchDate = (direction) => {
+    return {
+        type: direction
+    }
+}
