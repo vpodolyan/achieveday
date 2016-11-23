@@ -71,7 +71,7 @@ export default class DatePicker extends React.Component {
         const { dispatch } = this.props;
         return (
             <div className='date-picker no-borders' onMouseDown={(e) => this.onContainerMouseDown(e)}>
-                <span className="date-picker__arrow-left" onClick={(e) => this.props.onDateSwitch(PREV_DATE) }> &lt; </span>
+                <span className="date-picker__arrow" onClick={(e) => this.props.onDateSwitch(PREV_DATE) }> &lt; </span>
                 <input type='text'
                     className='date-picker__input no-borders text-center'
                     ref='input'
@@ -79,7 +79,7 @@ export default class DatePicker extends React.Component {
                     onFocus={(e) => this.onInputFocus(e) }
                     onBlur={(e) => this.onInputBlur(e) }
                 />
-                <span className="date-picker__arrow"> &gt; </span>
+                <span className="date-picker__arrow" onClick={(e) => this.props.onDateSwitch(NEXT_DATE) }> &gt; </span>
                 { this.state.visible &&
                     <div style={{ position: 'relative' }}>
                         <DayPicker className='date-picker__calendar'
