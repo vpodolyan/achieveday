@@ -56,15 +56,6 @@ export default class DatePicker extends React.Component {
         this.setState({ value: day, visible: false })
     }
 
-    onArrowMouseDown(e, direction) {
-        if (direction === PREV_DATE) {
-            console.log("CLICK")
-            this.setState({ value: new Date(new Date() - 86400000), visible: this.state.visible })
-
-            this.refs.input.value = this.state.value.toLocaleDateString()
-        }
-    }
-
     render() {
         return (
             <div className='date-picker no-borders' onMouseDown={(e) => this.onContainerMouseDown(e)}>
@@ -72,18 +63,18 @@ export default class DatePicker extends React.Component {
                 <input type='text'
                     className='date-picker__input no-borders text-center'
                     ref='input'
-                    value={this.props.selectedDate.value.toLocaleDateString()}
+                    value={this.props.selectedDate.toLocaleDateString()}
                     onFocus={(e) => this.onInputFocus(e) }
                     onBlur={(e) => this.onInputBlur(e) }
                 />
                 <span className="date-picker__arrow date-picker__arrow-right" onClick={(e) => this.props.onDateSwitch(NEXT_DATE) }> &gt; </span>
-                { this.state.visible &&
+                { this.props.visible &&
                     <div style={{ position: 'relative' }}>
                         <DayPicker className='date-picker__calendar'
                             ref='daypicker'
                             locale={'en'}
                             localeUtils={localeUtils}
-                            onDayClick={(e, day) => this.onDayClick(e, day)}
+                            onDayClick={(e, day) => this.props.onDateSelected(day)}
                          />
                     </div>
                 }

@@ -1,7 +1,8 @@
 import * as types from '../actions/types'
 
 const initialState = {
-    value: new Date()
+    value: new Date(),
+    visible: true
 }
 
 export default function selectedDate(state = initialState, action) {
@@ -10,6 +11,8 @@ export default function selectedDate(state = initialState, action) {
             return { ...state, value: new Date(state.value.getTime() + 86400000)}
         case types.PREV_DATE:
             return { ...state, value: new Date(state.value.getTime() - 86400000)}
+        case types.SET_SELECTED_DATE:
+            return { ...state, value: action.value, visible: false }
         default:
             return state;
     }

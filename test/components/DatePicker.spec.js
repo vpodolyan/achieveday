@@ -24,7 +24,7 @@ describe('DatePicker component', () => {
         // component = wrapper.find(DatePicker);
 
         component = shallow(
-            <DatePicker selectedDate={selectedDate} onDateSwitch={onDateSwitch} />
+            <DatePicker selectedDate={selectedDate.value} onDateSwitch={onDateSwitch} />
         );
     })
 

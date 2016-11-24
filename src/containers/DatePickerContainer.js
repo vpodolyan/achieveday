@@ -1,17 +1,21 @@
 import { connect } from 'react-redux'
 import DatePicker from './DatePicker'
-import { switchDate } from '../../src/actions'
+import { switchDate, setSelectedDate } from '../../src/actions'
 
 const mapStateToProps = (state) => {
   return {
-    selectedDate: state.selectedDate
+    selectedDate: state.selectedDate.value,
+    visible: state.selectedDate.visible,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onDateSwitch: (direction) => {
-      dispatch(switchDate(direction))
+        dispatch(switchDate(direction))
+    },
+    onDateSelected: (date) => {
+        dispatch(setSelectedDate(date))
     }
   }
 }

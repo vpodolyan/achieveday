@@ -19,3 +19,10 @@ export const switchDate = (direction) => {
         type: direction
     }
 }
+
+export const setSelectedDate = (date) => {
+    return {
+        type: types.SET_SELECTED_DATE,
+        value: date
+    }
+}
