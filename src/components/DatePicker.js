@@ -19,10 +19,7 @@ export default class DatePicker extends React.Component {
     }
 
     onInputFocus() {
-        this.setState({
-            ...this.state,
-            visible: true
-        });
+        this.props.setCalendarVisibility(true)
     }
 
     onContainerMouseDown() {
@@ -37,28 +34,17 @@ export default class DatePicker extends React.Component {
     onInputBlur() {
         const visible = this.clickedInside;
 
-        this.setState({ ...this.state, visible })
-
         // Force input's focus if blur event was caused by clicking on the calendar
         if (visible) {
           this.refs.input.focus()
         }
-    }
 
-    onDayClick(e, day) {
-        // const { dispatch, field } = this.props;
-
-        const date = day.toLocaleDateString()
-        this.refs.input.value = date
-
-        // dispatch(updateDocument(field, date))
-
-        this.setState({ value: day, visible: false })
+        this.props.setCalendarVisibility(visible)
     }
 
     render() {
         return (
-            <div className='date-picker no-borders' onMouseDown={(e) => this.onContainerMouseDown(e)}>
+            <div className='date-picker no-borders'>
                 <span className="date-picker__arrow date-picker__arrow-left" onClick={(e) => this.props.onDateSwitch(PREV_DATE) }> &lt; </span>
                 <input type='text'
                     className='date-picker__input no-borders text-center'
@@ -69,12 +55,13 @@ export default class DatePicker extends React.Component {
                 />
                 <span className="date-picker__arrow date-picker__arrow-right" onClick={(e) => this.props.onDateSwitch(NEXT_DATE) }> &gt; </span>
                 { this.props.visible &&
-                    <div style={{ position: 'relative' }}>
-                        <DayPicker className='date-picker__calendar'
+                    <div style={{ position: 'relative' }} className='date-picker__calendar'>
+                        <DayPicker
                             ref='daypicker'
                             locale={'en'}
                             localeUtils={localeUtils}
                             onDayClick={(e, day) => this.props.onDateSelected(day)}
+                            onMouseDown={(e) => this.onContainerMouseDown(e)}
                          />
                     </div>
                 }
@@ -89,5 +76,6 @@ DatePicker.propTypes = {
     selectedDate: PropTypes.shape({
         value: PropTypes.objectOf(Date)
     }),
-    onDateSwitch: PropTypes.func.isRequired
+    onDateSwitch: PropTypes.func.isRequired,
+    onDateSelected: PropTypes.func.isRequired
 }

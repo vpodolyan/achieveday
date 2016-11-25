@@ -26,3 +26,10 @@ export const setSelectedDate = (date) => {
         value: date
     }
 }
+
+export const setCalendarVisibility = (value) => {
+    return {
+        type: types.SET_CALENDAR_VISIBILITY,
+        value
+    }
+}

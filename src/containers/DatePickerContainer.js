@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
-import DatePicker from './DatePicker'
-import { switchDate, setSelectedDate } from '../../src/actions'
+import DatePicker from '../components/DatePicker'
+import { switchDate, setSelectedDate, setCalendarVisibility } from '../../src/actions'
 
 const mapStateToProps = (state) => {
   return {
-    selectedDate: state.selectedDate.value,
-    visible: state.selectedDate.visible,
+    selectedDate: state.datePicker.value,
+    visible: state.datePicker.visible,
   }
 }
 
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDateSelected: (date) => {
         dispatch(setSelectedDate(date))
+    },
+    setCalendarVisibility: (value) => {
+        dispatch(setCalendarVisibility(value))
     }
   }
 }

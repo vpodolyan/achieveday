@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { shallow, mount } from 'enzyme'
 import FakeStore from '../utils/FakeStore'
 
-import DatePicker from '../../src/containers/DatePicker'
+import DatePicker from '../../src/components/DatePicker'
 
 describe('DatePicker component', () => {
     let component;
