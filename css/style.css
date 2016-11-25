@@ -30,3 +30,8 @@ input {
 .date-picker__input {
     font-size: 28px;
 }
+
+.date-picker__calendar {
+    display: flex;
+    justify-content: center;
+}

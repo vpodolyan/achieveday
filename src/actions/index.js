@@ -13,3 +13,23 @@ export const removeAchievement = (id) => {
     id: id
   }
 }
+
+export const switchDate = (direction) => {
+    return {
+        type: direction
+    }
+}
+
+export const setSelectedDate = (date) => {
+    return {
+        type: types.SET_SELECTED_DATE,
+        value: date
+    }
+}
+
+export const setCalendarVisibility = (value) => {
+    return {
+        type: types.SET_CALENDAR_VISIBILITY,
+        value
+    }
+}

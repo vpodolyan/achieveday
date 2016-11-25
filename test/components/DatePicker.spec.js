@@ -4,46 +4,40 @@ import { Provider } from 'react-redux'
 import { shallow, mount } from 'enzyme'
 import FakeStore from '../utils/FakeStore'
 
-import DatePicker from '../../src/containers/DatePicker'
-
-function setup() {
-    const component = shallow(
-        <DatePicker />
-    )
-
-    return { component }
-}
+import DatePicker from '../../src/components/DatePicker'
 
 describe('DatePicker component', () => {
     let component;
+    const onDateSwitch = expect.createSpy();
+    const selectedDate = { value: new Date() };
 
     beforeEach(() => {
-        const store = FakeStore({});
+        // TODO: Move this line to container component test
+        // const store = FakeStore({ selectedDate: selectedDate });
 
-        const wrapper = mount(
-            <Provider store={store}>
-                <DatePicker />
-            </Provider>
-        )
+        // const wrapper = mount(
+        //     <Provider store={store}>
+        //         <DatePicker selectedDate={selectedDateVal} onDateSwitch={onDateSwitch} />
+        //     </Provider>
+        // )
+        //
+        // component = wrapper.find(DatePicker);
 
-        component = wrapper.find(DatePicker);
+        component = shallow(
+            <DatePicker selectedDate={selectedDate.value} onDateSwitch={onDateSwitch} />
+        );
     })
-
-    let selectedDate = (component) => { component.find('.date-picker__input').get(0).value }
 
     it('should render', () => {
         expect(component.length).toBeTruthy();
     })
 
-    it('should display current date by default', () => {
-        expect(component.find('.date-picker__input').get(0).value).toBe(new Date().toLocaleDateString());
+    it('should display date passed to props', () => {
+        expect(component.find('.date-picker__input').get(0).props.value).toBe(selectedDate.value.toLocaleDateString());
     })
 
-    it('should switch the selected date to previous one', () => {
-        let date = new Date();
-        date.setDate(date.getDate() - 1);
-
+    it('should call onDateSwitch when arrow clicked ', () => {
         component.find('.date-picker__arrow-left').simulate('click');
-        expect(component.find('.date-picker__input').get(0).value).toBe(date.toLocaleDateString());
+        expect(onDateSwitch).toHaveBeenCalled();
     })
 })

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
 import achievements from './achievements'
-import selectedDate from './selectedDate'
+import datePicker from './datePickerReducer'
 
-export default combineReducers({ achievements, selectedDate })
+export default combineReducers({ achievements, datePicker })
