@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { localeUtils } from '../utils/i18n'
 
 import DayPicker from 'react-day-picker'
-import '../../node_modules/react-day-picker/lib/style.css'
 
-import { NEXT_DATE, PREV_DATE } from '../../src/actions/types'
+import { localeUtils } from 'utils/i18n'
+import { NEXT_DATE, PREV_DATE } from 'actions/types'
+import Arrow from 'components/Arrow';
+import CentredBox from 'components/CentredBox';
+import Input from 'components/Input'
 
+import 'react-day-picker/lib/style.css'
 
 export default class DatePicker extends React.Component {
     constructor(props) {
@@ -45,30 +48,28 @@ export default class DatePicker extends React.Component {
 
     render() {
         return (
-            <div className='date-picker no-borders'>
-                <span className="date-picker__arrow date-picker__arrow-left" onClick={(e) => this.props.onDateSwitch(PREV_DATE) }> &lt; </span>
-                <input type='text'
-                    className='date-picker__input no-borders text-center'
-                    ref='input'
+            <div>
+                <Arrow onClick={(e) => this.props.onDateSwitch(PREV_DATE) }> &lt; </Arrow>
+                <Input
+                    type='text'
+                    className='text-center'
+                    ref={input => input}
                     value={this.props.selectedDate.toLocaleDateString()}
                     onFocus={(e) => this.onInputFocus(e) }
                     onBlur={(e) => this.onInputBlur(e) }
                 />
-                <span className="date-picker__arrow date-picker__arrow-right" onClick={(e) => this.props.onDateSwitch(NEXT_DATE) }> &gt; </span>
+                <Arrow onClick={(e) => this.props.onDateSwitch(NEXT_DATE) }> &gt; </Arrow>
                 { this.props.visible &&
-                    <div style={{ position: 'relative' }} className='date-picker__calendar'>
+                    <CentredBox>
                         <DayPicker
-                            ref='daypicker'
                             locale={'en'}
                             localeUtils={localeUtils}
                             onDayClick={(e, day) => this.props.onDateSelected(day)}
                             onMouseDown={(e) => this.onContainerMouseDown(e)}
                          />
-                    </div>
+                    </CentredBox>
                 }
             </div>
-
-
         )
     }
 }
