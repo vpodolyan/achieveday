@@ -13,27 +13,33 @@ module.exports = {
     publicPath: ''
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-        template: "./index.html"
+      template: "./index.html"
     })
   ],
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+          }
+        ]
+      },
       {
         test: /\.js$/,
-        loaders: [ 'babel' ],
+        loader: 'babel-loader',
         exclude: /node_modules/,
         include: __dirname
       },
-      {
-         test: /\.css$/,
-         loader: ('style!css')
-      }
     ]
- },
- devServer: {
-     contentBase: './'
- }
+  },
+  devServer: {
+    contentBase: './'
+  }
 }
