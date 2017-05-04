@@ -27,6 +27,10 @@ input {
     font-size: 28px;
 }
 
+.date-picker__arrow:hover {
+    cursor: pointer;
+}
+
 .date-picker__input {
     font-size: 28px;
 }
