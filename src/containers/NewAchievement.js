@@ -2,30 +2,46 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addAchievement } from '../actions'
 
-let NewAchievement = ({ dispatch }) => {
-  let input;
-  let form1;
+import Input from 'components/Input';
 
-  const onAddClick = (e) => {
-      e.preventDefault()
-      if (!input.value.trim()) {
-        return
-      }
-      dispatch(addAchievement(input.value))
-      input.value = ''
-      input.focus()
-  }
+class NewAchievement extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { text: '' };
+    }
 
-  return (
-    <div>
-      <form onSubmit={e => { onAddClick(e) }}>
-        <input ref={node => { input = node }} />
-        <a className="add-btn" href="#" onClick={e => { onAddClick(e) }}>
-          +
-        </a>
-      </form>
-    </div>
-  )
+    onAddClick = (e) => {
+        e.preventDefault()
+        
+        if (!this.state.text.trim()) {
+            return;
+        }
+        
+        this.props.dispatch(addAchievement(this.state.text));
+        this.input.focus();
+        this.setState({ text: '' });
+    }
+
+    onInputChange = (e) => {
+        this.setState({ text: e.target.value })
+    }
+
+    render () {
+        return (
+            <div>
+                <form onSubmit={this.onAddClick}>
+                <Input
+                    value={this.state.text}
+                    innerRef={input => this.input = input}
+                    onChange={this.onInputChange}
+                />
+                <a className="add-btn" href="#" onClick={this.onAddClick}>
+                    +
+                </a>
+                </form>
+            </div>
+        )
+    }
 }
 NewAchievement = connect()(NewAchievement)
 
