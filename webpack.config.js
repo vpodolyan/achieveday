@@ -3,7 +3,7 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: [
     './src/index',
     'webpack-hot-middleware/client'
@@ -19,6 +19,9 @@ module.exports = {
       template: "./index.html"
     })
   ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  },
   module: {
     rules: [
       {
@@ -33,11 +36,16 @@ module.exports = {
         ]
       },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
+        test: /\.(t|j)sx?$/,
+        loader: 'awesome-typescript-loader?module=es6',
         exclude: /node_modules/,
         include: __dirname
       },
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        enforce: 'pre'
+      }
     ]
   },
   devServer: {
