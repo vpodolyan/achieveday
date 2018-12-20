@@ -13,38 +13,25 @@ const client = Stitch.initializeDefaultAppClient(appId);
 
 const authService = new StichAuthService(client);
 
-if(client.auth.hasRedirectResult()){
-  client.auth.handleRedirectResult().then(user => {
-     console.log('USER ', user.profile.data);
-  });
+let userContexValue = {
+    authService,
+};
+
+export const UserContext = React.createContext(userContexValue);
+
+if (client.auth.hasRedirectResult()) {
+    client.auth.handleRedirectResult().then(user => {
+        console.log('USER ', user.profile.data);
+        userContexValue.user = user.profile.data
+    });
 }
 
 const App = () => (
-  <div>
-    {
-      !authService.isAuthenticated() && (
-        <div>
-          NOT LOGGED IN
-          <button onClick={() => authService.logInOauth(OAuthProviders.Google)}>
-            LogIn
-          </button>
-        </div>
-      )
-    }
-    {
-      authService.isAuthenticated() && (
-        <div>
-          LOGGED IN
-          <button onClick={() => authService.logOut()}>
-            LogOut
-          </button>
-        </div>
-      )
-    }
-    <DatePickerContainer />
-    <DayAchievements />
-    <NewAchievement />
-  </div>
+    <UserContext.Provider value={userContexValue}>
+        <DatePickerContainer />
+        <DayAchievements />
+        <NewAchievement />
+    </UserContext.Provider>
 )
 
-export default App
+export default App;
