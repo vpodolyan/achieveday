@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": "./src",
         "outDir": "./build",
         "allowJs": true,
         "checkJs": false,
