@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { OAuthProviders, AuthService } from 'services/auth/AuthService';
-import { UserContext } from '../App';
+import { AuthContext } from '../App';
 
 interface Props {
     children?: React.ReactNode
@@ -16,8 +16,8 @@ export default class HeaderBar extends React.PureComponent<Props, void> {
     render() {
         return (
             <React.Fragment>
-                <UserContext.Consumer>
-                    {({ authService }: { authService: AuthService}) => (
+                <AuthContext.Consumer>
+                    {({ authService }: { authService: AuthService }) => (
                         !authService.isAuthenticated() ? (
                             <div>
                                 NOT LOGGED IN
@@ -35,7 +35,7 @@ export default class HeaderBar extends React.PureComponent<Props, void> {
                             </div>
                         )
                     )}
-                </UserContext.Consumer>
+                </AuthContext.Consumer>
                 {this.props.children}
             </React.Fragment>
         )
