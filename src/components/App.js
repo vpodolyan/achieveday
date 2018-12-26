@@ -13,11 +13,12 @@ const client = Stitch.initializeDefaultAppClient(appId);
 
 const authService = new StichAuthService(client);
 
-let userContexValue = {
+const authContexValue = {
     authService,
 };
 
-export const UserContext = React.createContext(userContexValue);
+export const AuthContext = React.createContext(authContexValue);
+
 
 if (client.auth.hasRedirectResult()) {
     client.auth.handleRedirectResult().then(user => {
