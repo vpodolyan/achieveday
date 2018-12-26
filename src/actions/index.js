@@ -1,4 +1,4 @@
-import * as types from './types'
+import * as types from './types' 
 
 export const addAchievement = (text) => {
   return {
@@ -33,3 +33,8 @@ export const setCalendarVisibility = (value) => {
         value
     }
 }
+
+export const setUser = (user) => ({
+    type: types.SET_USER,
+    payload: user,
+});
