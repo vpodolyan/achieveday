@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot",
-    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register -r ignore-styles -r jsdom-global/register",
+    "test": "cross-env NODE_ENV=test mocha test/ --recursive --compilers ts:ts-node/register -r ignore-styles -r jsdom-global/register",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
@@ -16,14 +16,17 @@
     "url": "https://github.com/vpodolyan/achieveday/issues"
   },
   "dependencies": {
+    "@types/expect": "^1.20.3",
+    "@types/jest": "^23.3.9",
+    "@types/react": "^16.7.7",
     "mongodb-stitch": "^3.0.0",
     "mongodb-stitch-browser-sdk": "^4.0.0",
-    "react": "^16.4.2",
+    "react": "^16.7.0",
     "react-day-picker": "^7.2.2",
-    "react-dom": "^16.4.2",
-    "react-redux": "^5.0.7",
-    "react-test-renderer": "^16.4.2",
-    "redux": "^4.0.0"
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "react-test-renderer": "^16.7.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
@@ -38,11 +41,13 @@
     "mocha": "^5.2.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.0",
-    "typescript": "^3.1.6",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-middleware": "^3.2.0",
-    "webpack-dev-server": "^3.1.7",
-    "webpack-hot-middleware": "^2.23.0"
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-hot-middleware": "^2.24.3"
   }
 }
