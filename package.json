@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot",
-    "test": "cross-env NODE_ENV=test mocha test/ --recursive --compilers ts:ts-node/register -r ignore-styles -r jsdom-global/register",
+    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register -r ignore-styles -r jsdom-global/register",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
