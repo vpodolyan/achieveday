@@ -1,13 +1,15 @@
 import * as React from "react";
+import { connect } from 'react-redux';
 
 import { OAuthProviders, AuthService } from 'services/auth/AuthService';
 import { AuthContext } from '../App';
 
 interface Props {
-    children?: React.ReactNode
+    children?: React.ReactNode;
+    user: { name: string };
 }
 
-export default class HeaderBar extends React.PureComponent<Props, void> {
+class HeaderBar extends React.PureComponent<Props, void> {
 
     constructor(props: Props) {
         super(props)
@@ -28,7 +30,7 @@ export default class HeaderBar extends React.PureComponent<Props, void> {
                         )
                         : (
                             <div>
-                                LOGGED IN
+                                LOGGED IN as { this.props.user.name }
                                 <button onClick={() => { authService.logOut(); location.reload(); }}>
                                     LogOut
                                 </button>
@@ -41,3 +43,9 @@ export default class HeaderBar extends React.PureComponent<Props, void> {
         )
     }
 }
+
+export default connect(
+    (state) => ({
+        user: state.user,
+    })
+)(HeaderBar);
