@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
     './src/index',
-    'webpack-hot-middleware/client'
+    'webpack-dev-server/client?http://localhost:8080/',
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -50,6 +50,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './'
+    contentBase: './',
+    hot: true
   }
 }
