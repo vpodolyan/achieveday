@@ -1,23 +1,20 @@
-import * as React from "react";
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { OAuthProviders, AuthService } from 'services/auth/AuthService';
 import { AuthContext } from '../App';
+
+import HeaderBarContainer from './HeaderBarContainer';
 
 interface Props {
     children?: React.ReactNode;
     user: { name: string };
 }
 
-class HeaderBar extends React.PureComponent<Props, void> {
-
-    constructor(props: Props) {
-        super(props)
-    }
-
+class HeaderBar extends React.PureComponent<Props> {
     render() {
         return (
-            <React.Fragment>
+            <HeaderBarContainer>
                 <AuthContext.Consumer>
                     {({ authService }: { authService: AuthService }) => (
                         !authService.isAuthenticated() ? (
@@ -39,7 +36,7 @@ class HeaderBar extends React.PureComponent<Props, void> {
                     )}
                 </AuthContext.Consumer>
                 {this.props.children}
-            </React.Fragment>
+            </HeaderBarContainer>
         )
     }
 }
