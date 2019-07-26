@@ -25,6 +25,12 @@ export const AuthContext = React.createContext(authContexValue);
 
 
 class App extends React.PureComponent {
+    componentWillMount() {
+        if (client.auth.isLoggedIn) {
+            this.props.setUser(client.auth.user.profile.data);
+        }
+    }
+
     componentDidMount() {
         if (client.auth.hasRedirectResult()) {
             client.auth.handleRedirectResult().then(user => {
