@@ -10,6 +10,7 @@ import DayAchievements from '../containers/DayAchievements'
 import NewAchievement from '../containers/NewAchievement'
 import DatePickerContainer from '../containers/DatePickerContainer'
 import HeaderBar from '../components/HeaderBar';
+import MainContainer from './MainContainer';
 
 const appId = 'achievedayapp-zjent';
 const client = Stitch.initializeDefaultAppClient(appId);
@@ -43,9 +44,11 @@ class App extends React.PureComponent {
         return (
             <AuthContext.Provider value={authContexValue}>
                 <HeaderBar />
-                <DatePickerContainer />
-                <DayAchievements />
-                <NewAchievement />
+                <MainContainer>
+                    <DatePickerContainer />
+                    <DayAchievements />
+                    <NewAchievement />
+                </MainContainer>
             </AuthContext.Provider>
         )
     }
