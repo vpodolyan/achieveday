@@ -1,8 +1,8 @@
 import { GoogleRedirectCredential, FacebookRedirectCredential, StitchAppClient } from 'mongodb-stitch-browser-sdk';
 
-import { AuthService, OAuthProviders } from './AuthService'; 
+import { IAuthService, OAuthProviders } from './IAuthService'; 
 
-export default class StitchAuthService implements AuthService {
+export default class StitchAuthService implements IAuthService {
     client: StitchAppClient;
 
     /**

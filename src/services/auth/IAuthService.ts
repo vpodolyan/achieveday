@@ -5,7 +5,7 @@ export enum OAuthProviders {
 }
 
 /** Authentication service interface. */
-export interface AuthService {
+export interface IAuthService {
     /**
      * log in with one of the oauth providers.
      * 
