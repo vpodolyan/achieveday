@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { OAuthProviders, AuthService } from 'services/auth/AuthService';
+import { OAuthProviders, IAuthService } from 'services/auth/IAuthService'
 import { AuthContext } from '../App';
 
 import HeaderBarContainer from './HeaderBarContainer';
@@ -16,7 +16,7 @@ class HeaderBar extends React.PureComponent<Props> {
         return (
             <HeaderBarContainer>
                 <AuthContext.Consumer>
-                    {({ authService }: { authService: AuthService }) => (
+                    {({ authService }: { authService: IAuthService }) => (
                         !authService.isAuthenticated() ? (
                             <div>
                                 NOT LOGGED IN
