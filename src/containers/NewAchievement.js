@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { addAchievement } from '../actions'
 
 import Input from 'components/Input';
@@ -10,14 +11,15 @@ class NewAchievement extends React.Component {
         this.state = { text: '' };
     }
 
-    onAddClick = (e) => {
+    handleAddClick = (e) => {
         e.preventDefault()
         
         if (!this.state.text.trim()) {
             return;
         }
         
-        this.props.dispatch(addAchievement(this.state.text));
+        this.props.addAchievement({ text: this.state.text, owner_id: '5be843d7dced5f4062d13351' });
+
         this.input.focus();
         this.setState({ text: '' });
     }
@@ -29,13 +31,13 @@ class NewAchievement extends React.Component {
     render () {
         return (
             <div>
-                <form onSubmit={this.onAddClick}>
+                <form onSubmit={this.handleAddClick}>
                 <Input
                     value={this.state.text}
-                    innerRef={input => this.input = input}
+                    ref={input => this.input = input}
                     onChange={this.onInputChange}
                 />
-                <a className="add-btn" href="#" onClick={this.onAddClick}>
+                <a className="add-btn" href="#" onClick={this.handleAddClick}>
                     +
                 </a>
                 </form>
@@ -43,6 +45,11 @@ class NewAchievement extends React.Component {
         )
     }
 }
-NewAchievement = connect()(NewAchievement)
 
-export default NewAchievement
+const mapDispatchToProps = {
+    addAchievement,
+}
+
+NewAchievement = connect(null, mapDispatchToProps)(NewAchievement)
+
+export default NewAchievement;
