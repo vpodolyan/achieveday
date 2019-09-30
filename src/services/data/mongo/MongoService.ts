@@ -22,7 +22,11 @@ class MongoService implements IAchievementsDataService {
     }
 
     async saveAchievement(achievement: IAchievement) {
-        return await this.achievementsCollection.insertOne(achievement);        
+        return await this.achievementsCollection.insertOne(achievement)
+            .then(result => ({
+                ...achievement,
+                _id: result.insertedId,
+            }))     
     }
 
     async deleteAchievement(id: string) {

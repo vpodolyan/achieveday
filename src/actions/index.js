@@ -1,9 +1,9 @@
-import * as types from './types' 
+import * as types from './types'
 
-export const addAchievement = (text) => {
+export const addAchievement = (achievement) => {
   return {
     type: types.ADD_ACHIEVEMENT,
-    text
+    payload: { achievement },
   }
 }
 
@@ -38,3 +38,8 @@ export const setUser = (user) => ({
     type: types.SET_USER,
     payload: user,
 });
+
+export const getAchievements = (achievements) => ({
+  type: types.GET_ACHIEVEMENTS,
+  payload: { achievements }
+})
