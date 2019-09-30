@@ -1,5 +1,5 @@
 import { RemoteMongoClient, RemoteMongoCollection } from 'mongodb-stitch-browser-sdk';
-import { stitchClient } from 'stitch/client';
+import stitchClient from 'stitch/client';
 
 import IAchievement from 'types/IAchievement';
 import IAchievementsDataService from '../achievements/IAchievementsDataService';

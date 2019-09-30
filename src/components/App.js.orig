@@ -1,19 +1,34 @@
 import React from 'react'
+<<<<<<< HEAD
 import { connect } from 'react-redux';
+import { Stitch } from 'mongodb-stitch-browser-sdk';
+=======
+
+import { stitchClient } from "../stitch/client";
+>>>>>>> Moved mongo stitch app initialization
 
 import StichAuthService from '../services/auth/StitchAuthService';
-import stitchClient from '../stitch/client';
 
 import { setUser } from 'actions';
 
+<<<<<<< HEAD
 import DayAchievements from '../containers/DayAchievements'
 import NewAchievement from '../containers/NewAchievement'
 import DatePickerContainer from '../containers/DatePickerContainer'
 import HeaderBar from '../components/HeaderBar';
 import MainContainer from './MainContainer';
 
+const appId = 'achievedayapp-zjent';
+const client = Stitch.initializeDefaultAppClient(appId);
+=======
+import DayAchievements from '../containers/DayAchievements';
+import NewAchievement from '../containers/NewAchievement';
+import DatePickerContainer from '../containers/DatePickerContainer';
+>>>>>>> Moved mongo stitch app initialization
+
 const authService = new StichAuthService(stitchClient);
 
+<<<<<<< HEAD
 const authContexValue = {
     authService,
 };
@@ -21,17 +36,24 @@ const authContexValue = {
 export const AuthContext = React.createContext(authContexValue);
 
 
+=======
+if(stitchClient.auth.hasRedirectResult()){
+  stitchClient.auth.handleRedirectResult().then(user => {
+     console.log('USER ', user.profile.data);
+  });
+}
+>>>>>>> Moved mongo stitch app initialization
 
 class App extends React.PureComponent {
     componentWillMount() {
-        if (stitchClient.auth.isLoggedIn) {
-            this.props.setUser(stitchClient.auth.user.profile.data);
+        if (client.auth.isLoggedIn) {
+            this.props.setUser(client.auth.user.profile.data);
         }
     }
 
     componentDidMount() {
-        if (stitchClient.auth.hasRedirectResult()) {
-            stitchClient.auth.handleRedirectResult().then(user => {
+        if (client.auth.hasRedirectResult()) {
+            client.auth.handleRedirectResult().then(user => {
                 this.props.setUser(user.profile.data);
             });
         }
