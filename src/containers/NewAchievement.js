@@ -17,8 +17,14 @@ class NewAchievement extends React.Component {
         if (!this.state.text.trim()) {
             return;
         }
+
+        const { addAchievement, user } = this.props;
+
+        if (!user) {
+            return;
+        }
         
-        this.props.addAchievement({ text: this.state.text, owner_id: '5be843d7dced5f4062d13351' });
+        addAchievement({ text: this.state.text, owner_id: user.id });
 
         this.input.focus();
         this.setState({ text: '' });
@@ -46,10 +52,14 @@ class NewAchievement extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    user: state.user,
+})
+
 const mapDispatchToProps = {
     addAchievement,
 }
 
-NewAchievement = connect(null, mapDispatchToProps)(NewAchievement)
+NewAchievement = connect(mapStateToProps, mapDispatchToProps)(NewAchievement)
 
 export default NewAchievement;

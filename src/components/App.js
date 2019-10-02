@@ -23,17 +23,16 @@ export const AuthContext = React.createContext(authContexValue);
 
 
 class App extends React.PureComponent {
-    componentWillMount() {
-        if (stitchClient.auth.isLoggedIn) {
-            this.props.setUser(stitchClient.auth.user.profile.data);
-        }
-    }
-
     componentDidMount() {
+
         if (stitchClient.auth.hasRedirectResult()) {
             stitchClient.auth.handleRedirectResult().then(user => {
                 this.props.setUser(user.profile.data);
             });
+        }
+
+        if (stitchClient.auth.isLoggedIn) {
+            this.props.setUser({ ...stitchClient.auth.user.profile.data, id: stitchClient.auth.user.id });
         }
     }
 

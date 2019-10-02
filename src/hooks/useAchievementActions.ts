@@ -5,7 +5,7 @@ import achievementService from 'services/data/achievements/achievementsService';
 import { getAchievements as getAchievementsAction } from 'actions';
 
 export default function useAchievementActions() {
-    const [state, dispatch] = useReducer(achievements, achievementsInitialState);
+    const [dispatch] = useReducer(achievements, achievementsInitialState);
 
     const getAchievements = async () => {
         const achievements = await achievementService.getAchievements();
