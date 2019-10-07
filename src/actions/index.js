@@ -10,7 +10,7 @@ export const addAchievement = (achievement) => {
 export const removeAchievement = (id) => {
   return {
     type: types.REMOVE_ACHIEVEMENT,
-    id: id
+    payload: { id },
   }
 }
 

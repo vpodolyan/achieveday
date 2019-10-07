@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Achievement = ({id, text, onAchivDelete}) => (
+const Achievement = ({ _id, text, onAchivDelete }) => (
     <li className="lead">
         <span>{text}</span>
-        <a href='#' onClick={() => onAchivDelete(id)}>delete</a>
+        <a href='#' onClick={() => onAchivDelete(_id)}>delete</a>
     </li>
 )
 

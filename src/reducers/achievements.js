@@ -19,8 +19,8 @@ export default function achievements(state = initialState, action) {
                 }
             ]
 
-        case types.REMOVE_ACHIEVEMENT:
-            return state.filter((a) => a.id !== action.id);
+        case types.REMOVE_ACHIEVEMENT_SUCCESS:
+            return state.filter((a) => a._id !== action.payload.id);
         
         case types.GET_ACHIEVEMENTS:
             return action.payload.achievements;
