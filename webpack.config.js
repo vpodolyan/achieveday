@@ -38,9 +38,14 @@ module.exports = {
       },
       {
         test: /\.(t|j)sx?$/,
-        loader: 'awesome-typescript-loader?module=es6',
+        loader: 'awesome-typescript-loader',
         exclude: /node_modules/,
-        include: __dirname
+        include: __dirname,
+        options: {
+          reportFiles: [
+            'src/**/*.{ts,tsx}'
+          ]
+        }
       },
       {
         test: /\.js$/,
