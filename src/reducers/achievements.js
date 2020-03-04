@@ -13,7 +13,6 @@ export default function achievements(state = initialState, action) {
             return [
                 ...state,
                 {
-                    id: action.payload.achievement._id,
                     _id: action.payload.achievement._id,
                     text: action.payload.achievement.text
                 }
