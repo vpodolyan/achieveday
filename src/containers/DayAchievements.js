@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(removeAchievement(id))
         },
         getAchievements: async () => {
-            const achievements = await achievementService.getAchievements();
+            const achievements = await achievementService.getAchievements(new Date());
             dispatch(getAchievementsAction(achievements));
         },
     }
