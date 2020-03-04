@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { applyMiddleware, createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux'
 
 import App from './components/App'
@@ -11,7 +12,7 @@ import '../css/style.css'
 
 const store = createStore(
     reducer,
-    applyMiddleware(achievementsMiddleware),
+    composeWithDevTools(applyMiddleware(achievementsMiddleware)),
   );
 
 render(
