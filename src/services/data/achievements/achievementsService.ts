@@ -10,8 +10,8 @@ class AchievementsService implements IAchievementsService {
         this.dataService = new MongoService();
     }
 
-    getAchievements() {
-        return this.dataService.getAchievements();
+    getAchievements(date?: Date) {
+        return this.dataService.getAchievements(date);
     }
     
     saveAchievement(achievement: IAchievement) {

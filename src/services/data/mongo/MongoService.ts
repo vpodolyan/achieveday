@@ -17,8 +17,17 @@ class MongoService implements IAchievementsDataService {
           this.achievementsCollection = this.mongoClient.db("achieveday_db").collection<IAchievement>("achievements");
     }
 
-    async getAchievements() {
-        return await this.achievementsCollection.find({}, { limit: 1000 }).asArray();
+    async getAchievements(date?: Date) {
+        let query = {};
+        if (date) {
+            const startDate = new Date(date);
+            startDate.setHours(0, 0, 0, 0);
+            const endDate = new Date(date);
+            endDate.setHours(23,59,59,999);
+            query = { 'createDate': { '$gte': startDate, '$lte': endDate }};
+        }
+
+        return await this.achievementsCollection.find(query, { limit: 1000 }).asArray();
     }
 
     async saveAchievement(achievement: IAchievement) {
