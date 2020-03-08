@@ -1,18 +1,29 @@
-import React from 'react'
+import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { addAchievement } from '../actions'
+import { addAchievement } from 'actions'
 
 import Input from 'components/Input';
 
-class NewAchievement extends React.Component {
+interface IProps {
+    user: any,
+    addAchievement: typeof addAchievement;
+}
+
+interface IState {
+    text: string;
+}
+
+class NewAchievement extends React.PureComponent<IProps, IState> {
     constructor(props) {
         super(props);
         this.state = { text: '' };
     }
 
+    input: HTMLInputElement | null;
+
     handleAddClick = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         
         if (!this.state.text.trim()) {
             return;
@@ -26,7 +37,10 @@ class NewAchievement extends React.Component {
         
         addAchievement({ text: this.state.text, owner_id: user.id });
 
-        this.input.focus();
+        if (this.input) {
+            this.input.focus();
+        }
+
         this.setState({ text: '' });
     }
 
@@ -60,6 +74,4 @@ const mapDispatchToProps = {
     addAchievement,
 }
 
-NewAchievement = connect(mapStateToProps, mapDispatchToProps)(NewAchievement)
-
-export default NewAchievement;
+export default connect(mapStateToProps, mapDispatchToProps)(NewAchievement);
