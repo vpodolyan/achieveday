@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Router } from '@reach/router';
 
 import StichAuthService from '../services/auth/StitchAuthService';
 import stitchClient from '../stitch/client';
@@ -11,6 +12,7 @@ import NewAchievement from '../containers/NewAchievement'
 import DatePickerContainer from '../containers/DatePickerContainer'
 import HeaderBar from '../components/HeaderBar';
 import MainContainer from './MainContainer';
+import AchievementsPage from './pages/AchievementsPage/AchievementsPage';
 
 const authService = new StichAuthService(stitchClient);
 
@@ -39,12 +41,9 @@ class App extends React.PureComponent {
     render() {
         return (
             <AuthContext.Provider value={authContexValue}>
-                <HeaderBar />
-                <MainContainer>
-                    <DatePickerContainer />
-                    <DayAchievements />
-                    <NewAchievement />
-                </MainContainer>
+                <Router>
+                    <AchievementsPage path='/' />
+                </Router>
             </AuthContext.Provider>
         )
     }
