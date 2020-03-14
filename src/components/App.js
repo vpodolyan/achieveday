@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { Router } from '@reach/router';
+import { Router, Redirect } from '@reach/router';
 
 import StichAuthService from '../services/auth/StitchAuthService';
 import stitchClient from '../stitch/client';
@@ -13,6 +13,7 @@ import DatePickerContainer from '../containers/DatePickerContainer'
 import HeaderBar from '../components/HeaderBar';
 import MainContainer from './MainContainer';
 import AchievementsPage from './pages/AchievementsPage/AchievementsPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 const authService = new StichAuthService(stitchClient);
 
@@ -23,6 +24,13 @@ const authContexValue = {
 export const AuthContext = React.createContext(authContexValue);
 
 
+const WithAuthPage = ({Component, path}) => {
+    if (stitchClient.auth.isLoggedIn) {
+        return <Component path={path} />;
+    }
+
+    return <Redirect to='/' />;
+}
 
 class App extends React.PureComponent {
     componentDidMount() {
@@ -42,7 +50,8 @@ class App extends React.PureComponent {
         return (
             <AuthContext.Provider value={authContexValue}>
                 <Router>
-                    <AchievementsPage path='/' />
+                    <LoginPage path='/' />
+                    <WithAuthPage Component={AchievementsPage} path='app' />
                 </Router>
             </AuthContext.Provider>
         )
