@@ -37,6 +37,12 @@ module.exports = {
         ]
       },
       {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      },
+      {
         test: /\.(t|j)sx?$/,
         loader: 'awesome-typescript-loader',
         exclude: /node_modules/,
@@ -58,5 +64,6 @@ module.exports = {
     contentBase: './',
     hot: true,
     port: 4000,
+    historyApiFallback: true,
   }
 }
