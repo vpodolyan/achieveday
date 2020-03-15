@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { navigate } from '@reach/router';
 
 import { OAuthProviders, IAuthService } from 'services/auth/IAuthService'
 import { AuthContext } from '../App';
@@ -28,7 +29,10 @@ class HeaderBar extends React.PureComponent<Props> {
                         : (
                             <div>
                                 LOGGED IN as { this.props.user.name }
-                                <button onClick={() => { authService.logOut(); location.reload(); }}>
+                                <button onClick={() => {
+                                    authService.logOut();
+                                    navigate('/');
+                                }}>
                                     LogOut
                                 </button>
                             </div>

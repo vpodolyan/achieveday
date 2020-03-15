@@ -1,11 +1,6 @@
 import * as types from '../actions/types'
 
-const initialState = [
-    {
-        id: 1,
-        text: 'test text'
-    }
-]
+const initialState = []
 
 export default function achievements(state = initialState, action) {
     switch (action.type) {

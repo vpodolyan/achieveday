@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { Router, Redirect } from '@reach/router';
+import { Router, Redirect, navigate } from '@reach/router';
 
 import StichAuthService from '../services/auth/StitchAuthService';
 import stitchClient from '../stitch/client';
@@ -38,6 +38,7 @@ class App extends React.PureComponent {
         if (stitchClient.auth.hasRedirectResult()) {
             stitchClient.auth.handleRedirectResult().then(user => {
                 this.props.setUser(user.profile.data);
+                navigate('app');
             });
         }
 
