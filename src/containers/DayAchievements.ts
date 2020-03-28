@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
 
 import AchieveList from '../components/AchieveList'
-import { removeAchievement } from '../actions'
 import achievementService from '../services/data/achievements/achievementsService';
-import { getAchievements as getAchievementsAction } from 'actions';
+import { getAchievements as getAchievementsAction, getAchievementsSuccess as getAchievementsSuccessAction, removeAchievement } from 'actions';
+import IState from 'types/state/IState';
 
-const mapStateToProps = (state) => ({
-    achievements: state.achievements,
+const mapStateToProps = (state: IState) => ({
+    achievements: state.achievements.data,
+    loading: state.achievements.loading,
     selectedDate: state.datePicker.value,
 })
 
@@ -16,8 +17,9 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(removeAchievement(id))
         },
         getAchievements: async (date) => {
+            dispatch(getAchievementsAction());
             const achievements = await achievementService.getAchievements(date || new Date());
-            dispatch(getAchievementsAction(achievements));
+            dispatch(getAchievementsSuccessAction(achievements));
         },
     }
 }
