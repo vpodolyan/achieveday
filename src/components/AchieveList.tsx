@@ -13,7 +13,7 @@ interface IProps {
     achievements: IAchievement[];
     selectedDate: Date;
     loading: boolean;
-    onAchivDelete: () => void;
+    onAchivDelete: (id: object) => void;
     getAchievements: (date?: Date) => void;
 }
 
@@ -29,7 +29,8 @@ const AchieveList: React.FC<IProps> = ({ achievements, onAchivDelete, getAchieve
             {achievements && achievements.map(achievement =>
                 <Achievement
                     key={achievement._id?.toString()}
-                    {...achievement}
+                    id={achievement._id}
+                    text={achievement.text}
                     onAchivDelete={onAchivDelete}
                 />
             )}
