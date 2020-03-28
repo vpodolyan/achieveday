@@ -8,7 +8,8 @@ import App from './components/App'
 import reducer from './reducers'
 import achievementsMiddleware from './middlewares/achievementsMiddleware';
 
-import '../css/style.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../css/style.css';
 
 const store = createStore(
     reducer,
