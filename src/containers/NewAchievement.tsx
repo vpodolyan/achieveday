@@ -15,10 +15,7 @@ interface IState {
 }
 
 class NewAchievement extends React.PureComponent<IProps, IState> {
-    constructor(props) {
-        super(props);
-        this.state = { text: '' };
-    }
+    state = { text: '' };
 
     input: HTMLInputElement | null;
 
