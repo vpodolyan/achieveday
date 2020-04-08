@@ -37,10 +37,10 @@ class App extends React.PureComponent {
 
         if (stitchClient.auth.hasRedirectResult()) {
             stitchClient.auth.handleRedirectResult().then(user => {
-                this.props.setUser(user.profile.data);
+                this.props.setUser({ ...user.profile.data, id: user.id });
                 navigate('app');
             });
-        }
+        } 
 
         if (stitchClient.auth.isLoggedIn) {
             this.props.setUser({ ...stitchClient.auth.user.profile.data, id: stitchClient.auth.user.id });
