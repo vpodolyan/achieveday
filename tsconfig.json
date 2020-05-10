@@ -10,7 +10,8 @@
         "moduleResolution": "node",
         "lib": ["es2015", "dom"],
         "strictNullChecks": true,
-        "noUnusedLocals": true
+        "noUnusedLocals": true,
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "./src/**/*"
