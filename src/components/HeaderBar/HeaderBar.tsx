@@ -6,10 +6,12 @@ import { OAuthProviders, IAuthService } from 'services/auth/IAuthService'
 import { AuthContext } from '../App';
 
 import HeaderBarContainer from './HeaderBarContainer';
+import IAppState from 'types/state/IAppState';
+import IUser from 'types/IUser';
 
 interface Props {
     children?: React.ReactNode;
-    user: { name: string };
+    user: IUser;
 }
 
 class HeaderBar extends React.PureComponent<Props> {
@@ -46,7 +48,7 @@ class HeaderBar extends React.PureComponent<Props> {
 }
 
 export default connect(
-    (state) => ({
+    (state: IAppState) => ({
         user: state.user,
     })
 )(HeaderBar);
