@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import AchieveList from '../components/AchieveList'
 import achievementService from '../services/data/achievements/achievementsService';
 import { getAchievements as getAchievementsAction, getAchievementsSuccess as getAchievementsSuccessAction, removeAchievement, getDailyQuoteAction } from 'actions';
-import IState from 'types/state/IState';
+import IAppState from 'types/state/IAppState';
 
-const mapStateToProps = (state: IState) => ({
+const mapStateToProps = (state: IAppState) => ({
     achievements: state.achievements.data,
     loading: state.achievements.loading,
     selectedDate: state.datePicker.value,
