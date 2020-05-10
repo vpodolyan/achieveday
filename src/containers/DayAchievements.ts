@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import AchieveList from '../components/AchieveList'
 import achievementService from '../services/data/achievements/achievementsService';
-import { getAchievements as getAchievementsAction, getAchievementsSuccess as getAchievementsSuccessAction, removeAchievement } from 'actions';
+import { getAchievements as getAchievementsAction, getAchievementsSuccess as getAchievementsSuccessAction, removeAchievement, getDailyQuoteAction } from 'actions';
 import IState from 'types/state/IState';
 
 const mapStateToProps = (state: IState) => ({
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
             const achievements = await achievementService.getAchievements(date || new Date());
             dispatch(getAchievementsSuccessAction(achievements));
         },
+        getDialyQuote: () => {
+            dispatch(getDailyQuoteAction());
+        }
     }
 }
 

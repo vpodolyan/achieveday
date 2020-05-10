@@ -1,5 +1,6 @@
 import * as types from './types'
 import IAchievement from 'types/IAchievement'
+import IQuote from 'types/IQuote'
 
 export const addAchievement = (achievement) => {
   return {
@@ -50,3 +51,17 @@ export const getAchievementsSuccess = (achievements: IAchievement[]) => ({
   payload: { achievements }
 })
 
+export const getDailyQuoteAction = () => ({
+  type: types.GET_DAILY_QUOTE,
+  payload: {}
+})
+
+export const getDaiylyQuoteSuccessAction = (quote: IQuote) => ({
+  type: types.GET_DAILY_QUOTE_SUCCESS,
+  payload: { quote }
+})
+
+export const getDaiylyQuoteFailAction = () => ({
+  type: types.GET_DAILY_QUOTE_FAIL,
+  payload: {}
+})
