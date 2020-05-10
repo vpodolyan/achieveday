@@ -7,13 +7,14 @@ import { Provider } from 'react-redux'
 import App from './components/App'
 import reducer from './reducers'
 import achievementsMiddleware from './middlewares/achievementsMiddleware';
+import quotesMiddleware from 'middlewares/quotesMiddleware';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/style.css';
 
 const store = createStore(
     reducer,
-    composeWithDevTools(applyMiddleware(achievementsMiddleware)),
+    composeWithDevTools(applyMiddleware(achievementsMiddleware, quotesMiddleware)),
   );
 
 render(
