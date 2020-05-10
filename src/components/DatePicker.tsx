@@ -2,7 +2,6 @@ import * as React from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import DayPicker from 'react-day-picker'
 
-import { localeUtils } from 'utils/i18n'
 import { NEXT_DATE, PREV_DATE } from 'actions/types'
 import Arrow from 'components/Arrow';
 import CentredBox from 'components/CentredBox';
@@ -44,7 +43,6 @@ const DatePicker: React.FC<IProps> = ({ selectedDate, setCalendarVisibility, onD
           <div ref={ref}>
             <DayPicker
               locale={"en"}
-              localeUtils={localeUtils}
               onDayClick={day => {
                 onDateSelected(day);
               }}
