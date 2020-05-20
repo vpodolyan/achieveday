@@ -1,19 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { Router, Redirect, navigate } from '@reach/router';
+import { Router, navigate } from '@reach/router';
 
 import StichAuthService from '../services/auth/StitchAuthService';
 import stitchClient from '../stitch/client';
 
 import { setUser } from 'actions';
 
-import DayAchievements from '../containers/DayAchievements'
-import NewAchievement from '../containers/NewAchievement'
-import DatePickerContainer from '../containers/DatePickerContainer'
-import HeaderBar from '../components/HeaderBar';
-import MainContainer from './MainContainer';
 import AchievementsPage from './pages/AchievementsPage/AchievementsPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import WithAuthPage from './WithAuthPage';
+import IUser from 'types/IUser';
 
 const authService = new StichAuthService(stitchClient);
 
@@ -23,27 +20,25 @@ const authContexValue = {
 
 export const AuthContext = React.createContext(authContexValue);
 
-
-const WithAuthPage = ({Component, path}) => {
-    if (stitchClient.auth.isLoggedIn) {
-        return <Component path={path} />;
-    }
-
-    return <Redirect to='/' />;
+interface IProps {
+    setUser: (user: IUser) => void;
 }
 
-class App extends React.PureComponent {
+class App extends React.PureComponent<IProps> {
     componentDidMount() {
 
         if (stitchClient.auth.hasRedirectResult()) {
             stitchClient.auth.handleRedirectResult().then(user => {
+                // @ts-ignore
                 this.props.setUser({ ...user.profile.data, id: user.id });
                 navigate('app');
             });
         } 
 
-        if (stitchClient.auth.isLoggedIn) {
+        if (stitchClient.auth.isLoggedIn && stitchClient.auth.user) {
+            // @ts-ignore
             this.props.setUser({ ...stitchClient.auth.user.profile.data, id: stitchClient.auth.user.id });
+            navigate('app');
         }
     }
 

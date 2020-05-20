@@ -5,8 +5,12 @@ import SignInWithGoogleButton from './SignInWithGoogleButton';
 import Title from './Title';
 import SubTitle from './Subtitle';
 import DevelopmentBadge from './DevelopmentBadge';
+import {RouteComponentProps} from '@reach/router';
 
-const LoginPage: React.FC = () => (
+interface IProps extends RouteComponentProps {
+}
+
+const LoginPage: React.FC<IProps> = () => (
     <LoginPageContainer>
         <DevelopmentBadge>Under Development</ DevelopmentBadge>
         <Title>

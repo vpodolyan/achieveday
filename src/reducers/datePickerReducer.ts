@@ -1,6 +1,7 @@
 import * as types from '../actions/types'
+import IDatePickerState from 'types/state/IDatePickerState'
 
-const initialState = {
+const initialState: IDatePickerState = {
     value: new Date(),
     visible: false
 }

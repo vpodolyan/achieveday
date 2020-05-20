@@ -4,7 +4,7 @@ import DayPicker from 'react-day-picker'
 
 import { NEXT_DATE, PREV_DATE } from 'actions/types'
 import Arrow from 'components/Arrow';
-import CentredBox from 'components/CentredBox';
+import CenteredBox from 'components/CenteredBox';
 import Input from 'components/Input'
 
 import 'react-day-picker/lib/style.css'
@@ -39,7 +39,7 @@ const DatePicker: React.FC<IProps> = ({ selectedDate, setCalendarVisibility, onD
       />
       <Arrow onClick={() => onDateSwitch(NEXT_DATE)}> &gt; </Arrow>
       {visible && (
-        <CentredBox>
+        <CenteredBox>
           <div ref={ref}>
             <DayPicker
               locale={"en"}
@@ -48,7 +48,7 @@ const DatePicker: React.FC<IProps> = ({ selectedDate, setCalendarVisibility, onD
               }}
             />
           </div>
-        </CentredBox>
+        </CenteredBox>
       )}
     </div>
   );

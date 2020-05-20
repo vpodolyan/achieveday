@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import DatePicker from '../components/DatePicker'
-import { switchDate, setSelectedDate, setCalendarVisibility } from '../../src/actions'
+import { switchDate, setSelectedDate, setCalendarVisibility } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
