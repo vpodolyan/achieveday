@@ -1,12 +1,13 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-
 import { addAchievement } from 'actions'
-
 import Input from 'components/Input';
+import IAppState from 'types/state/IAppState';
+import IUser from 'types/IUser';
 
 interface IProps {
-    user: any,
+    user: IUser;
+    date: Date;
     addAchievement: typeof addAchievement;
 }
 
@@ -26,13 +27,13 @@ class NewAchievement extends React.PureComponent<IProps, IState> {
             return;
         }
 
-        const { addAchievement, user } = this.props;
+        const { addAchievement, user, date } = this.props;
 
         if (!user) {
             return;
         }
         
-        addAchievement({ text: this.state.text, owner_id: user.id });
+        addAchievement({ text: this.state.text, owner_id: user.id, createDate: date });
 
         if (this.input) {
             this.input.focus();
@@ -63,8 +64,9 @@ class NewAchievement extends React.PureComponent<IProps, IState> {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IAppState) => ({
     user: state.user,
+    date: state.datePicker.value,
 })
 
 const mapDispatchToProps = {
