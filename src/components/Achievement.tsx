@@ -9,7 +9,7 @@ interface IProps {
 const Achievement: React.FC<IProps> = ({ id, text, onAchivDelete }) => (
     <li className="lead">
         <span>{text}</span>
-        <a href='#' onClick={() => onAchivDelete(id)}>delete</a>
+        <a className='ml-1' href='#' onClick={() => onAchivDelete(id)}>delete</a>
     </li>
 )
 

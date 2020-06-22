@@ -14,7 +14,7 @@ const MainContainer: React.FC = ({ children }) => (
                 <Title className="text-center">What is your big win today?</Title>
                 <p className="lead text-center">...or you have a lot ;)</p>
 
-                <div className="text-center">
+                <div className="text-center d-flex-column">
                     {children}
                 </div>
             </div>

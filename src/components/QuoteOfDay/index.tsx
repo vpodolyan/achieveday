@@ -17,7 +17,7 @@ const QuoteOfDay = memo<IProps>(({show}) => {
     }
 
     return (
-      <div>
+      <div className='pt-4'>
         <Title>“{quote.text}” &mdash;</Title>
         <Author>{quote.author}</Author>
       </div>

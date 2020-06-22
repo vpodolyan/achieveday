@@ -7,6 +7,7 @@ import Spinner from './Spinner/Spinner';
 
 const List = styled.ul`
   list-style-type: none;
+  margin-bottom: 0
 `;
 
 interface IProps {
