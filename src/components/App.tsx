@@ -20,6 +20,10 @@ const authContexValue = {
 
 export const AuthContext = React.createContext(authContexValue);
 
+const paths = {
+    achievements: 'app'
+}
+
 interface IProps {
     setUser: (user: IUser) => void;
 }
@@ -31,14 +35,14 @@ class App extends React.PureComponent<IProps> {
             stitchClient.auth.handleRedirectResult().then(user => {
                 // @ts-ignore
                 this.props.setUser({ ...user.profile.data, id: user.id });
-                navigate('app');
+                navigate(paths.achievements);
             });
         } 
 
         if (stitchClient.auth.isLoggedIn && stitchClient.auth.user) {
             // @ts-ignore
             this.props.setUser({ ...stitchClient.auth.user.profile.data, id: stitchClient.auth.user.id });
-            navigate('app');
+            navigate(paths.achievements);
         }
     }
 
@@ -47,7 +51,7 @@ class App extends React.PureComponent<IProps> {
             <AuthContext.Provider value={authContexValue}>
                 <Router>
                     <LoginPage path='/' />
-                    <WithAuthPage Component={AchievementsPage} path='app' />
+                    <WithAuthPage Component={AchievementsPage} path={paths.achievements} />
                 </Router>
             </AuthContext.Provider>
         )
