@@ -21,7 +21,7 @@ const authContexValue = {
 export const AuthContext = React.createContext(authContexValue);
 
 const paths = {
-    achievements: 'app'
+    achievements: 'achievements'
 }
 
 interface IProps {
