@@ -7,10 +7,12 @@ interface IProps {
 }
 
 const Achievement: React.FC<IProps> = ({ id, text, onAchivDelete }) => (
-    <li className="lead">
-        <span>{text}</span>
-        <a className='ml-1' href='#' onClick={() => onAchivDelete(id)}>delete</a>
-    </li>
+    <div className="lead d-flex">
+        <div className=''>{text}</div>
+        <div className='col-2'>
+            <a className='ml-1' href='#' onClick={() => onAchivDelete(id)}>delete</a>
+        </div>
+    </div>
 )
 
 export default Achievement

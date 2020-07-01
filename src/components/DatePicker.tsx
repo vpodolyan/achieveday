@@ -1,6 +1,7 @@
 import * as React from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import DayPicker from 'react-day-picker'
+import styled from 'styled-components';
 
 import { NEXT_DATE, PREV_DATE } from 'actions/types'
 import Arrow from 'components/Arrow';
@@ -8,6 +9,10 @@ import CenteredBox from 'components/CenteredBox';
 import Input from 'components/Input'
 
 import 'react-day-picker/lib/style.css'
+
+const DateInput = styled(Input)`
+  width: 75%;
+`;
 
 interface IProps {
     selectedDate: Date;
@@ -28,9 +33,9 @@ const DatePicker: React.FC<IProps> = ({ selectedDate, setCalendarVisibility, onD
   });
 
   return (
-    <div>
+    <div className="d-flex justify-content-center">
       <Arrow onClick={() => onDateSwitch(PREV_DATE)}> &lt; </Arrow>
-      <Input
+      <DateInput
         type="text"
         className="text-center"
         ref={input => input}
