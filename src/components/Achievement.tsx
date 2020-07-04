@@ -15,13 +15,18 @@ interface IProps {
 }
 
 const Achievement: React.FC<IProps> = ({ id, text, onAchivDelete }) => (
-    <div className="lead d-flex align-items-center">
-        <TrophyIcon icon={faTrophy} />
-        <div className='pl-1'>{text}</div>
-        <div className='col-2'>
-            <a className='ml-1' href='#' onClick={() => onAchivDelete(id)}>delete</a>
-        </div>
+  <div className="lead d-flex">
+    <div className="d-flex-column align-items-center">
+      <TrophyIcon icon={faTrophy} />
+      <div></div>
     </div>
-)
+    <div className="pl-1">{text}</div>
+    <div className="">
+      <a className="pl-1" href="#" onClick={() => onAchivDelete(id)}>
+        delete
+      </a>
+    </div>
+  </div>
+);
 
 export default Achievement
