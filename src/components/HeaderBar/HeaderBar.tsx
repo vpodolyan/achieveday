@@ -29,7 +29,9 @@ class HeaderBar extends React.PureComponent<Props> {
                         )
                         : (
                             <div>
-                                { this.props.user.name }
+                                <span className='pr-2'>
+                                    { this.props.user.name }
+                                </span>
                                 <button onClick={() => {
                                     authService.logOut();
                                     navigate('/');
