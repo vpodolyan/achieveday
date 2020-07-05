@@ -13,15 +13,29 @@ interface IProps extends RouteComponentProps {
 const LoginPage: React.FC<IProps> = () => (
     <LoginPageContainer>
         <DevelopmentBadge>Under Development</ DevelopmentBadge>
-        <Title>
-            AchieveDay
-        </Title>
-        <SubTitle>
-            Write daily achievements. Get inspirational quotes. Stay motivated 🚀
-        </SubTitle>
-        <LoginForm>
-            <SignInWithGoogleButton />
-        </LoginForm>
+        <div className='container'>
+            {/* <div className="row">
+                <div className="col"> */}
+            <Title>
+                AchieveDay
+            </Title>
+            <SubTitle>
+                <div className='d-none d-lg-block'>
+                    Write daily achievements. Get inspirational quotes. stay motivated 🚀
+                </div>
+                <div className='d-lg-none'>
+                    <div>Write daily achievements.</div>
+                    <div>Get inspirational quotes.</div>
+                    <div>Stay motivated 🚀</div>
+                </div>
+            </SubTitle>
+            <LoginForm>
+                <SignInWithGoogleButton />
+            </LoginForm>
+
+                {/* </div>
+            </div> */}
+        </div>
     </LoginPageContainer>
 );
 

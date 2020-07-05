@@ -9,12 +9,12 @@ const Title = styled.h1`
 
 const MainContainer: React.FC = ({ children }) => (
     <div className="container">
-        <div className="row">
+        <div className="row d-flex justify-content-center">
             <div className="col-12">
                 <Title className="text-center">What is your big win today?</Title>
                 <p className="lead text-center">...or you have a lot ;)</p>
 
-                <div className="text-center d-flex-column">
+                <div className="d-flex-column">
                     {children}
                 </div>
             </div>

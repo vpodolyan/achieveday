@@ -1,9 +1,14 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
+import * as React from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { addAchievement } from 'actions'
 import Input from 'components/Input';
 import IAppState from 'types/state/IAppState';
 import IUser from 'types/IUser';
+
+const NewAchievementInput = styled(Input)`
+    width: 75%;
+`;
 
 interface IProps {
     user: IUser;
@@ -48,9 +53,9 @@ class NewAchievement extends React.PureComponent<IProps, IState> {
 
     render () {
         return (
-            <div>
+            <div className="text-center pt-2 pt-md-4">
                 <form onSubmit={this.handleAddClick}>
-                <Input
+                <NewAchievementInput
                     value={this.state.text}
                     ref={input => this.input = input}
                     onChange={this.onInputChange}

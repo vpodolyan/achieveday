@@ -1,4 +1,12 @@
 import * as React from 'react';
+import styled from 'styled-components';
+
+import {faTrophy} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
+const TrophyIcon = styled(FontAwesomeIcon)`
+    font-size: 1rem;
+`;
 
 interface IProps {
     id: object;
@@ -7,10 +15,18 @@ interface IProps {
 }
 
 const Achievement: React.FC<IProps> = ({ id, text, onAchivDelete }) => (
-    <li className="lead">
-        <span>{text}</span>
-        <a className='ml-1' href='#' onClick={() => onAchivDelete(id)}>delete</a>
-    </li>
-)
+  <div className="lead d-flex">
+    <div className="d-flex-column align-items-center">
+      <TrophyIcon icon={faTrophy} />
+      <div></div>
+    </div>
+    <div className="pl-1">{text}</div>
+    <div className="">
+      <a className="pl-1" href="#" onClick={() => onAchivDelete(id)}>
+        delete
+      </a>
+    </div>
+  </div>
+);
 
 export default Achievement
