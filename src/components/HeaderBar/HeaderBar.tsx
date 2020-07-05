@@ -22,20 +22,19 @@ class HeaderBar extends React.PureComponent<Props> {
                     {({ authService }: { authService: IAuthService }) => (
                         !authService.isAuthenticated() ? (
                             <div>
-                                NOT LOGGED IN
                                 <button onClick={() => authService.logInOauth(OAuthProviders.Google)}>
-                                    LogIn
+                                    Log in
                                 </button>
                             </div>
                         )
                         : (
                             <div>
-                                LOGGED IN as { this.props.user.name }
+                                { this.props.user.name }
                                 <button onClick={() => {
                                     authService.logOut();
                                     navigate('/');
                                 }}>
-                                    LogOut
+                                    Log out
                                 </button>
                             </div>
                         )
