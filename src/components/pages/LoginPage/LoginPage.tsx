@@ -14,8 +14,6 @@ const LoginPage: React.FC<IProps> = () => (
     <LoginPageContainer>
         <DevelopmentBadge>Under Development</ DevelopmentBadge>
         <div className='container'>
-            {/* <div className="row">
-                <div className="col"> */}
             <Title>
                 AchieveDay
             </Title>
@@ -32,9 +30,6 @@ const LoginPage: React.FC<IProps> = () => (
             <LoginForm>
                 <SignInWithGoogleButton />
             </LoginForm>
-
-                {/* </div>
-            </div> */}
         </div>
     </LoginPageContainer>
 );
