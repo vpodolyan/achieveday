@@ -19,7 +19,7 @@ const LoginPage: React.FC<IProps> = () => (
             </Title>
             <SubTitle>
                 <div className='d-none d-lg-block'>
-                    Write daily achievements. Get inspirational quotes. stay motivated 🚀
+                    Write daily achievements. Get inspirational quotes. Stay motivated 🚀
                 </div>
                 <div className='d-lg-none'>
                     <div>Write daily achievements.</div>
