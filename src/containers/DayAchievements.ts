@@ -2,8 +2,9 @@ import { connect } from 'react-redux'
 
 import AchieveList from '../components/AchieveList'
 import achievementService from '../services/data/achievements/achievementsService';
-import { getAchievements as getAchievementsAction, getAchievementsSuccess as getAchievementsSuccessAction, removeAchievement } from 'actions';
+import { getAchievements as getAchievementsAction, getAchievementsSuccess as getAchievementsSuccessAction, removeAchievement, updateAchievement } from 'actions';
 import IAppState from 'types/state/IAppState';
+import IAchievement from 'types/IAchievement';
 
 const mapStateToProps = (state: IAppState) => ({
     achievements: state.achievements.data,
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
             const achievements = await achievementService.getAchievements(date || new Date());
             dispatch(getAchievementsSuccessAction(achievements));
         },
+        onAchievementEdit: (achievement: IAchievement) => {
+            dispatch(updateAchievement(achievement));
+        }
     }
 }
 

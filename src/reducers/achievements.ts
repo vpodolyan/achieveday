@@ -14,15 +14,29 @@ export default function achievements(state = initialState, action) {
                 data: [
                     ...state.data,
                     {
-                        _id: action.payload.achievement._id,
-                        text: action.payload.achievement.text
+                        ...action.payload.achievement
                     }
                 ]
             }
 
+        case types.UPDATE_ACHIEVEMENT:
+            return {
+                ...state,
+                data: state.data.map((a) => {
+                    if (a._id === action.payload.achievement._id) {
+                        return {
+                            ...a,
+                            ...action.payload.achievement,
+                        }
+                    }
+
+                    return a;
+                })
+            }
+
         case types.REMOVE_ACHIEVEMENT_SUCCESS:
             return { ...state, data: state.data.filter((a) => a._id !== action.payload.id) };
-        
+
         case types.GET_ACHIEVEMENTS:
             return { ...state, data: [], loading: true };
 

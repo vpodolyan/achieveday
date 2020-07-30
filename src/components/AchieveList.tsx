@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import Achievement from './Achievement';
+import Achievement from './Achievement/Achievement';
 import IAchievement from 'types/IAchievement';
 import Spinner from './Spinner/Spinner';
 
@@ -15,9 +15,10 @@ interface IProps {
     loading: boolean;
     onAchivDelete: (id: object) => void;
     getAchievements: (date?: Date) => void;
+    onAchievementEdit: (achievement: IAchievement) => void;
 }
 
-const AchieveList: React.FC<IProps> = ({ achievements, onAchivDelete, getAchievements, selectedDate, loading }) => {
+const AchieveList: React.FC<IProps> = ({ achievements, onAchivDelete, getAchievements, onAchievementEdit, selectedDate, loading }) => {
     React.useEffect(
     () => {
         getAchievements(selectedDate);
@@ -38,6 +39,7 @@ const AchieveList: React.FC<IProps> = ({ achievements, onAchivDelete, getAchieve
                   id={achievement._id}
                   text={achievement.text}
                   onAchivDelete={onAchivDelete}
+                  onApplyChanges={(text) => onAchievementEdit({ ...achievement, text })}
                 />
               ))}
           </List>

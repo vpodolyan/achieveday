@@ -2,11 +2,18 @@ import * as types from './types'
 import IAchievement from 'types/IAchievement'
 import IQuote from 'types/IQuote'
 
-export const addAchievement = (achievement) => {
-  return {
-    type: types.ADD_ACHIEVEMENT,
-    payload: { achievement },
-  }
+export const addAchievement = (achievement: Partial<IAchievement>) => {
+    return {
+        type: types.ADD_ACHIEVEMENT,
+        payload: { achievement },
+    }
+}
+
+export const updateAchievement = (achievement: IAchievement) => {
+    return {
+        type: types.UPDATE_ACHIEVEMENT,
+        payload: { achievement }
+    }
 }
 
 export const removeAchievement = (id) => {
