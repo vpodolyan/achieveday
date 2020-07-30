@@ -11,7 +11,7 @@ interface IProps {
 
 const QuoteOfDay = memo<IProps>(({show}) => {
     const quote = useSelector<IAppState, IQuote | undefined>((state) => state.quotes.dailyQuote, shallowEqual);
-    
+
     if (!show || !quote) {
         return null;
     }
@@ -19,7 +19,7 @@ const QuoteOfDay = memo<IProps>(({show}) => {
     return (
       <div className='pt-4 pt-md-5 text-center'>
         <Title>“{quote.text}” &mdash;</Title>
-        <Author>{quote.author}</Author>
+        <Author>{quote.author || 'Unknown'}</Author>
       </div>
     );
 });

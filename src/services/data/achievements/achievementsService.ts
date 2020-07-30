@@ -13,10 +13,15 @@ class AchievementsService implements IAchievementsService {
     getAchievements(date?: Date) {
         return this.dataService.getAchievements(date);
     }
-    
-    saveAchievement(achievement: IAchievement) {
-        return this.dataService.saveAchievement(achievement);
+
+    addAchievement(achievement: IAchievement) {
+        return this.dataService.addAchievement(achievement);
     }
+
+    updateAchievement(achievement: IAchievement) {
+        return this.dataService.updateAchievement(achievement);
+    }
+
 
     deleteAchievement(id: string) {
         return this.dataService.deleteAchievement(id);

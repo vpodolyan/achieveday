@@ -30,12 +30,16 @@ class MongoService implements IAchievementsDataService {
         return await this.achievementsCollection.find(query, { limit: 1000 }).asArray();
     }
 
-    async saveAchievement(achievement: IAchievement) {
+    async addAchievement(achievement: IAchievement) {
         return await this.achievementsCollection.insertOne(achievement)
             .then(result => ({
                 ...achievement,
                 _id: result.insertedId,
-            }))     
+            }))
+    }
+
+    async updateAchievement(achievement: IAchievement) {
+        return await this.achievementsCollection.updateOne({ _id: achievement._id}, {'$set': { text: achievement.text }});
     }
 
     async deleteAchievement(id: string) {
