@@ -1,4 +1,4 @@
-import React, { FC, useRef, useEffect } from "react";
+import React, { FC, useRef, useEffect, KeyboardEvent } from "react";
 import Input from "components/Input";
 import styled from "styled-components";
 
@@ -13,9 +13,10 @@ interface IProps {
     text: string;
     onChange: (value: string) => void;
     onBlur: (value: string) => void;
+    onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const EditAchievement: FC<IProps> = ({ text, onChange, onBlur }) => {
+const EditAchievement: FC<IProps> = ({ text, onChange, onBlur, onKeyPress }) => {
     const inputRef = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
 
     useEffect(() => {
@@ -36,6 +37,7 @@ const EditAchievement: FC<IProps> = ({ text, onChange, onBlur }) => {
                 onBlur={(e) => {
                     onBlur(e.target.value);
                 }}
+                onKeyPress={onKeyPress}
             />
         </div>
     );

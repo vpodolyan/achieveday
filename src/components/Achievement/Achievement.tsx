@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useCallback } from "react";
 import styled from "styled-components";
 
 import { faTrophy, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -30,6 +30,11 @@ const Achievement: FC<IProps> = ({ id, text, onAchivDelete, onApplyChanges }) =>
     const [isEditMode, setIsEditMode] = useState(false);
     const [textValue, setTextValue] = useState(text);
 
+    const applyChanges = useCallback((value: string) => {
+        onApplyChanges(value);
+        setIsEditMode(false);
+    }, [])
+
     return (
         <div className="lead d-flex" onClick={() => setIsEditMode(true)}>
             <div className="d-flex-column align-items-center">
@@ -43,8 +48,12 @@ const Achievement: FC<IProps> = ({ id, text, onAchivDelete, onApplyChanges }) =>
                         setTextValue(value);
                      }}
                      onBlur={(value) => {
-                        onApplyChanges(value);
-                        setIsEditMode(false);
+                        applyChanges(value)
+                     }}
+                     onKeyPress={(e) => {
+                         if (e.key === 'Enter') {
+                            applyChanges(textValue)
+                         }
                      }}
                 />
             ) : (
