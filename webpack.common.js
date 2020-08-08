@@ -1,20 +1,18 @@
-var path = require('path')
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
   entry: [
     './src/index',
-    'webpack-dev-server/client?http://localhost:4000/',
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'dist/bundle.js',
-    publicPath: ''
+    filename: '[name].bundle.js',
+    publicPath: '/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./index.html"
     })
@@ -60,10 +58,4 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    contentBase: './',
-    hot: true,
-    port: 4000,
-    historyApiFallback: true,
-  }
 }
