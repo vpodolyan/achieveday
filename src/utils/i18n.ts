@@ -1,3 +1,7 @@
+import i18n from 'i18next';
+import backend from 'i18next-http-backend';
+import { initReactI18next } from 'react-i18next';
+
 const weekdaysLong = {
   // Make sure you start with the right day of the week!
   ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
@@ -29,3 +33,19 @@ export const localeUtils = {
   getMonths: (locale) => months[locale],
   formatMonthTitle: (d, locale) => `${months[locale][d.getMonth()]} ${d.getFullYear()}`,
 }
+
+i18n
+  .use(backend)
+  .use(initReactI18next)
+  .init({
+    lng: 'en',
+    fallbackLng: 'en',
+    backend: {
+        loadPath: '/assets/locales/{{lng}}/{{ns}}.json'
+    },
+    react: {
+        wait: true,
+    }
+  });
+
+export default i18n;
