@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import { render } from 'react-dom'
 import { applyMiddleware, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -9,6 +9,8 @@ import reducer from './reducers'
 import achievementsMiddleware from './middlewares/achievementsMiddleware';
 import quotesMiddleware from 'middlewares/quotesMiddleware';
 
+import './utils/i18n';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/style.css';
 
@@ -18,8 +20,10 @@ const store = createStore(
   );
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+    <Provider store={store}>
+        <Suspense fallback="loading">
+            <App />
+        </Suspense>
+    </Provider>,
+    document.getElementById("root")
+);
