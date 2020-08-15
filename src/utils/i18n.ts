@@ -1,6 +1,6 @@
 import i18n from 'i18next';
-import backend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
+
+import {initReactI18next} from 'react-i18next';
 
 const weekdaysLong = {
   // Make sure you start with the right day of the week!
@@ -34,14 +34,23 @@ export const localeUtils = {
   formatMonthTitle: (d, locale) => `${months[locale][d.getMonth()]} ${d.getFullYear()}`,
 }
 
+// Localizations are split into namespaces for futher using as backend loaded
+const translation = require('../../assets/locales/en/translation.json');
+const common = require('../../assets/locales/en/common.json');
+const achievements = require('../../assets/locales/en/achievements.json');
+
 i18n
-  .use(backend)
   .use(initReactI18next)
   .init({
     lng: 'en',
     fallbackLng: 'en',
-    backend: {
-        loadPath: '/assets/locales/{{lng}}/{{ns}}.json'
+    debug: true,
+    resources: {
+        en: {
+            translation,
+            common,
+            achievements
+        },
     },
     react: {
         wait: true,
