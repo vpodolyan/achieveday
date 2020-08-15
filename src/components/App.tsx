@@ -37,7 +37,7 @@ class App extends React.PureComponent<IProps> {
                 this.props.setUser({ ...user.profile.data, id: user.id });
                 navigate(paths.achievements);
             });
-        } 
+        }
 
         if (stitchClient.auth.isLoggedIn && stitchClient.auth.user) {
             // @ts-ignore
@@ -50,11 +50,14 @@ class App extends React.PureComponent<IProps> {
         return (
             <AuthContext.Provider value={authContexValue}>
                 <Router>
-                    <LoginPage path='/' />
-                    <WithAuthPage Component={AchievementsPage} path={paths.achievements} />
+                    <LoginPage path="/" />
+                    <WithAuthPage
+                        Component={AchievementsPage}
+                        path={paths.achievements}
+                    />
                 </Router>
             </AuthContext.Provider>
-        )
+        );
     }
 }
 
