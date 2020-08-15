@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import { applyMiddleware, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -20,10 +20,8 @@ const store = createStore(
   );
 
 render(
-    <Provider store={store}>
-        <Suspense fallback="loading">
-            <App />
-        </Suspense>
-    </Provider>,
-    document.getElementById("root")
-);
+  <Provider store={store}>
+        <App />
+  </Provider>,
+  document.getElementById('root')
+)
