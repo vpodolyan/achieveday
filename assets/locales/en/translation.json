@@ -1,3 +1,10 @@
 {
-
+    "login_page": {
+        "subtitle": {
+            "first": "Write daily achievements.",
+            "second": "Get inspirational quotes.",
+            "third": "Stay motivated"
+        },
+        "under_development": "Under Development"
+    }
 }

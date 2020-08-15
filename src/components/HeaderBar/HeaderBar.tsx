@@ -1,21 +1,24 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { navigate } from '@reach/router';
-
-import { OAuthProviders, IAuthService } from 'services/auth/IAuthService'
-import { AuthContext } from '../App';
-
-import HeaderBarContainer from './HeaderBarContainer';
-import IAppState from 'types/state/IAppState';
+import React, {PureComponent} from 'react';
+import {WithTranslation, withTranslation} from 'react-i18next';
+import {connect} from 'react-redux';
+import {IAuthService, OAuthProviders} from 'services/auth/IAuthService';
 import IUser from 'types/IUser';
+import IAppState from 'types/state/IAppState';
 
-interface Props {
+import {navigate} from '@reach/router';
+
+import {AuthContext} from '../App';
+import HeaderBarContainer from './HeaderBarContainer';
+
+interface IProps extends WithTranslation {
     children?: React.ReactNode;
     user: IUser;
 }
 
-class HeaderBar extends React.PureComponent<Props> {
+class HeaderBar extends PureComponent<IProps> {
     render() {
+        const { t } = this.props;
+
         return (
             <HeaderBarContainer>
                 <AuthContext.Consumer>
@@ -23,7 +26,7 @@ class HeaderBar extends React.PureComponent<Props> {
                         !authService.isAuthenticated() ? (
                             <div>
                                 <button onClick={() => authService.logInOauth(OAuthProviders.Google)}>
-                                    Log in
+                                    {t('log_in')}
                                 </button>
                             </div>
                         )
@@ -36,7 +39,7 @@ class HeaderBar extends React.PureComponent<Props> {
                                     authService.logOut();
                                     navigate('/');
                                 }}>
-                                    Log out
+                                    {t('log_out')}
                                 </button>
                             </div>
                         )
@@ -52,4 +55,4 @@ export default connect(
     (state: IAppState) => ({
         user: state.user,
     })
-)(HeaderBar);
+)(withTranslation('common')(HeaderBar));
