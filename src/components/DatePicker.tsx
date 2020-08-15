@@ -44,9 +44,9 @@ const DatePicker: React.FC<IProps> = ({
     setCalendarVisibility(true);
   };
 
-  useOnclickOutside(ref, () => {
+  useOnclickOutside(() => {
     setCalendarVisibility(false);
-  });
+  }, {refs: [ref]});
 
   return (
     <div className="d-flex-column justify-content-center align-items-center">
