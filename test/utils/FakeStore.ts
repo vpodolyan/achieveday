@@ -1,12 +1,8 @@
-const FakeStore = (state) => {
-    return {
-            default: () => {},
-            subscribe: () => {},
-            dispatch: () => {},
-            getState: () => {
-                return { ...state };
-            }
-    }
-}
+const FakeStore = (state) => ({
+  default: () => {},
+  subscribe: () => {},
+  dispatch: () => {},
+  getState: () => ({ ...state }),
+});
 
-export default FakeStore
+export default FakeStore;

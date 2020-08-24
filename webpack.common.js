@@ -1,10 +1,10 @@
-const path = require('path')
+const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    './src/index',
+    './src/index'
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./index.html"
+      template: './index.html'
     })
   ],
   resolve: {
@@ -27,18 +27,18 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader"
+            loader: 'style-loader'
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader'
           }
         ]
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|ttf|eot)$/,
         use: [
-          'file-loader',
-        ],
+          'file-loader'
+        ]
       },
       {
         test: /\.(t|j)sx?$/,
@@ -57,5 +57,5 @@ module.exports = {
         enforce: 'pre'
       }
     ]
-  },
-}
+  }
+};

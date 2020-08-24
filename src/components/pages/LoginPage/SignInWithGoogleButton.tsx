@@ -9,13 +9,13 @@ const Button = styled.div`
 `;
 
 const SignInWithGoogleButton = () => (
-    <AuthContext.Consumer>
-        {({ authService }: { authService: IAuthService }) => (
-            <Button role='button' onClick={() => authService.logInOauth(OAuthProviders.Google)}>
-                <img src={Icon} />
-            </Button>
-        )}
-    </AuthContext.Consumer>
-)
+  <AuthContext.Consumer>
+    {({ authService }: { authService: IAuthService }) => (
+      <Button role="button" onClick={() => authService.logInOauth(OAuthProviders.Google)}>
+        <img src={Icon} />
+      </Button>
+    )}
+  </AuthContext.Consumer>
+);
 
 export default SignInWithGoogleButton;

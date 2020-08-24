@@ -1,13 +1,13 @@
 import * as React from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
-import DayPicker from 'react-day-picker'
+import DayPicker from 'react-day-picker';
 import styled from 'styled-components';
 
-import { NEXT_DATE, PREV_DATE } from 'actions/types'
+import { NEXT_DATE, PREV_DATE } from 'actions/types';
 import Arrow from 'components/Arrow';
-import Input from 'components/Input'
+import Input from 'components/Input';
 
-import 'react-day-picker/lib/style.css'
+import 'react-day-picker/lib/style.css';
 
 const DatePickerWrapper = styled(DayPicker)`
   position: absoulte;
@@ -36,7 +36,7 @@ const DatePicker: React.FC<IProps> = ({
   setCalendarVisibility,
   onDateSwitch,
   onDateSelected,
-  visible,
+  visible
 }) => {
   const ref = React.useRef<any>();
 
@@ -46,7 +46,7 @@ const DatePicker: React.FC<IProps> = ({
 
   useOnclickOutside(() => {
     setCalendarVisibility(false);
-  }, {refs: [ref]});
+  }, { refs: [ref] });
 
   return (
     <div className="d-flex-column justify-content-center align-items-center">
@@ -69,7 +69,7 @@ const DatePicker: React.FC<IProps> = ({
         >
           <DatePickerWrapper
             className="position-absolute"
-            locale={"en"}
+            locale="en"
             onDayClick={(day) => {
               onDateSelected(day);
             }}

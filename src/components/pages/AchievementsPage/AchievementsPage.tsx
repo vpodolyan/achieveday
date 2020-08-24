@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { setUser } from 'actions';
 import stitchClient from 'stitch/client';
@@ -18,26 +18,25 @@ interface IProps {
 const authService = new StichAuthService(stitchClient);
 
 const authContexValue = {
-    authService,
+  authService
 };
 
 export const AuthContext = React.createContext(authContexValue);
 
-
 class AchievementsPage extends React.PureComponent<IProps> {
-    render() {
-        return (
-            <AuthContext.Provider value={authContexValue}>
-                <HeaderBar />
-                <MainContainer>
-                    <DatePickerContainer />
-                    <DayAchievements />
-                    <NewAchievement />
-                    <QuoteOfDayController />
-                </MainContainer>
-            </AuthContext.Provider>
-        )
-    }
+  render () {
+    return (
+      <AuthContext.Provider value={authContexValue}>
+        <HeaderBar />
+        <MainContainer>
+          <DatePickerContainer />
+          <DayAchievements />
+          <NewAchievement />
+          <QuoteOfDayController />
+        </MainContainer>
+      </AuthContext.Provider>
+    );
+  }
 }
 
 export default connect(null, { setUser })(AchievementsPage);

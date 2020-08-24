@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { addAchievement } from 'actions'
+import { addAchievement } from 'actions';
 import Input from 'components/Input';
 import IAppState from 'types/state/IAppState';
 import IUser from 'types/IUser';
@@ -26,56 +26,56 @@ class NewAchievement extends React.PureComponent<IProps, IState> {
     input: HTMLInputElement | null;
 
     handleAddClick = (e) => {
-        e.preventDefault();
-        
-        if (!this.state.text.trim()) {
-            return;
-        }
+      e.preventDefault();
 
-        const { addAchievement, user, date } = this.props;
+      if (!this.state.text.trim()) {
+        return;
+      }
 
-        if (!user) {
-            return;
-        }
-        
-        addAchievement({ text: this.state.text, owner_id: user.id, createDate: date });
+      const { addAchievement, user, date } = this.props;
 
-        if (this.input) {
-            this.input.focus();
-        }
+      if (!user) {
+        return;
+      }
 
-        this.setState({ text: '' });
-    }
+      addAchievement({ text: this.state.text, owner_id: user.id, createDate: date });
+
+      if (this.input) {
+        this.input.focus();
+      }
+
+      this.setState({ text: '' });
+    };
 
     onInputChange = (e) => {
-        this.setState({ text: e.target.value })
-    }
+      this.setState({ text: e.target.value });
+    };
 
     render () {
-        return (
-            <div className="text-center pt-2 pt-md-4">
-                <form onSubmit={this.handleAddClick}>
-                <NewAchievementInput
-                    value={this.state.text}
-                    ref={input => this.input = input}
-                    onChange={this.onInputChange}
-                />
-                <a className="add-btn" href="#" onClick={this.handleAddClick}>
-                    +
-                </a>
-                </form>
-            </div>
-        )
+      return (
+        <div className="text-center pt-2 pt-md-4">
+          <form onSubmit={this.handleAddClick}>
+            <NewAchievementInput
+              value={this.state.text}
+              ref={(input) => { this.input = input; }}
+              onChange={this.onInputChange}
+            />
+            <a className="add-btn" href="#" onClick={this.handleAddClick}>
+              +
+            </a>
+          </form>
+        </div>
+      );
     }
 }
 
 const mapStateToProps = (state: IAppState) => ({
-    user: state.user,
-    date: state.datePicker.value,
-})
+  user: state.user,
+  date: state.datePicker.value
+});
 
 const mapDispatchToProps = {
-    addAchievement,
-}
+  addAchievement
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewAchievement);

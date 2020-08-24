@@ -9,19 +9,25 @@ interface IProps {
     show: boolean;
 }
 
-const QuoteOfDay = memo<IProps>(({show}) => {
-    const quote = useSelector<IAppState, IQuote | undefined>((state) => state.quotes.dailyQuote, shallowEqual);
+const QuoteOfDay = memo<IProps>(({ show }) => {
+  const quote = useSelector<IAppState, IQuote | undefined>((state) => state.quotes.dailyQuote, shallowEqual);
 
-    if (!show || !quote) {
-        return null;
-    }
+  if (!show || !quote) {
+    return null;
+  }
 
-    return (
-      <div className='pt-4 pt-md-5 text-center'>
-        <Title>“{quote.text}” &mdash;</Title>
-        <Author>{quote.author || 'Unknown'}</Author>
-      </div>
-    );
+  return (
+    <div className="pt-4 pt-md-5 text-center">
+      <Title>
+        “
+        {quote.text}
+        ” &mdash;
+      </Title>
+      <Author>{quote.author || 'Unknown'}</Author>
+    </div>
+  );
 });
+
+QuoteOfDay.displayName = 'QuoteOfDay';
 
 export default QuoteOfDay;
