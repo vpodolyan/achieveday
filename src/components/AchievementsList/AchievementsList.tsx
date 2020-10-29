@@ -1,25 +1,25 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import IAchievement from 'types/IAchievement';
-import Achievement from './Achievement/Achievement';
-import Spinner from './Spinner/Spinner';
+import Achievement from '../Achievement/Achievement';
+import Spinner from '../Spinner/Spinner';
 
 const List = styled.div`
-    line-height: 2rem
+    line-height: 2rem;
 `;
 
 interface IProps {
     achievements: IAchievement[];
     selectedDate: Date;
     loading: boolean;
-    onAchivDelete: (id: object) => void;
+    onAchievementDelete: (id: object) => void;
     getAchievements: (date?: Date) => void;
     onAchievementEdit: (achievement: IAchievement) => void;
 }
 
-const AchieveList: React.FC<IProps> = ({
-  achievements, onAchivDelete, getAchievements, onAchievementEdit, selectedDate, loading
+export const AchievementsList: FC<IProps> = ({
+  achievements, onAchievementDelete, getAchievements, onAchievementEdit, selectedDate, loading
 }) => {
   React.useEffect(
     () => {
@@ -41,7 +41,7 @@ const AchieveList: React.FC<IProps> = ({
                   key={achievement._id?.toString()}
                   id={achievement._id}
                   text={achievement.text}
-                  onAchivDelete={onAchivDelete}
+                  onAchivDelete={onAchievementDelete}
                   onApplyChanges={(text) => onAchievementEdit({ ...achievement, text })}
                 />
               ))}
@@ -50,5 +50,3 @@ const AchieveList: React.FC<IProps> = ({
     </div>
   );
 };
-
-export default AchieveList;

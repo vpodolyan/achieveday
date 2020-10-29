@@ -6,7 +6,7 @@ import {
 import IAppState from 'types/state/IAppState';
 import IAchievement from 'types/IAchievement';
 import achievementService from '../services/data/achievements/achievementsService';
-import AchieveList from '../components/AchieveList';
+import { AchievementsList } from '../components/AchievementsList/AchievementsList';
 
 const mapStateToProps = (state: IAppState) => ({
   achievements: state.achievements.data,
@@ -15,7 +15,7 @@ const mapStateToProps = (state: IAppState) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAchivDelete: (id) => {
+  onAchievementDelete: (id) => {
     dispatch(removeAchievement(id));
   },
   getAchievements: async (date) => {
@@ -31,6 +31,6 @@ const mapDispatchToProps = (dispatch) => ({
 const DayAchievements = connect(
   mapStateToProps,
   mapDispatchToProps
-)(AchieveList);
+)(AchievementsList);
 
 export default DayAchievements;
