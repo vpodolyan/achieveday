@@ -2,4 +2,4 @@
 
 ### Launch ###
 
-For Stitch integration, we need to define `MONGO_STITCH_API_ID` environment variable on Netlify or in `.env` file in the root directory.
+For Stitch integration, we need to define `MONGO_STITCH_APP_ID` environment variable on Netlify or in `.env` file in the root directory.
