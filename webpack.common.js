@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -13,6 +14,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new Dotenv({
+      systemvars: true
+    }),
     new HtmlWebpackPlugin({
       template: './index.html'
     })
