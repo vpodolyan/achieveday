@@ -8,7 +8,7 @@ import DatePickerContainer from 'containers/DatePickerContainer';
 import DayAchievements from 'containers/DayAchievements';
 import NewAchievement from 'containers/NewAchievement';
 import StichAuthService from 'services/auth/StitchAuthService';
-import QuoteOfDayController from 'components/QuoteOfDayController';
+import { QuoteOfDayController } from 'components/QuoteOfDayController/QuoteOfDayController';
 
 interface IProps {
     setUser: typeof setUser;
