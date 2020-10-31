@@ -1,10 +1,11 @@
 {
     "login_page": {
+        "sign_in_with_google": "Sign In with Google",
         "subtitle": {
             "first": "Write daily achievements.",
             "second": "Get inspirational quotes.",
             "third": "Stay motivated"
         },
-        "under_development": "Under Development"
+        "under_development": "Beta"
     }
 }
