@@ -1,5 +1,6 @@
 {
     "login_page": {
+        "signing_in": "Signing In",
         "sign_in_with_google": "Sign In with Google",
         "subtitle": {
             "first": "Write daily achievements.",

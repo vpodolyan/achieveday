@@ -14,7 +14,7 @@ const Button = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  width: 240px;
+  width: 220px;
   height: 48px;
   border-radius: 24px;
   background-color: #4285f4;
@@ -51,18 +51,30 @@ const Logo = styled.img`
   height: 18px;
 `;
 
-const Text = styled.div`
+const TextBase = styled.div`
+  font-family: Roboto, Ubuntu, arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.21px;
+  line-height: 48px;
+`;
+
+const Text = styled(TextBase)`
   display: flex;
   flex-grow: 1;
   justify-content: center;
   align-items: center;
-  font-family: Roboto,arial,sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.21px;
-  font-size: 16px;
-  line-height: 48px;
-  width: 180px;
-  margin-left: 24px;
+
+  margin-left: 32px;
+`;
+
+const SigningText = styled(TextBase)`
+  color: #888888;
+  width: 100%;
+  text-align: center;
+  margin-left: 30px;
+  visibility: ${({ clicked }: ILogoWrapperProps) => clicked ? 'visible' : 'hidden'};
+  opacity: ${({ clicked }: ILogoWrapperProps) => clicked ? '1' : '0'};
+  transition: opacity 0.6s;
 `;
 
 const SignInWithGoogleButton: FC = () => {
@@ -75,11 +87,12 @@ const SignInWithGoogleButton: FC = () => {
         <Button
           role="button"
           onClick={() => {
-            setClicked(true);
             authService.logInOauth(OAuthProviders.Google);
+            setClicked(true);
           }}
         >
           <LogoWrapper clicked={clicked}>
+            <SigningText clicked={clicked}>{`${t('login_page.signing_in')}...`}</SigningText>
             <Logo src={logo} alt='Sign in with Google' />
           </LogoWrapper>
           <Text>{t('login_page.sign_in_with_google')}</Text>
