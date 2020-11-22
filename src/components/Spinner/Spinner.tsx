@@ -29,7 +29,7 @@ const Content = styled.div`
   position: relative;
   transform: ${(props: IInnerProps) => `translateZ(0) scale(${props.size * 0.24})`};
   backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
+  transform-origin: 0 0;
 `;
 
 const Innner = styled.div`

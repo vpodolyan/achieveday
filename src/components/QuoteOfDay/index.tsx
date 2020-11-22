@@ -1,9 +1,10 @@
+import Spinner from 'components/Spinner/Spinner';
 import React, { memo } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
-import IAppState from 'types/state/IAppState';
+import { shallowEqual, useSelector } from 'react-redux';
 import IQuote from 'types/IQuote';
-import Title from './Title';
-import Author from './Author';
+import IAppState from 'types/state/IAppState';
+
+import { Quote } from './Quote';
 
 interface IProps {
     show: boolean;
@@ -11,19 +12,18 @@ interface IProps {
 
 const QuoteOfDay = memo<IProps>(({ show }) => {
   const quote = useSelector<IAppState, IQuote | undefined>((state) => state.quotes.dailyQuote, shallowEqual);
+  const loading = useSelector<IAppState, boolean>((state) => state.quotes.loading, shallowEqual);
 
-  if (!show || !quote) {
+  if (!show) {
     return null;
   }
 
   return (
     <div className="pt-4 pt-md-5 text-center">
-      <Title>
-        “
-        {quote.text}
-        ” &mdash;
-      </Title>
-      <Author>{quote.author || 'Unknown'}</Author>
+      {loading || !quote
+        ? <Spinner size={2} />
+        : <Quote text={quote.text} author={quote.author} />
+      }
     </div>
   );
 });
