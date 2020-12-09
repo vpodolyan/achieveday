@@ -8,7 +8,6 @@ const initialState: IQuotesState = {
 };
 
 const quotes: Reducer<IQuotesState> = (state = initialState, action) => {
-  console.log('action', action);
   switch (action.type) {
     case GET_DAILY_QUOTE:
       return {
