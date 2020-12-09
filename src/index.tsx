@@ -14,9 +14,13 @@ import './utils/i18n';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/style.css';
 
+const middlewares = applyMiddleware(achievementsMiddleware, quotesMiddleware);
+
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(achievementsMiddleware, quotesMiddleware))
+  process.env.NODE_ENV === 'development'
+    ? composeWithDevTools(middlewares)
+    : middlewares
 );
 
 render(
