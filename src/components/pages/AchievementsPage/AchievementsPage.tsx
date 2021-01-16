@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setUser } from 'actions';
 import stitchClient from 'stitch/client';
@@ -11,8 +11,7 @@ import StichAuthService from 'services/auth/StitchAuthService';
 import { QuoteOfDayController } from 'components/QuoteOfDayController/QuoteOfDayController';
 
 interface IProps {
-    setUser: typeof setUser;
-
+  setUser: typeof setUser;
 }
 
 const authService = new StichAuthService(stitchClient);
