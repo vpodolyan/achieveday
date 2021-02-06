@@ -1,5 +1,5 @@
 import Spinner from 'components/Spinner/Spinner';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import IQuote from 'types/IQuote';
 import IAppState from 'types/state/IAppState';

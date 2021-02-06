@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { setUser } from 'actions';
 import stitchClient from 'stitch/client';
@@ -20,9 +20,9 @@ const authContexValue = {
   authService
 };
 
-export const AuthContext = React.createContext(authContexValue);
+export const AuthContext = createContext(authContexValue);
 
-class AchievementsPage extends React.PureComponent<IProps> {
+class AchievementsPage extends PureComponent<IProps> {
   render () {
     return (
       <AuthContext.Provider value={authContexValue}>

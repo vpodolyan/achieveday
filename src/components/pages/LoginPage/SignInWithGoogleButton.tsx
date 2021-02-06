@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import styled from 'styled-components';
 import { AuthContext } from 'components/App';
 import { IAuthService, OAuthProviders } from 'services/auth/IAuthService';

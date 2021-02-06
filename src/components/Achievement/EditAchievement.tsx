@@ -1,6 +1,4 @@
-import React, {
-  FC, useRef, useEffect, KeyboardEvent
-} from 'react';
+import { FC, useRef, useEffect, KeyboardEvent } from 'react';
 import Input from 'components/Input';
 import styled from 'styled-components';
 

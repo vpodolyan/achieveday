@@ -1,5 +1,4 @@
 import expect from 'expect';
-import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
 import FakeStore from '../utils/FakeStore';

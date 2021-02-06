@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Router, navigate } from '@reach/router';
 
@@ -17,7 +17,7 @@ const authContexValue = {
   authService
 };
 
-export const AuthContext = React.createContext(authContexValue);
+export const AuthContext = createContext(authContexValue);
 
 const paths = {
   achievements: 'achievements'
@@ -27,7 +27,7 @@ interface IProps {
     setUser: (user: IUser) => void;
 }
 
-class App extends React.PureComponent<IProps> {
+class App extends PureComponent<IProps> {
   componentDidMount () {
     if (stitchClient.auth.hasRedirectResult()) {
       stitchClient.auth.handleRedirectResult().then((user) => {

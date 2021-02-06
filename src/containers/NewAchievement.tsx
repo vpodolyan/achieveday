@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { addAchievement } from 'actions';
@@ -20,7 +20,7 @@ interface IState {
     text: string;
 }
 
-class NewAchievement extends React.PureComponent<IProps, IState> {
+class NewAchievement extends PureComponent<IProps, IState> {
     state = { text: '' };
 
     input: HTMLInputElement | null;
