@@ -1,5 +1,4 @@
 import expect from 'expect';
-import React from 'react';
 import { shallow } from 'enzyme';
 import Achievement from '../../src/components/Achievement';
 

@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from 'react';
+import { FC, useState, useCallback } from 'react';
 import styled from 'styled-components';
 
 import { faTrophy, faTimes } from '@fortawesome/free-solid-svg-icons';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { useEffect, FC } from 'react';
 import styled from 'styled-components';
 
 import IAchievement from 'types/IAchievement';
@@ -21,7 +21,7 @@ interface IProps {
 export const AchievementsList: FC<IProps> = ({
   achievements, onAchievementDelete, getAchievements, onAchievementEdit, selectedDate, loading
 }) => {
-  React.useEffect(
+  useEffect(
     () => {
       getAchievements(selectedDate);
     }, [selectedDate]

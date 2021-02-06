@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import isToday from 'date-fns/isToday';
 import QuoteOfDay from 'components/QuoteOfDay';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
