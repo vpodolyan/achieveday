@@ -59,7 +59,7 @@ const Achievement: FC<IProps> = ({
           }}
         />
       ) : (
-        <div className="pl-2 text-justify">
+        <div className="pl-2">
           {textValue}
           <DeleteIcon
             className="ml-2 align-middle"
