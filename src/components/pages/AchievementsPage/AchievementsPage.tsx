@@ -4,7 +4,7 @@ import { setUser } from 'actions';
 import stitchClient from 'stitch/client';
 import HeaderBar from 'components/HeaderBar';
 import MainContainer from 'components/MainContainer';
-import DatePickerContainer from 'containers/DatePickerContainer';
+import { DatePickerContainer } from 'components/DatePicker/DatePickerContainer';
 import DayAchievements from 'containers/DayAchievements';
 import NewAchievement from 'containers/NewAchievement';
 import StichAuthService from 'services/auth/StitchAuthService';
