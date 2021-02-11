@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { FC, useRef } from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import DayPicker from 'react-day-picker';
 import styled from 'styled-components';
@@ -31,14 +31,15 @@ interface IProps {
     onDateSwitch: (direction: typeof NEXT_DATE | typeof PREV_DATE) => void;
     onDateSelected: (date: Date) => void;
 }
-const DatePicker: React.FC<IProps> = ({
+
+export const DatePicker: FC<IProps> = ({
   selectedDate,
   setCalendarVisibility,
   onDateSwitch,
   onDateSelected,
   visible
 }) => {
-  const ref = React.useRef<any>();
+  const ref = useRef<any>();
 
   const onInputFocus = () => {
     setCalendarVisibility(true);
@@ -79,5 +80,3 @@ const DatePicker: React.FC<IProps> = ({
     </div>
   );
 };
-
-export default DatePicker;
