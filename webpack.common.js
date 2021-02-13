@@ -46,20 +46,20 @@ module.exports = {
       },
       {
         test: /\.(t|j)sx?$/,
-        loader: 'awesome-typescript-loader',
-        exclude: /node_modules/,
-        include: __dirname,
-        options: {
-          reportFiles: [
-            'src/**/*.{ts,tsx}'
-          ]
-        }
-      },
-      {
-        test: /\.js$/,
-        loader: 'source-map-loader',
-        enforce: 'pre'
+        loader: 'ts-loader',
+        exclude: /node_modules/
       }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   }
 };

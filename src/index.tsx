@@ -10,7 +10,6 @@ import achievementsMiddleware from './middlewares/achievementsMiddleware';
 
 import './utils/i18n';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/style.css';
 
 const middlewares = applyMiddleware(achievementsMiddleware, quotesMiddleware);
