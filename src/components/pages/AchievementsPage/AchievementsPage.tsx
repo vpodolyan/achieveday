@@ -6,7 +6,7 @@ import HeaderBar from 'components/HeaderBar';
 import MainContainer from 'components/MainContainer';
 import { DatePickerContainer } from 'components/DatePicker/DatePickerContainer';
 import DayAchievements from 'containers/DayAchievements';
-import NewAchievement from 'containers/NewAchievement';
+import { NewAchievement } from 'components/NewAchievement/NewAchievement';
 import StichAuthService from 'services/auth/StitchAuthService';
 import { QuoteOfDayController } from 'components/QuoteOfDayController/QuoteOfDayController';
 
