@@ -5,7 +5,7 @@ import stitchClient from 'stitch/client';
 import HeaderBar from 'components/HeaderBar';
 import MainContainer from 'components/MainContainer';
 import { DatePickerContainer } from 'components/DatePicker/DatePickerContainer';
-import DayAchievements from 'containers/DayAchievements';
+import { AchievementsForSelectedDate } from 'components/AchievementsForSelectedDate/AchievementsForSelectedDate';
 import { NewAchievement } from 'components/NewAchievement/NewAchievement';
 import StichAuthService from 'services/auth/StitchAuthService';
 import { QuoteOfDayController } from 'components/QuoteOfDayController/QuoteOfDayController';
@@ -29,7 +29,7 @@ class AchievementsPage extends PureComponent<IProps> {
         <HeaderBar />
         <MainContainer>
           <DatePickerContainer />
-          <DayAchievements />
+          <AchievementsForSelectedDate />
           <NewAchievement />
           <QuoteOfDayController />
         </MainContainer>
