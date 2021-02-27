@@ -7,7 +7,7 @@ import IUser from 'types/IUser';
 import StichAuthService from '../services/auth/StitchAuthService';
 import stitchClient from '../stitch/client';
 
-import AchievementsPage from './pages/AchievementsPage/AchievementsPage';
+import { AchievementsPage } from './pages/AchievementsPage/AchievementsPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import WithAuthPage from './WithAuthPage';
 
