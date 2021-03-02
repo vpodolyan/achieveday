@@ -24,11 +24,11 @@ const paths = {
 };
 
 interface IProps {
-    setUser: (user: IUser) => void;
+  setUser: (user: IUser) => void;
 }
 
 class App extends PureComponent<IProps> {
-  componentDidMount () {
+  componentDidMount() {
     if (stitchClient.auth.hasRedirectResult()) {
       stitchClient.auth.handleRedirectResult().then((user) => {
         // @ts-ignore
@@ -38,13 +38,16 @@ class App extends PureComponent<IProps> {
     }
 
     if (stitchClient.auth.isLoggedIn && stitchClient.auth.user) {
-      // @ts-ignore
-      this.props.setUser({ ...stitchClient.auth.user.profile.data, id: stitchClient.auth.user.id });
+      this.props.setUser({
+        // @ts-ignore
+        ...stitchClient.auth.user.profile.data,
+        id: stitchClient.auth.user.id
+      });
       navigate(paths.achievements);
     }
   }
 
-  render () {
+  render() {
     return (
       <AuthContext.Provider value={authContexValue}>
         <Router>

@@ -6,28 +6,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import EditAchievement from './EditAchievement';
 
 const TrophyIcon = styled(FontAwesomeIcon)`
-    font-size: 1rem;
+  font-size: 1rem;
 `;
 
 const DeleteIcon = styled(FontAwesomeIcon)`
-    font-size: 0.8rem;
-    transition: color 0.2s;
+  font-size: 0.8rem;
+  transition: color 0.2s;
 
-    &:hover {
-        cursor: pointer;
-        color: #317eac;
-    }
+  &:hover {
+    cursor: pointer;
+    color: #317eac;
+  }
 `;
 
 interface IProps {
-    id: object;
-    text: string;
-    onAchivDelete: (id: object) => void;
-    onApplyChanges: (text: string) => void;
+  id: object;
+  text: string;
+  onAchivDelete: (id: object) => void;
+  onApplyChanges: (text: string) => void;
 }
 
 const Achievement: FC<IProps> = ({
-  id, text, onAchivDelete, onApplyChanges
+  id,
+  text,
+  onAchivDelete,
+  onApplyChanges
 }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [textValue, setTextValue] = useState(text);

@@ -1,4 +1,9 @@
-import { getAchievements as getAchievementsAction, getAchievementsSuccess, removeAchievement, updateAchievement } from 'actions';
+import {
+  getAchievements as getAchievementsAction,
+  getAchievementsSuccess,
+  removeAchievement,
+  updateAchievement
+} from 'actions';
 import { AchievementsList } from 'components/AchievementsList/AchievementsList';
 import Spinner from 'components/Spinner/Spinner';
 import { FC, useCallback, useEffect } from 'react';
@@ -9,8 +14,12 @@ import IAppState from 'types/state/IAppState';
 
 export const AchievementsForSelectedDate: FC = () => {
   const loading = useSelector<IAppState>((state) => state.achievements.loading);
-  const selectedDate = useSelector<IAppState>((state) => state.datePicker.value);
-  const achievements = useSelector<IAppState, IAchievement[]>((state) => state.achievements.data);
+  const selectedDate = useSelector<IAppState>(
+    (state) => state.datePicker.value
+  );
+  const achievements = useSelector<IAppState, IAchievement[]>(
+    (state) => state.achievements.data
+  );
 
   const dispatch = useDispatch();
 
@@ -18,11 +27,16 @@ export const AchievementsForSelectedDate: FC = () => {
     dispatch(removeAchievement(id));
   };
 
-  const getAchievements = useCallback(async (date) => {
-    dispatch(getAchievementsAction());
-    const achievements = await achievementService.getAchievements(date || new Date());
-    dispatch(getAchievementsSuccess(achievements));
-  }, [dispatch, getAchievementsAction, getAchievementsSuccess]);
+  const getAchievements = useCallback(
+    async (date) => {
+      dispatch(getAchievementsAction());
+      const achievements = await achievementService.getAchievements(
+        date || new Date()
+      );
+      dispatch(getAchievementsSuccess(achievements));
+    },
+    [dispatch, getAchievementsAction, getAchievementsSuccess]
+  );
 
   const handleAchievementEdit = (achievement: IAchievement) => {
     dispatch(updateAchievement(achievement));
@@ -39,7 +53,12 @@ export const AchievementsForSelectedDate: FC = () => {
           <Spinner size={2} />
         </div>
       ) : (
-        <AchievementsList achievements={achievements} onAchievementDelete={handleAchievementDelete} onAchievementEdit={handleAchievementEdit} />
+        <AchievementsList
+          achievements={achievements}
+          onAchievementDelete={handleAchievementDelete}
+          onAchievementEdit={handleAchievementEdit}
+        />
       )}
-    </div>);
+    </div>
+  );
 };

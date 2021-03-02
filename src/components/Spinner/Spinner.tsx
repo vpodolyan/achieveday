@@ -16,34 +16,35 @@ const spinnerAnimation = keyframes`
 `;
 
 const Container = styled.div`
-    width: ${(props: IInnerProps) => `${props.size * 24}px`};
-    height: ${(props: IInnerProps) => `${props.size * 24}px`};
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: middle;
+  width: ${(props: IInnerProps) => `${props.size * 24}px`};
+  height: ${(props: IInnerProps) => `${props.size * 24}px`};
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
 `;
 
 const Content = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  transform: ${(props: IInnerProps) => `translateZ(0) scale(${props.size * 0.24})`};
+  transform: ${(props: IInnerProps) =>
+    `translateZ(0) scale(${props.size * 0.24})`};
   backface-visibility: hidden;
   transform-origin: 0 0;
 `;
 
 const Innner = styled.div`
-    box-sizing: content-box;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border: 10px solid #317eac;
-    border-top-color: transparent;
-    border-radius: 50%;
+  box-sizing: content-box;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 10px solid #317eac;
+  border-top-color: transparent;
+  border-radius: 50%;
 
-    animation: ${spinnerAnimation} 1s linear infinite;
-    top: 50px;
-    left: 50px
+  animation: ${spinnerAnimation} 1s linear infinite;
+  top: 50px;
+  left: 50px;
 `;
 
 const Spinner: React.FC<IProps> = ({ size = 1 }) => (

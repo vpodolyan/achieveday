@@ -3,6 +3,6 @@
 import { ObjectID } from 'mongodb';
 
 export default interface IMongoItem {
-    _id: ObjectID;
-    owner_id: string;
+  _id: ObjectID;
+  owner_id: string;
 }

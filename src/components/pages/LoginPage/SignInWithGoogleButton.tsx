@@ -40,8 +40,9 @@ const LogoWrapper = styled.div`
   padding-right: 14px;
   position: absolute;
   height: 100%;
-  width: ${({ clicked }: ILogoWrapperProps) => clicked ? '100%' : '48px'};
-  border-radius: ${({ clicked }: ILogoWrapperProps) => clicked ? '24px' : '50%'};
+  width: ${({ clicked }: ILogoWrapperProps) => (clicked ? '100%' : '48px')};
+  border-radius: ${({ clicked }: ILogoWrapperProps) =>
+    clicked ? '24px' : '50%'};
   background-color: #fff;
   transition: width 0.3s, border-radius 0.1s;
 `;
@@ -72,8 +73,9 @@ const SigningText = styled(TextBase)`
   width: 100%;
   text-align: center;
   margin-left: 30px;
-  visibility: ${({ clicked }: ILogoWrapperProps) => clicked ? 'visible' : 'hidden'};
-  opacity: ${({ clicked }: ILogoWrapperProps) => clicked ? '1' : '0'};
+  visibility: ${({ clicked }: ILogoWrapperProps) =>
+    clicked ? 'visible' : 'hidden'};
+  opacity: ${({ clicked }: ILogoWrapperProps) => (clicked ? '1' : '0')};
   transition: opacity 0.6s;
 `;
 
@@ -92,8 +94,10 @@ const SignInWithGoogleButton: FC = () => {
           }}
         >
           <LogoWrapper clicked={clicked}>
-            <SigningText clicked={clicked}>{`${t('login_page.signing_in')}...`}</SigningText>
-            <Logo src={logo} alt='Sign in with Google' />
+            <SigningText clicked={clicked}>{`${t(
+              'login_page.signing_in'
+            )}...`}</SigningText>
+            <Logo src={logo} alt="Sign in with Google" />
           </LogoWrapper>
           <Text>{t('login_page.sign_in_with_google')}</Text>
         </Button>

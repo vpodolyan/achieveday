@@ -7,12 +7,18 @@ import IAppState from 'types/state/IAppState';
 import { Quote } from './Quote';
 
 interface IProps {
-    show: boolean;
+  show: boolean;
 }
 
 const QuoteOfDay = memo<IProps>(({ show }) => {
-  const quote = useSelector<IAppState, IQuote | undefined>((state) => state.quotes.dailyQuote, shallowEqual);
-  const loading = useSelector<IAppState, boolean>((state) => state.quotes.loading, shallowEqual);
+  const quote = useSelector<IAppState, IQuote | undefined>(
+    (state) => state.quotes.dailyQuote,
+    shallowEqual
+  );
+  const loading = useSelector<IAppState, boolean>(
+    (state) => state.quotes.loading,
+    shallowEqual
+  );
 
   if (!show) {
     return null;
@@ -20,10 +26,11 @@ const QuoteOfDay = memo<IProps>(({ show }) => {
 
   return (
     <div className="pt-4 pt-md-5 text-center">
-      {loading || !quote
-        ? <Spinner size={2} />
-        : <Quote text={quote.text} author={quote.author} />
-      }
+      {loading || !quote ? (
+        <Spinner size={2} />
+      ) : (
+        <Quote text={quote.text} author={quote.author} />
+      )}
     </div>
   );
 });

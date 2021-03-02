@@ -20,16 +20,14 @@ const LoginPage: FC<IProps> = () => {
         <Title>AchieveDay</Title>
         <SubTitle>
           <div className="d-none d-lg-block">
-            {`${t('login_page.subtitle.first')} ${t('login_page.subtitle.second')} ${t('login_page.subtitle.third')} 🚀`}
+            {`${t('login_page.subtitle.first')} ${t(
+              'login_page.subtitle.second'
+            )} ${t('login_page.subtitle.third')} 🚀`}
           </div>
           <div className="d-lg-none">
             <div>{t('login_page.subtitle.first')}</div>
             <div>{t('login_page.subtitle.second')}</div>
-            <div>
-              {t('login_page.subtitle.third')}
-              {' '}
-              🚀
-            </div>
+            <div>{t('login_page.subtitle.third')} 🚀</div>
           </div>
         </SubTitle>
         <LoginForm>

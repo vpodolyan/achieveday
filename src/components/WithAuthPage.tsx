@@ -3,7 +3,7 @@ import { Redirect, RouteComponentProps } from '@reach/router';
 import stitchClient from '../stitch/client';
 
 interface IProps extends RouteComponentProps {
-    Component: ComponentType<any>;
+  Component: ComponentType<any>;
 }
 
 const WithAuthPage: FC<IProps> = ({ Component }) => {

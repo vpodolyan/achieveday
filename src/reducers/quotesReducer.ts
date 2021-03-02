@@ -1,6 +1,10 @@
 import { Reducer } from 'redux';
 import IQuotesState from 'types/state/IQuotesState';
-import { GET_DAILY_QUOTE, GET_DAILY_QUOTE_FAIL, GET_DAILY_QUOTE_SUCCESS } from 'actions/types';
+import {
+  GET_DAILY_QUOTE,
+  GET_DAILY_QUOTE_FAIL,
+  GET_DAILY_QUOTE_SUCCESS
+} from 'actions/types';
 
 const initialState: IQuotesState = {
   dailyQuote: undefined,

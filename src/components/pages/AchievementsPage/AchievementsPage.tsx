@@ -1,6 +1,4 @@
-import {
-  AchievementsForSelectedDate
-} from 'components/AchievementsForSelectedDate/AchievementsForSelectedDate';
+import { AchievementsForSelectedDate } from 'components/AchievementsForSelectedDate/AchievementsForSelectedDate';
 import { DatePickerContainer } from 'components/DatePicker/DatePickerContainer';
 import HeaderBar from 'components/HeaderBar';
 import MainContainer from 'components/MainContainer';

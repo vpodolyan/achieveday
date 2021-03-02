@@ -6,7 +6,7 @@ const initialState: IAchievementsState = {
   loading: false
 };
 
-export default function achievements (state = initialState, action) {
+export default function achievements(state = initialState, action) {
   switch (action.type) {
     case types.ADD_ACHIEVEMENT_SUCCESS:
       return {
@@ -35,7 +35,10 @@ export default function achievements (state = initialState, action) {
       };
 
     case types.REMOVE_ACHIEVEMENT_SUCCESS:
-      return { ...state, data: state.data.filter((a) => a._id !== action.payload.id) };
+      return {
+        ...state,
+        data: state.data.filter((a) => a._id !== action.payload.id)
+      };
 
     case types.GET_ACHIEVEMENTS:
       return { ...state, data: [], loading: true };
