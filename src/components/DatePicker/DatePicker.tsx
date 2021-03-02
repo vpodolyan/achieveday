@@ -12,7 +12,7 @@ import 'react-day-picker/lib/style.css';
 const DatePickerWrapper = styled(DayPicker)`
   position: absoulte;
   background: #fff;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   z-index: 100;
 `;
 
@@ -25,11 +25,11 @@ const DateInput = styled(Input)`
 `;
 
 interface IProps {
-    selectedDate: Date;
-    visible: boolean;
-    setCalendarVisibility: (value: boolean) => void;
-    onDateSwitch: (direction: typeof NEXT_DATE | typeof PREV_DATE) => void;
-    onDateSelected: (date: Date) => void;
+  selectedDate: Date;
+  visible: boolean;
+  setCalendarVisibility: (value: boolean) => void;
+  onDateSwitch: (direction: typeof NEXT_DATE | typeof PREV_DATE) => void;
+  onDateSelected: (date: Date) => void;
 }
 
 export const DatePicker: FC<IProps> = ({
@@ -45,9 +45,12 @@ export const DatePicker: FC<IProps> = ({
     setCalendarVisibility(true);
   };
 
-  useOnclickOutside(() => {
-    setCalendarVisibility(false);
-  }, { refs: [ref] });
+  useOnclickOutside(
+    () => {
+      setCalendarVisibility(false);
+    },
+    { refs: [ref] }
+  );
 
   return (
     <div className="d-flex-column justify-content-center align-items-center">

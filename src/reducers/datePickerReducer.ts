@@ -6,7 +6,7 @@ const initialState: IDatePickerState = {
   visible: false
 };
 
-export default function datePickerReducer (state = initialState, action) {
+export default function datePickerReducer(state = initialState, action) {
   switch (action.type) {
     case types.NEXT_DATE:
       return { ...state, value: new Date(state.value.getTime() + 86400000) };

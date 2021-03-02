@@ -4,8 +4,8 @@ import IDatePickerState from './IDatePickerState';
 import IQuotesState from './IQuotesState';
 
 export default interface IAppState {
-    achievements: IAchievementsState;
-    datePicker: IDatePickerState;
-    quotes: IQuotesState;
-    user: IUser;
+  achievements: IAchievementsState;
+  datePicker: IDatePickerState;
+  quotes: IQuotesState;
+  user: IUser;
 }

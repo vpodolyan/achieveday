@@ -33,7 +33,9 @@ export const NewAchievement: FC = () => {
       return;
     }
 
-    dispatch(addAchievement({ text: trimmedText, owner_id: user.id, createDate: date }));
+    dispatch(
+      addAchievement({ text: trimmedText, owner_id: user.id, createDate: date })
+    );
 
     if (input && input.current) {
       input.current.focus();

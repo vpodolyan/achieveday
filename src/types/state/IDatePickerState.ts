@@ -1,4 +1,4 @@
 export default interface IDatePickerState {
-    value: Date;
-    visible: boolean;
+  value: Date;
+  visible: boolean;
 }

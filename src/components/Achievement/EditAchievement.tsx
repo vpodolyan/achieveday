@@ -3,21 +3,24 @@ import Input from 'components/Input';
 import styled from 'styled-components';
 
 const EditInput = styled(Input)`
-    font-size: 1.25rem;
-    font-weight: 300;
-    line-height: 2rem;
-    width: 100%;
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 2rem;
+  width: 100%;
 `;
 
 interface IProps {
-    text: string;
-    onChange: (value: string) => void;
-    onBlur: (value: string) => void;
-    onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
+  text: string;
+  onChange: (value: string) => void;
+  onBlur: (value: string) => void;
+  onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const EditAchievement: FC<IProps> = ({
-  text, onChange, onBlur, onKeyPress
+  text,
+  onChange,
+  onBlur,
+  onKeyPress
 }) => {
   const inputRef = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
 

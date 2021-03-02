@@ -1,4 +1,8 @@
-import { setCalendarVisibility as changeVisibility, setSelectedDate, switchDate } from 'actions';
+import {
+  setCalendarVisibility as changeVisibility,
+  setSelectedDate,
+  switchDate
+} from 'actions';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import IAppState from 'types/state/IAppState';
@@ -6,7 +10,9 @@ import IAppState from 'types/state/IAppState';
 import { DatePicker } from './DatePicker';
 
 export const DatePickerContainer: FC = () => {
-  const selectedDate = useSelector((state: IAppState) => state.datePicker.value);
+  const selectedDate = useSelector(
+    (state: IAppState) => state.datePicker.value
+  );
   const visible = useSelector((state: IAppState) => state.datePicker.visible);
 
   const dispatch = useDispatch();

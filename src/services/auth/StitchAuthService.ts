@@ -1,35 +1,41 @@
-import { GoogleRedirectCredential, FacebookRedirectCredential, StitchAppClient } from 'mongodb-stitch-browser-sdk';
+import {
+  GoogleRedirectCredential,
+  FacebookRedirectCredential,
+  StitchAppClient
+} from 'mongodb-stitch-browser-sdk';
 
 import { IAuthService, OAuthProviders } from './IAuthService';
 
 export default class StitchAuthService implements IAuthService {
-    client: StitchAppClient;
+  client: StitchAppClient;
 
-    /**
-     *@param client - Mongo Stitch client
-     */
-    constructor (client: StitchAppClient) {
-      this.client = client;
-    }
+  /**
+   *@param client - Mongo Stitch client
+   */
+  constructor(client: StitchAppClient) {
+    this.client = client;
+  }
 
-    getRedirectCridential (provider: OAuthProviders) {
-      switch (provider) {
-        case OAuthProviders.Google:
-          return new GoogleRedirectCredential();
-        case OAuthProviders.Facebook:
-          return new FacebookRedirectCredential();
-      }
+  getRedirectCridential(provider: OAuthProviders) {
+    switch (provider) {
+      case OAuthProviders.Google:
+        return new GoogleRedirectCredential();
+      case OAuthProviders.Facebook:
+        return new FacebookRedirectCredential();
     }
+  }
 
-    logInOauth (provider: OAuthProviders) {
-      return this.client.auth.loginWithRedirect(this.getRedirectCridential(provider));
-    }
+  logInOauth(provider: OAuthProviders) {
+    return this.client.auth.loginWithRedirect(
+      this.getRedirectCridential(provider)
+    );
+  }
 
-    logOut () {
-      return this.client.auth.logout();
-    }
+  logOut() {
+    return this.client.auth.logout();
+  }
 
-    isAuthenticated () {
-      return this.client.auth.isLoggedIn;
-    }
+  isAuthenticated() {
+    return this.client.auth.isLoggedIn;
+  }
 }

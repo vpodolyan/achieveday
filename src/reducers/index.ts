@@ -5,5 +5,8 @@ import user from './user';
 import quotes from './quotesReducer';
 
 export default combineReducers({
-  achievements, datePicker, user, quotes
+  achievements,
+  datePicker,
+  user,
+  quotes
 });

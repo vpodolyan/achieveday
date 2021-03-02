@@ -14,11 +14,7 @@ export const Quote = memo<IProps>(({ text, author }) => {
 
   return (
     <>
-      <Title>
-        “
-        {text}
-        ” &mdash;
-      </Title>
+      <Title>“{text}” &mdash;</Title>
       <Author>{author || t('uknown')}</Author>
     </>
   );

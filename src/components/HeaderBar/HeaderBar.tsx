@@ -12,40 +12,40 @@ import { AuthContext } from '../App';
 import HeaderBarContainer from './HeaderBarContainer';
 
 interface IProps extends WithTranslation {
-    children?: React.ReactNode;
-    user: IUser;
+  children?: React.ReactNode;
+  user: IUser;
 }
 
 class HeaderBar extends PureComponent<IProps> {
-  render () {
+  render() {
     const { t } = this.props;
 
     return (
       <HeaderBarContainer>
         <AuthContext.Consumer>
-          {({ authService }: { authService: IAuthService }) => (
+          {({ authService }: { authService: IAuthService }) =>
             !authService.isAuthenticated() ? (
               <div>
-                <button onClick={() => authService.logInOauth(OAuthProviders.Google)}>
+                <button
+                  onClick={() => authService.logInOauth(OAuthProviders.Google)}
+                >
                   {t('log_in')}
                 </button>
               </div>
-            )
-              : (
-                <div>
-                  <span className="pr-2">
-                    { this.props.user.name }
-                  </span>
-                  <button onClick={() => {
+            ) : (
+              <div>
+                <span className="pr-2">{this.props.user.name}</span>
+                <button
+                  onClick={() => {
                     authService.logOut();
                     navigate('/');
                   }}
-                  >
-                    {t('log_out')}
-                  </button>
-                </div>
-              )
-          )}
+                >
+                  {t('log_out')}
+                </button>
+              </div>
+            )
+          }
         </AuthContext.Consumer>
         {this.props.children}
       </HeaderBarContainer>
@@ -53,8 +53,6 @@ class HeaderBar extends PureComponent<IProps> {
   }
 }
 
-export default connect(
-  (state: IAppState) => ({
-    user: state.user
-  })
-)(withTranslation('common')(HeaderBar));
+export default connect((state: IAppState) => ({
+  user: state.user
+}))(withTranslation('common')(HeaderBar));
