@@ -4,19 +4,21 @@ module.exports = {
     es2020: true
   },
   extends: [
+    'standard',
     'plugin:react/recommended',
-    'standard'
+    'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: [
-    'react',
-    '@typescript-eslint'
-  ],
+  plugins: ['@typescript-eslint'],
   rules: {
+    'prettier/prettier': [
+      'warn',
+      { singleQuote: true, trailingComma: 'none', quoteProps: 'consistent' }
+    ],
     'react/prop-types': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -26,7 +28,7 @@ module.exports = {
     '@typescript-eslint/no-useless-constructor': 'error',
     'max-len': 'off',
     'no-underscore-dangle': 'off',
-    semi: 'off',
+    'semi': 'off',
     '@typescript-eslint/semi': 'error',
     'import/extensions': [
       'error',
@@ -40,7 +42,7 @@ module.exports = {
     ]
   },
   settings: {
-    react: {
+    'react': {
       version: 'detect'
     },
     'import/resolver': {
