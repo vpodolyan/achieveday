@@ -1,13 +1,17 @@
-import { ComponentType, FC } from 'react';
+import { ComponentType, FC, useContext } from 'react';
+
 import { Redirect, RouteComponentProps } from '@reach/router';
-import stitchClient from '../stitch/client';
+
+import { AuthContext } from './App';
 
 interface IProps extends RouteComponentProps {
   Component: ComponentType<any>;
 }
 
 const WithAuthPage: FC<IProps> = ({ Component }) => {
-  if (stitchClient.auth.isLoggedIn) {
+  const { authService } = useContext(AuthContext);
+
+  if (authService.isAuthenticated()) {
     return <Component />;
   }
 
