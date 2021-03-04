@@ -10,7 +10,7 @@ import { navigate } from '@reach/router';
 import HeaderBarContainer from './HeaderBarContainer';
 
 export const HeaderBar: FC = ({ children }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const user = useSelector<IAppState, IUser>((state) => state.user);
   const { authService } = useContext(AuthContext);
 
