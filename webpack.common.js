@@ -4,12 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: [
-    './src/index'
-  ],
+  entry: ['./src/index'],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
     publicPath: '/'
   },
   plugins: [
@@ -40,9 +38,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|ttf|eot)$/,
-        use: [
-          'file-loader'
-        ]
+        use: ['file-loader']
       },
       {
         test: /\.(t|j)sx?$/,
@@ -52,6 +48,8 @@ module.exports = {
     ]
   },
   optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
         commons: {
