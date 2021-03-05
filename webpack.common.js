@@ -1,5 +1,4 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
@@ -8,10 +7,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].[contenthash].js',
-    publicPath: '/'
+    publicPath: '/',
+    clean: true
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new Dotenv({
       systemvars: true
     }),
