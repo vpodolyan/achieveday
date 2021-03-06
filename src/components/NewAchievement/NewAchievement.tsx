@@ -10,6 +10,18 @@ const NewAchievementInput = styled(Input)`
   width: 75%;
 `;
 
+const AddAchievementButton = styled.a`
+  height: 50px;
+  font-size: 28px;
+  text-decoration: none;
+  color: #555555;
+  vertical-align: bottom;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
 export const NewAchievement: FC = () => {
   const [text, setText] = useState('');
 
@@ -56,9 +68,9 @@ export const NewAchievement: FC = () => {
           ref={input}
           onChange={handleInputChange}
         />
-        <a className="add-btn" href="#" onClick={handleAddClick}>
+        <AddAchievementButton href="#" onClick={handleAddClick}>
           +
-        </a>
+        </AddAchievementButton>
       </form>
     </div>
   );
