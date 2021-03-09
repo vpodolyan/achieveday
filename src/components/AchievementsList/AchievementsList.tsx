@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import IAchievement from 'types/IAchievement';
-import Achievement from '../Achievement/Achievement';
+import { IAchievement } from 'types/IAchievement';
+import { Achievement } from '../Achievement/Achievement';
 
 const List = styled.div`
   line-height: 2rem;

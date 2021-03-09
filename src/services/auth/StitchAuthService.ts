@@ -6,7 +6,7 @@ import {
 
 import { IAuthService, OAuthProviders } from './IAuthService';
 
-export default class StitchAuthService implements IAuthService {
+export class StitchAuthService implements IAuthService {
   client: StitchAppClient;
 
   /**

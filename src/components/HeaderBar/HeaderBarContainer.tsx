@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeaderBarContainer = styled.div`
+export const HeaderBarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -9,5 +9,3 @@ const HeaderBarContainer = styled.div`
   text-align: right;
   box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.05);
 `;
-
-export default HeaderBarContainer;

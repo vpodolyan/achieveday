@@ -4,8 +4,8 @@ import DayPicker from 'react-day-picker';
 import styled from 'styled-components';
 
 import { NEXT_DATE, PREV_DATE } from 'actions/types';
-import Arrow from 'components/Arrow';
-import Input from 'components/Input';
+import { Arrow } from 'components/Arrow';
+import { Input } from 'components/Input';
 
 import 'react-day-picker/lib/style.css';
 

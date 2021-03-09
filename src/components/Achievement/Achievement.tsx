@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { faTrophy, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import EditAchievement from './EditAchievement';
+import { EditAchievement } from './EditAchievement';
 
 const TrophyIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
@@ -26,7 +26,7 @@ interface IProps {
   onApplyChanges: (text: string) => void;
 }
 
-const Achievement: FC<IProps> = ({
+export const Achievement: FC<IProps> = ({
   id,
   text,
   onAchivDelete,
@@ -77,5 +77,3 @@ const Achievement: FC<IProps> = ({
     </div>
   );
 };
-
-export default Achievement;

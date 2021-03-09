@@ -8,7 +8,7 @@ const Title = styled.h1`
   margin-bottom: 1.5rem;
 `;
 
-const MainContainer: FC = ({ children }) => {
+export const MainContainer: FC = ({ children }) => {
   const { t } = useTranslation('achievements');
 
   return (
@@ -22,5 +22,3 @@ const MainContainer: FC = ({ children }) => {
     </div>
   );
 };
-
-export default MainContainer;

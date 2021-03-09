@@ -1,10 +1,10 @@
 import { addAchievement } from 'actions';
-import Input from 'components/Input';
+import { Input } from 'components/Input';
 import { FC, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import IUser from 'types/IUser';
-import IAppState from 'types/state/IAppState';
+import { IUser } from 'types/IUser';
+import { IAppState } from 'types/state/IAppState';
 
 const NewAchievementInput = styled(Input)`
   width: 75%;

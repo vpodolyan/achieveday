@@ -1,9 +1,9 @@
 import { Store } from 'redux';
 import { GET_DAILY_QUOTE } from 'actions/types';
-import quotesService from 'services/quotes/quotesService';
+import { quotesService } from 'services/quotes/quotesService';
 import { getDaiylyQuoteSuccessAction, getDaiylyQuoteFailAction } from 'actions';
 
-const quotesMiddleware = (store: Store) => (next) => async (action) => {
+export const quotesMiddleware = (store: Store) => (next) => async (action) => {
   const nextAction = next(action);
 
   if (action.type === GET_DAILY_QUOTE) {
@@ -18,5 +18,3 @@ const quotesMiddleware = (store: Store) => (next) => async (action) => {
 
   return nextAction;
 };
-
-export default quotesMiddleware;

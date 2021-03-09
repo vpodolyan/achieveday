@@ -8,4 +8,4 @@ const appId = process.env.MONGO_STITCH_APP_ID || 'demo';
 
 const stitchClient = Stitch.initializeDefaultAppClient(appId);
 
-export default stitchClient;
+export { stitchClient };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Arrow = styled.span`
+export const Arrow = styled.span`
   display: inline-block;
   font-size: 28px;
 
@@ -8,5 +8,3 @@ const Arrow = styled.span`
     cursor: pointer;
   }
 `;
-
-export default Arrow;

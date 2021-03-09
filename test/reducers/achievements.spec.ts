@@ -1,6 +1,6 @@
 import expect from 'expect';
 import { addAchievement, removeAchievement } from '../../src/actions';
-import achievements from '../../src/reducers/achievements';
+import { achievements } from '../../src/reducers/achievements';
 
 describe('achievements reducer', () => {
   it('should add new achievement', () => {

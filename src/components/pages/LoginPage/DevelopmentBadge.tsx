@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const DevelopmentBadge = styled.div`
+export const DevelopmentBadge = styled.div`
   position: fixed;
   top: 0;
   right: -0;
@@ -10,5 +10,3 @@ const DevelopmentBadge = styled.div`
   padding: 0.5em 1em;
   border-radius: 5px;
 `;
-
-export default DevelopmentBadge;

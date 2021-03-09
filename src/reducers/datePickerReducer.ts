@@ -1,4 +1,6 @@
-import IDatePickerState from 'types/state/IDatePickerState';
+import { Reducer } from 'redux';
+import { IDatePickerState } from 'types/state/IDatePickerState';
+
 import * as types from '../actions/types';
 
 const initialState: IDatePickerState = {
@@ -6,7 +8,10 @@ const initialState: IDatePickerState = {
   visible: false
 };
 
-export default function datePickerReducer(state = initialState, action) {
+export const datePickerReducer: Reducer<IDatePickerState> = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case types.NEXT_DATE:
       return { ...state, value: new Date(state.value.getTime() + 86400000) };
@@ -19,4 +24,4 @@ export default function datePickerReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};

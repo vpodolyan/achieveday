@@ -1,5 +1,5 @@
-import IAchievement from 'types/IAchievement';
-import IQuote from 'types/IQuote';
+import { IAchievement } from 'types/IAchievement';
+import { IQuote } from 'types/IQuote';
 import * as types from './types';
 
 export const addAchievement = (achievement: Partial<IAchievement>) => ({

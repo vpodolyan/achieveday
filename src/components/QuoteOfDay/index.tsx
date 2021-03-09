@@ -1,8 +1,8 @@
-import Spinner from 'components/Spinner/Spinner';
-import { memo } from 'react';
+import { Spinner } from 'components/Spinner/Spinner';
+import { FC } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-import IQuote from 'types/IQuote';
-import IAppState from 'types/state/IAppState';
+import { IQuote } from 'types/IQuote';
+import { IAppState } from 'types/state/IAppState';
 
 import { Quote } from './Quote';
 
@@ -10,7 +10,7 @@ interface IProps {
   show: boolean;
 }
 
-const QuoteOfDay = memo<IProps>(({ show }) => {
+export const QuoteOfDay: FC<IProps> = ({ show }) => {
   const quote = useSelector<IAppState, IQuote | undefined>(
     (state) => state.quotes.dailyQuote,
     shallowEqual
@@ -33,8 +33,6 @@ const QuoteOfDay = memo<IProps>(({ show }) => {
       )}
     </div>
   );
-});
+};
 
 QuoteOfDay.displayName = 'QuoteOfDay';
-
-export default QuoteOfDay;

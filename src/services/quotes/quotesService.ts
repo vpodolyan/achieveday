@@ -1,9 +1,6 @@
-import IQuote from 'types/IQuote';
-import IQuotesService from './IQuotesService';
+import { IQuote } from 'types/IQuote';
+import { IQuotesService } from './IQuotesService';
 
-/**
- * Get quotes from https://quotes.rest/
- */
 class QuotesService implements IQuotesService {
   getDailyQuote = async (category?: string): Promise<IQuote | undefined> => {
     try {
@@ -29,6 +26,4 @@ class QuotesService implements IQuotesService {
   };
 }
 
-const quotesService = new QuotesService();
-
-export default quotesService;
+export const quotesService = new QuotesService();

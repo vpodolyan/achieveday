@@ -1,4 +1,6 @@
-import IAchievementsState from 'types/state/IAchievementsState';
+import { Reducer } from 'redux';
+import { IAchievementsState } from 'types/state/IAchievementsState';
+
 import * as types from '../actions/types';
 
 const initialState: IAchievementsState = {
@@ -6,7 +8,10 @@ const initialState: IAchievementsState = {
   loading: false
 };
 
-export default function achievements(state = initialState, action) {
+export const achievements: Reducer<IAchievementsState> = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case types.ADD_ACHIEVEMENT_SUCCESS:
       return {
@@ -49,6 +54,6 @@ export default function achievements(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
 export { initialState as achievementsInitialState };

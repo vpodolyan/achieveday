@@ -1,5 +1,5 @@
 import { FC, useRef, useEffect, KeyboardEvent } from 'react';
-import Input from 'components/Input';
+import { Input } from 'components/Input';
 import styled from 'styled-components';
 
 const EditInput = styled(Input)`
@@ -16,7 +16,7 @@ interface IProps {
   onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const EditAchievement: FC<IProps> = ({
+export const EditAchievement: FC<IProps> = ({
   text,
   onChange,
   onBlur,
@@ -47,5 +47,3 @@ const EditAchievement: FC<IProps> = ({
     </div>
   );
 };
-
-export default EditAchievement;

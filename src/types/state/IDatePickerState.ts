@@ -1,4 +1,4 @@
-export default interface IDatePickerState {
+export interface IDatePickerState {
   value: Date;
   visible: boolean;
 }

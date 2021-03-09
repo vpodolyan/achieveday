@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SubTitle = styled.div`
+export const SubTitle = styled.div`
   font-size: 2rem;
   text-align: center;
   color: floralwhite;
@@ -14,5 +14,3 @@ const SubTitle = styled.div`
     font-size: 1.4rem;
   }
 `;
-
-export default SubTitle;

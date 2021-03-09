@@ -1,7 +1,7 @@
-import IAchievement from 'types/IAchievement';
-import IAchievementsService from './IAchievementsService';
-import IAchievementsDataService from './IAchievementsDataService';
-import MongoService from '../mongo/MongoService';
+import { IAchievement } from 'types/IAchievement';
+import { IAchievementsService } from './IAchievementsService';
+import { IAchievementsDataService } from './IAchievementsDataService';
+import { MongoService } from '../mongo/MongoService';
 
 class AchievementsService implements IAchievementsService {
   dataService: IAchievementsDataService;
@@ -27,6 +27,4 @@ class AchievementsService implements IAchievementsService {
   }
 }
 
-const achievementService = new AchievementsService();
-
-export default achievementService;
+export const achievementService = new AchievementsService();

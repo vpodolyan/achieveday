@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import IQuotesState from 'types/state/IQuotesState';
+import { IQuotesState } from 'types/state/IQuotesState';
 import {
   GET_DAILY_QUOTE,
   GET_DAILY_QUOTE_FAIL,
@@ -11,7 +11,7 @@ const initialState: IQuotesState = {
   loading: false
 };
 
-const quotes: Reducer<IQuotesState> = (state = initialState, action) => {
+export const quotes: Reducer<IQuotesState> = (state = initialState, action) => {
   switch (action.type) {
     case GET_DAILY_QUOTE:
       return {
@@ -35,5 +35,3 @@ const quotes: Reducer<IQuotesState> = (state = initialState, action) => {
 
   return state;
 };
-
-export default quotes;

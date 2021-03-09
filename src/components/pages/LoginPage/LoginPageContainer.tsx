@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LoginPageContainer = styled.div`
+export const LoginPageContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -13,5 +13,3 @@ const LoginPageContainer = styled.div`
   background: #63c8f8;
   font-family: 'Open Sans', 'Ubuntu', 'Helvetica Neue', sans-serif;
 `;
-
-export default LoginPageContainer;

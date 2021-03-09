@@ -2,12 +2,12 @@ import {
   RemoteMongoClient,
   RemoteMongoCollection
 } from 'mongodb-stitch-browser-sdk';
-import stitchClient from 'stitch/client';
+import { stitchClient } from 'stitch/client';
+import { IAchievement } from 'types/IAchievement';
 
-import IAchievement from 'types/IAchievement';
-import IAchievementsDataService from '../achievements/IAchievementsDataService';
+import { IAchievementsDataService } from '../achievements/IAchievementsDataService';
 
-class MongoService implements IAchievementsDataService {
+export class MongoService implements IAchievementsDataService {
   mongoClient: RemoteMongoClient;
 
   achievementsCollection: RemoteMongoCollection<IAchievement>;
@@ -56,5 +56,3 @@ class MongoService implements IAchievementsDataService {
     return this.achievementsCollection.deleteOne({ _id: id });
   }
 }
-
-export default MongoService;

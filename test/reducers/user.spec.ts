@@ -1,6 +1,6 @@
 import expect from 'expect';
 import { setUser } from '../../src/actions';
-import { default as userReducer } from '../../src/reducers/user';
+import { user as userReducer } from '../../src/reducers/user';
 
 describe('user reducer', () => {
   it('should set user', () => {

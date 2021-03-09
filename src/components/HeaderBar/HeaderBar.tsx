@@ -2,12 +2,12 @@ import { AuthContext } from 'components/App';
 import { FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import IUser from 'types/IUser';
-import IAppState from 'types/state/IAppState';
+import { IUser } from 'types/IUser';
+import { IAppState } from 'types/state/IAppState';
 
 import { navigate } from '@reach/router';
 
-import HeaderBarContainer from './HeaderBarContainer';
+import { HeaderBarContainer } from './HeaderBarContainer';
 
 export const HeaderBar: FC = ({ children }) => {
   const { t } = useTranslation('common');
