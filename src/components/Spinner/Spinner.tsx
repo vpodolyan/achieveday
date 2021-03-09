@@ -47,12 +47,10 @@ const Innner = styled.div`
   left: 50px;
 `;
 
-const Spinner: React.FC<IProps> = ({ size = 1 }) => (
+export const Spinner: React.FC<IProps> = ({ size = 1 }) => (
   <Container size={size}>
     <Content size={size}>
       <Innner />
     </Content>
   </Container>
 );
-
-export default Spinner;

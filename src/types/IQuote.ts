@@ -1,4 +1,4 @@
-export default interface IQuote {
+export interface IQuote {
   author: string;
   text: string;
 }

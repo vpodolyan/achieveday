@@ -1,6 +1,6 @@
-import IAchievement from 'types/IAchievement';
+import { IAchievement } from 'types/IAchievement';
 
-export default interface IAchievementsService {
+export interface IAchievementsService {
   getAchievements(date?: Date): Promise<IAchievement[]>;
   addAchievement(achievement: IAchievement);
   updateAchievement(achievement: IAchievement);

@@ -5,7 +5,7 @@ import {
 } from 'actions';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import IAppState from 'types/state/IAppState';
+import { IAppState } from 'types/state/IAppState';
 
 import { DatePicker } from './DatePicker';
 

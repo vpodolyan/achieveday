@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-const LoginForm = styled.div`
+export const LoginForm = styled.div`
   display: flex;
   justify-content: center;
-  alignitems: center;
+  align-items: center;
   margin-top: 34px;
 `;
-
-export default LoginForm;

@@ -8,9 +8,9 @@ import {
   UPDATE_ACHIEVEMENT,
   UPDATE_ACHIEVEMENT_SUCCESS
 } from 'actions/types';
-import achievementService from 'services/data/achievements/achievementsService';
+import { achievementService } from 'services/data/achievements/achievementsService';
 
-const achievementsMiddleware = (store: Store) => (next) => async (action) => {
+export const achievementsMiddleware = (store: Store) => (next) => async (action) => {
   if (action.type === ADD_ACHIEVEMENT) {
     try {
       const achievement = await achievementService.addAchievement(
@@ -49,5 +49,3 @@ const achievementsMiddleware = (store: Store) => (next) => async (action) => {
 
   return next(action);
 };
-
-export default achievementsMiddleware;

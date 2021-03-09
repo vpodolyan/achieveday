@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Author from './Author';
-import Title from './Title';
+import { Author } from './Author';
+import { Title } from './Title';
 
 interface IProps {
   text: string;

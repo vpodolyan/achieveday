@@ -1,6 +1,6 @@
 import expect from 'expect';
 import * as types from '../../src/actions/types';
-import datePickerReducer from '../../src/reducers/datePickerReducer';
+import { datePickerReducer } from '../../src/reducers/datePickerReducer';
 import * as actions from '../../src/actions';
 
 describe('datePickerReducer reducer', () => {
@@ -12,7 +12,7 @@ describe('datePickerReducer reducer', () => {
   });
 
   it('should set selectedDate', () => {
-    const beforeState = { value: new Date(), value: false };
+    const beforeState = { value: new Date() };
     const newDate = new Date('2001-10-01');
     const afterState = { value: newDate, visible: false };
 

@@ -1,10 +1,10 @@
 import expect from 'expect';
 import { shallow } from 'enzyme';
-import AchieveList from '../../src/components/AchieveList';
+import { AchievementsList } from '../../src/components/AchievementsList/AchievementsList';
 
 function setup(achievements) {
   const component = shallow(
-    <AchieveList achievements={achievements || []} />,
+    <AchievementsList achievements={achievements || []} onAchievementDelete={() => {}} onAchievementEdit={() => {}} />,
   );
 
   return { component };

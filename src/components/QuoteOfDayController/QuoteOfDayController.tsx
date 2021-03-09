@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react';
 import isToday from 'date-fns/isToday';
-import QuoteOfDay from 'components/QuoteOfDay';
+import { QuoteOfDay } from 'components/QuoteOfDay';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import IAppState from 'types/state/IAppState';
-import IAchievement from 'types/IAchievement';
+import { IAppState } from 'types/state/IAppState';
+import { IAchievement } from 'types/IAchievement';
 import { getDailyQuoteAction } from 'actions';
 
 export const QuoteOfDayController: FC = () => {

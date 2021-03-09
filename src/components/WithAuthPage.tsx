@@ -8,7 +8,7 @@ interface IProps extends RouteComponentProps {
   Component: ComponentType<any>;
 }
 
-const WithAuthPage: FC<IProps> = ({ Component }) => {
+export const WithAuthPage: FC<IProps> = ({ Component }) => {
   const { authService } = useContext(AuthContext);
 
   if (authService.isAuthenticated()) {
@@ -17,5 +17,3 @@ const WithAuthPage: FC<IProps> = ({ Component }) => {
 
   return <Redirect to="/" />;
 };
-
-export default WithAuthPage;

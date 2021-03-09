@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RouteComponentProps } from '@reach/router';
-import LoginPageContainer from './LoginPageContainer';
-import LoginForm from './LoginForm';
-import SignInWithGoogleButton from './SignInWithGoogleButton';
-import Title from './Title';
-import SubTitle from './Subtitle';
-import DevelopmentBadge from './DevelopmentBadge';
+import { LoginPageContainer } from './LoginPageContainer';
+import { LoginForm } from './LoginForm';
+import { SignInWithGoogleButton } from './SignInWithGoogleButton';
+import { Title } from './Title';
+import { SubTitle } from './Subtitle';
+import { DevelopmentBadge } from './DevelopmentBadge';
 
 type IProps = RouteComponentProps;
 
-const LoginPage: FC<IProps> = () => {
+export const LoginPage: FC<IProps> = () => {
   const { t } = useTranslation();
 
   return (
@@ -37,5 +37,3 @@ const LoginPage: FC<IProps> = () => {
     </LoginPageContainer>
   );
 };
-
-export default LoginPage;

@@ -1,30 +1,29 @@
 import expect from 'expect';
 import { Provider } from 'react-redux';
-import { shallow, mount } from 'enzyme';
-import FakeStore from '../utils/FakeStore';
+import { mount } from 'enzyme';
 
-import DatePicker from '../../src/components/DatePicker';
+import { DatePickerContainer } from '../../src/components/DatePicker/DatePickerContainer';
+import { DatePicker } from '../../src/components/DatePicker/DatePicker';
+import { createStore, Store } from 'redux';
+import { IDatePickerState } from '../../src/types/state/IDatePickerState';
+import { datePickerReducer } from '../../src/reducers/datePickerReducer';
 
 describe('DatePicker component', () => {
   let component;
   const onDateSwitch = expect.createSpy();
-  const selectedDate = { value: new Date() };
+  const selectedDate = new Date();
 
   beforeEach(() => {
     // TODO: Move this line to container component test
-    // const store = FakeStore({ selectedDate: selectedDate });
+    const store = createStore(datePickerReducer, { value: selectedDate,  visible: false});
 
-    // const wrapper = mount(
-    //     <Provider store={store}>
-    //         <DatePicker selectedDate={selectedDateVal} onDateSwitch={onDateSwitch} />
-    //     </Provider>
-    // )
-    //
-    // component = wrapper.find(DatePicker);
-
-    component = shallow(
-      <DatePicker selectedDate={selectedDate.value} onDateSwitch={onDateSwitch} />,
+    const wrapper = mount(
+      <Provider store={store as Store<IDatePickerState, any>}>
+        <DatePickerContainer />
+      </Provider>
     );
+
+    component = wrapper.find(DatePicker);
   });
 
   it('should render', () => {

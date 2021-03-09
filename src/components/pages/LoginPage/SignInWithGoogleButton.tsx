@@ -79,7 +79,7 @@ const SigningText = styled(TextBase)`
   transition: opacity 0.6s;
 `;
 
-const SignInWithGoogleButton: FC = () => {
+export const SignInWithGoogleButton: FC = () => {
   const { t } = useTranslation();
   const [clicked, setClicked] = useState(false);
 
@@ -105,5 +105,3 @@ const SignInWithGoogleButton: FC = () => {
     </AuthContext.Consumer>
   );
 };
-
-export default SignInWithGoogleButton;

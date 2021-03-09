@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { Router, navigate } from '@reach/router';
 
 import { setUser } from 'actions';
-import IUser from 'types/IUser';
-import StichAuthService from '../services/auth/StitchAuthService';
-import stitchClient from '../stitch/client';
+import { IUser } from 'types/IUser';
+import { StitchAuthService } from 'services/auth/StitchAuthService';
+import { stitchClient } from '../stitch/client';
 
 import { AchievementsPage } from './pages/AchievementsPage/AchievementsPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import WithAuthPage from './WithAuthPage';
+import { LoginPage } from './pages/LoginPage/LoginPage';
+import { WithAuthPage } from './WithAuthPage';
 
-const authService = new StichAuthService(stitchClient);
+const authService = new StitchAuthService(stitchClient);
 
 const authContexValue = {
   authService
