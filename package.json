@@ -8,7 +8,11 @@
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register -r ignore-styles -r jsdom-global/register",
     "test:watch": "npm test -- --watch",
     "lint": "eslint . --ext .tsx,.ts",
-    "lint:fix": "eslint --fix . --ext .tsx,.ts"
+    "lint:fix": "eslint --fix . --ext .tsx,.ts",
+    "postinstall": "husky install"
+  },
+  "lint-staged": {
+    "*.(ts)|(tsx)": "eslint --fix"
   },
   "repository": {
     "type": "git",
@@ -66,9 +70,11 @@
     "expect": "^25.1.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.1.0",
+    "husky": "^5.2.0",
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.2.0",
     "jsdom-global": "^3.0.2",
+    "lint-staged": "^10.5.4",
     "mocha": "^7.1.0",
     "prettier": "^2.2.1",
     "redux-devtools-extension": "^2.13.8",
