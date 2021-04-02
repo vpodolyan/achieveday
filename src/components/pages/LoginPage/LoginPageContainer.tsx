@@ -10,6 +10,6 @@ export const LoginPageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #63c8f8;
+  background: ${({ theme }) => theme.colors.loginPage.background};
   font-family: 'Open Sans', 'Ubuntu', 'Helvetica Neue', sans-serif;
 `;
