@@ -1,15 +1,14 @@
-import { render } from 'react-dom';
-import { applyMiddleware, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { Provider } from 'react-redux';
-import { createGlobalStyle } from 'styled-components';
+import './utils/i18n';
 
 import { quotesMiddleware } from 'middlewares/quotesMiddleware';
-import App from './components/App';
-import { reducers } from './reducers';
-import { achievementsMiddleware } from './middlewares/achievementsMiddleware';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import './utils/i18n';
+import { App } from './components/App';
+import { achievementsMiddleware } from './middlewares/achievementsMiddleware';
+import { reducers } from './reducers';
 
 const middlewares = applyMiddleware(achievementsMiddleware, quotesMiddleware);
 
@@ -20,15 +19,8 @@ const store = createStore(
     : middlewares
 );
 
-const GlobalStyle = createGlobalStyle({
-  '*:focus': {
-    outline: 'none'
-  }
-});
-
 render(
   <>
-    <GlobalStyle />
     <Provider store={store}>
       <App />
     </Provider>

@@ -1,12 +1,14 @@
-import { createContext, PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { Router, navigate } from '@reach/router';
-
 import { setUser } from 'actions';
-import { IUser } from 'types/IUser';
+import { createContext, FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { StitchAuthService } from 'services/auth/StitchAuthService';
-import { stitchClient } from '../stitch/client';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from 'themes/GlobalStyle';
+import { lightTheme } from 'themes/lightTheme';
 
+import { navigate, Router } from '@reach/router';
+
+import { stitchClient } from '../stitch/client';
 import { AchievementsPage } from './pages/AchievementsPage/AchievementsPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { WithAuthPage } from './WithAuthPage';
@@ -23,32 +25,38 @@ const paths = {
   achievements: 'achievements'
 };
 
-interface IProps {
-  setUser: (user: IUser) => void;
-}
+export const App: FC = () => {
+  const dispatch = useDispatch();
 
-class App extends PureComponent<IProps> {
-  componentDidMount() {
+  useEffect(() => {
     if (stitchClient.auth.hasRedirectResult()) {
       stitchClient.auth.handleRedirectResult().then((user) => {
-        // @ts-ignore
-        this.props.setUser({ ...user.profile.data, id: user.id });
+        dispatch(
+          setUser({
+            ...// @ts-ignore
+            user.profile.data,
+            id: user.id
+          })
+        );
         navigate(paths.achievements);
       });
     }
 
     if (stitchClient.auth.isLoggedIn && stitchClient.auth.user) {
-      this.props.setUser({
-        // @ts-ignore
-        ...stitchClient.auth.user.profile.data,
-        id: stitchClient.auth.user.id
-      });
+      dispatch(
+        setUser({
+          // @ts-ignore
+          ...stitchClient.auth.user.profile.data,
+          id: stitchClient.auth.user.id
+        })
+      );
       navigate(paths.achievements);
     }
-  }
+  }, [dispatch]);
 
-  render() {
-    return (
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <GlobalStyle />
       <AuthContext.Provider value={authContexValue}>
         <Router>
           <LoginPage path="/" />
@@ -58,8 +66,6 @@ class App extends PureComponent<IProps> {
           />
         </Router>
       </AuthContext.Provider>
-    );
-  }
-}
-
-export default connect(null, { setUser })(App);
+    </ThemeProvider>
+  );
+};
