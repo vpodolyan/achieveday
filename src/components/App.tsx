@@ -1,5 +1,5 @@
 import { setUser } from 'actions';
-import { createContext, FC, useEffect } from 'react';
+import { createContext, FC, useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { StitchAuthService } from 'services/auth/StitchAuthService';
 import { ThemeProvider } from 'styled-components';
@@ -28,7 +28,7 @@ const paths = {
 export const App: FC = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (stitchClient.auth.hasRedirectResult()) {
       stitchClient.auth.handleRedirectResult().then((user) => {
         dispatch(
