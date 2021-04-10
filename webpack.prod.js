@@ -6,10 +6,7 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new CopyPlugin({
-      patterns: [
-        { from: 'assets', to: 'assets' },
-        { from: 'site.webmanifest' }
-      ]
+      patterns: [{ from: 'assets', to: 'assets' }, { from: 'site.webmanifest' }]
     })
   ]
 });
