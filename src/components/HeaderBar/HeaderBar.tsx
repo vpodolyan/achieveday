@@ -1,4 +1,5 @@
 import { AuthContext } from 'components/App';
+import { ButtonOutline } from 'components/ButtonOutline/ButtonOutline';
 import { FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -18,14 +19,15 @@ export const HeaderBar: FC = ({ children }) => {
     <HeaderBarContainer>
       <div>
         <span className="pr-2">{user.name}</span>
-        <button
+        <ButtonOutline
+          className="mr-2"
           onClick={() => {
             authService.logOut();
             navigate('/');
           }}
         >
           {t('log_out')}
-        </button>
+        </ButtonOutline>
       </div>
       {children}
     </HeaderBarContainer>
