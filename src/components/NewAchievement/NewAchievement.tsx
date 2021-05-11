@@ -8,6 +8,7 @@ import { IAppState } from 'types/state/IAppState';
 
 const NewAchievementInput = styled(Input)`
   width: 75%;
+  background-color: transparent;
 `;
 
 const AddAchievementButton = styled.a`

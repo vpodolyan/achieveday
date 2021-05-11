@@ -58,7 +58,7 @@ export const App: FC = () => {
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
       <AuthContext.Provider value={authContexValue}>
-        <Router>
+        <Router id="router-root">
           <LoginPage path="/" />
           <WithAuthPage
             Component={AchievementsPage}

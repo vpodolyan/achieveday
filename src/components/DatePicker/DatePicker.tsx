@@ -18,6 +18,7 @@ const DatePickerWrapper = styled(DayPicker)`
 
 const DateInput = styled(Input)`
   width: 75%;
+  background-color: transparent;
 
   :hover {
     cursor: pointer;
