@@ -46,7 +46,7 @@ export const achievements: Reducer<IAchievementsState> = (
       };
 
     case types.GET_ACHIEVEMENTS:
-      return { ...state, data: [], loading: true };
+      return { ...state, loading: true };
 
     case types.GET_ACHIEVEMENTS_SUCCESS:
       return { ...state, data: action.payload.achievements, loading: false };

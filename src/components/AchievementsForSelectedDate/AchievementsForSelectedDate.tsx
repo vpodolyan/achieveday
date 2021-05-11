@@ -14,9 +14,12 @@ import { IAppState } from 'types/state/IAppState';
 
 export const AchievementsForSelectedDate: FC = () => {
   const loading = useSelector<IAppState>((state) => state.achievements.loading);
-  const selectedDate = useSelector<IAppState>(
-    (state) => state.datePicker.value
+
+  const selectedDate = useSelector<IAppState, Date>(
+    (state) => state.datePicker.value,
+    (prevDate, nextDate) => prevDate.getTime() === nextDate.getTime()
   );
+
   const achievements = useSelector<IAppState, IAchievement[]>(
     (state) => state.achievements.data
   );

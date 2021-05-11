@@ -8,7 +8,8 @@ import {
 
 const initialState: IQuotesState = {
   dailyQuote: undefined,
-  loading: false
+  loading: false,
+  lastSuccessFetchDate: undefined
 };
 
 export const quotes: Reducer<IQuotesState> = (state = initialState, action) => {
@@ -23,7 +24,8 @@ export const quotes: Reducer<IQuotesState> = (state = initialState, action) => {
       return {
         ...state,
         dailyQuote: action.payload.quote,
-        loading: false
+        loading: false,
+        lastSuccessFetchDate: new Date()
       };
 
     case GET_DAILY_QUOTE_FAIL:
