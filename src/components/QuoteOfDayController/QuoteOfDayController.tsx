@@ -1,29 +1,37 @@
-import { FC, useEffect } from 'react';
-import isToday from 'date-fns/isToday';
-import { QuoteOfDay } from 'components/QuoteOfDay';
-import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import { IAppState } from 'types/state/IAppState';
-import { IAchievement } from 'types/IAchievement';
 import { getDailyQuoteAction } from 'actions';
+import { QuoteOfDay } from 'components/QuoteOfDay';
+import isToday from 'date-fns/isToday';
+import { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { IAchievement } from 'types/IAchievement';
+import { IAppState } from 'types/state/IAppState';
 
 export const QuoteOfDayController: FC = () => {
   const achievements = useSelector<IAppState, IAchievement[]>(
-    (state) => state.achievements.data,
-    shallowEqual
+    (state) => state.achievements.data
   );
+
   const date = useSelector<IAppState, Date>(
     (state) => state.datePicker.value,
-    shallowEqual
+    (prevDate, nextDate) => prevDate.getTime() === nextDate.getTime()
   );
+
+  const lastQuoteFetchDate = useSelector<IAppState, Date | undefined>(
+    (state) => state.quotes.lastSuccessFetchDate
+  );
+
   const showQuoteOfDay = isToday(date) && achievements.length > 0;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (showQuoteOfDay) {
+    if (
+      showQuoteOfDay &&
+      (!lastQuoteFetchDate || !isToday(lastQuoteFetchDate))
+    ) {
       dispatch(getDailyQuoteAction());
     }
-  }, [showQuoteOfDay]);
+  }, [showQuoteOfDay, lastQuoteFetchDate]);
 
   return <QuoteOfDay show={showQuoteOfDay} />;
 };
