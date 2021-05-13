@@ -38,11 +38,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|ttf|eot)$/,
         use: ['file-loader']
-      },
-      {
-        test: /\.(t|j)sx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/
       }
     ]
   },

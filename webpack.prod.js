@@ -8,5 +8,14 @@ module.exports = merge(common, {
     new CopyPlugin({
       patterns: [{ from: 'assets', to: 'assets' }, { from: 'site.webmanifest' }]
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(t|j)sx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  }
 });
