@@ -24,8 +24,7 @@ export const AchievementsForSelectedDate: FC = () => {
   const loading = useSelector<IAppState>((state) => state.achievements.loading);
 
   const selectedDate = useSelector<IAppState, Date>(
-    (state) => state.datePicker.value,
-    (prevDate, nextDate) => prevDate.getTime() === nextDate.getTime()
+    (state) => state.datePicker.value
   );
 
   const achievements = useSelector<IAppState, IAchievement[]>(
