@@ -9,8 +9,16 @@ import { Spinner } from 'components/Spinner/Spinner';
 import { FC, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { achievementService } from 'services/data/achievements/achievementsService';
+import styled from 'styled-components';
 import { IAchievement } from 'types/IAchievement';
 import { IAppState } from 'types/state/IAppState';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 112px;
+`;
 
 export const AchievementsForSelectedDate: FC = () => {
   const loading = useSelector<IAppState>((state) => state.achievements.loading);
@@ -50,7 +58,7 @@ export const AchievementsForSelectedDate: FC = () => {
   }, [getAchievements, selectedDate]);
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <Container>
       {loading ? (
         <div className="pt-5">
           <Spinner size={2} />
@@ -62,6 +70,6 @@ export const AchievementsForSelectedDate: FC = () => {
           onAchievementEdit={handleAchievementEdit}
         />
       )}
-    </div>
+    </Container>
   );
 };
