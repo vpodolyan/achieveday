@@ -11,6 +11,10 @@ export const QuoteOfDayController: FC = () => {
     (state) => state.achievements.data
   );
 
+  const areAchievementsLoading = useSelector<IAppState, boolean>(
+    (state) => state.achievements.loading
+  );
+
   const date = useSelector<IAppState, Date>(
     (state) => state.datePicker.value,
     (prevDate, nextDate) => prevDate.getTime() === nextDate.getTime()
@@ -20,7 +24,8 @@ export const QuoteOfDayController: FC = () => {
     (state) => state.quotes.lastSuccessFetchDate
   );
 
-  const showQuoteOfDay = isToday(date) && achievements.length > 0;
+  const showQuoteOfDay =
+    !areAchievementsLoading && isToday(date) && achievements.length > 0;
 
   const dispatch = useDispatch();
 

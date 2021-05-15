@@ -8,7 +8,7 @@ const initialState: IAchievementsState = {
   loading: false
 };
 
-export const achievements: Reducer<IAchievementsState> = (
+export const achievementsReducer: Reducer<IAchievementsState> = (
   state = initialState,
   action
 ) => {
@@ -46,10 +46,15 @@ export const achievements: Reducer<IAchievementsState> = (
       };
 
     case types.GET_ACHIEVEMENTS:
-      return { ...state, loading: true };
+      return { ...state, data: [], loading: true };
 
     case types.GET_ACHIEVEMENTS_SUCCESS:
       return { ...state, data: action.payload.achievements, loading: false };
+
+    case types.PREV_DATE:
+    case types.NEXT_DATE:
+    case types.SET_SELECTED_DATE:
+      return { ...state, data: [] };
 
     default:
       return state;
