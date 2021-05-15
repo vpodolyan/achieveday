@@ -50,7 +50,7 @@ export const AchievementsForSelectedDate: FC = () => {
   }, [getAchievements, selectedDate]);
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center align-items-center">
       {loading ? (
         <div className="pt-5">
           <Spinner size={2} />
