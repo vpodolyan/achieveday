@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { ThemeManagementProvider } from 'theming/ThemeManagementProvider';
 
 import { App } from './components/App';
 import { achievementsMiddleware } from './middlewares/achievementsMiddleware';
@@ -22,7 +23,9 @@ const store = createStore(
 render(
   <>
     <Provider store={store}>
-      <App />
+      <ThemeManagementProvider>
+        <App />
+      </ThemeManagementProvider>
     </Provider>
   </>,
   document.getElementById('root')

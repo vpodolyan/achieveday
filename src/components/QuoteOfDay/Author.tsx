@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const Author = styled.div`
-  color: #444444;
+  color: ${({ theme }) => theme.colors.achievementsPage.quoteAuthor};
 `;

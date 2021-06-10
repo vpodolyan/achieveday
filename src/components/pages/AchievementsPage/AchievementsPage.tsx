@@ -5,10 +5,17 @@ import { MainContainer } from 'components/MainContainer/MainContainer';
 import { NewAchievement } from 'components/NewAchievement/NewAchievement';
 import { QuoteOfDayController } from 'components/QuoteOfDayController/QuoteOfDayController';
 import { FC } from 'react';
+import { useTheme } from 'theming/useTheme';
 
 export const AchievementsPage: FC = () => {
+  const { theme } = useTheme();
   return (
-    <>
+    <div
+      style={{
+        height: '100%',
+        backgroundColor: theme.colors.common.background
+      }}
+    >
       <HeaderBar />
       <MainContainer>
         <DatePickerContainer />
@@ -16,6 +23,6 @@ export const AchievementsPage: FC = () => {
         <NewAchievement />
         <QuoteOfDayController />
       </MainContainer>
-    </>
+    </div>
   );
 };

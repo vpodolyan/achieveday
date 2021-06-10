@@ -20,7 +20,7 @@ export const AchievementsList: FC<IProps> = ({
   onAchievementEdit
 }) => {
   return (
-    <List className="p-0 pt-4 pt-md-5 d-flex-column col-sm-12 col-md-8">
+    <List className="p-0 pt-5 d-flex-column col-sm-12 col-md-8">
       {achievements &&
         achievements.map((achievement) => (
           <Achievement

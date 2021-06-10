@@ -26,7 +26,7 @@ export const QuoteOfDay: FC<IProps> = memo(({ show }) => {
   }
 
   return (
-    <div className="pt-4 pt-md-5 text-center">
+    <div className="pt-5 text-center">
       {loading || !quote ? (
         <Spinner size={2} />
       ) : (
