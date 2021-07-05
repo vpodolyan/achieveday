@@ -1,12 +1,14 @@
-import { FC, useState, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
-import { faTrophy, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { EditAchievement } from './EditAchievement';
 
 const TrophyIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
+  color: ${({ theme }) => theme.colors.common.text};
 `;
 
 const DeleteIcon = styled(FontAwesomeIcon)`
@@ -15,8 +17,12 @@ const DeleteIcon = styled(FontAwesomeIcon)`
 
   &:hover {
     cursor: pointer;
-    color: #317eac;
+    color: ${({ theme }) => theme.colors.common.primary};
   }
+`;
+
+const TextContainer = styled.div`
+  color: ${({ theme }) => theme.colors.common.text};
 `;
 
 interface IProps {
@@ -62,7 +68,7 @@ export const Achievement: FC<IProps> = ({
           }}
         />
       ) : (
-        <div className="pl-2">
+        <TextContainer className="pl-2">
           {textValue}
           <DeleteIcon
             className="ml-2 align-middle"
@@ -72,7 +78,7 @@ export const Achievement: FC<IProps> = ({
               onAchivDelete(id);
             }}
           />
-        </div>
+        </TextContainer>
       )}
     </div>
   );

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
 const Title = styled.h1`
-  color:${({ theme }) => theme.colors.common.primary};
+  color: ${({ theme }) => theme.colors.common.pageTitle};
   margin-top: 20px;
   margin-bottom: 1.5rem;
 `;

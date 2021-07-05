@@ -14,7 +14,7 @@ const AddAchievementButton = styled.a`
   height: 50px;
   font-size: 28px;
   text-decoration: none;
-  color: #555555;
+  color: ${({ theme }) => theme.colors.achievementsPage.addButton};
   vertical-align: bottom;
 
   &:hover {
@@ -61,7 +61,7 @@ export const NewAchievement: FC = () => {
   };
 
   return (
-    <div className="text-center pt-2 pt-md-4">
+    <div className="text-center pt-5 pt-md-4">
       <form onSubmit={handleAddClick}>
         <NewAchievementInput
           value={text}

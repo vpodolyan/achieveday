@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { FC } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 interface IProps {
@@ -38,7 +38,7 @@ const Innner = styled.div`
   position: absolute;
   width: 50px;
   height: 50px;
-  border: 10px solid #317eac;
+  border: 10px solid ${({ theme }) => theme.colors.common.primary};
   border-top-color: transparent;
   border-radius: 50%;
 
@@ -47,7 +47,7 @@ const Innner = styled.div`
   left: 50px;
 `;
 
-export const Spinner: React.FC<IProps> = ({ size = 1 }) => (
+export const Spinner: FC<IProps> = ({ size = 1 }) => (
   <Container size={size}>
     <Content size={size}>
       <Innner />

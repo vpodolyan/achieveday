@@ -3,8 +3,8 @@ import { createContext, FC, useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { StitchAuthService } from 'services/auth/StitchAuthService';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from 'themes/GlobalStyle';
-import { lightTheme } from 'themes/lightTheme';
+import { GlobalStyle } from 'theming/GlobalStyle';
+import { useTheme } from 'theming/useTheme';
 
 import { navigate, Router } from '@reach/router';
 
@@ -27,6 +27,7 @@ const paths = {
 
 export const App: FC = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
 
   useLayoutEffect(() => {
     if (stitchClient.auth.hasRedirectResult()) {
@@ -55,10 +56,10 @@ export const App: FC = () => {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AuthContext.Provider value={authContexValue}>
-        <Router>
+        <Router id="router-root">
           <LoginPage path="/" />
           <WithAuthPage
             Component={AchievementsPage}

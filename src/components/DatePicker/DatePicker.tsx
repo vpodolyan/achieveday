@@ -11,13 +11,39 @@ import 'react-day-picker/lib/style.css';
 
 const DatePickerWrapper = styled(DayPicker)`
   position: absoulte;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.common.secondary};
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   z-index: 100;
+
+  & .DayPicker-NavButton {
+    color: ${({ theme }) => theme.colors.common.inputBorder};
+  }
+
+  & .DayPicker-Day {
+    color: ${({ theme }) => theme.colors.common.text};
+  }
+
+  & .DayPicker-Day--disabled {
+    color: ${({ theme }) => theme.colors.common.secondary};
+  }
+
+  &:not(.DayPicker--interactionDisabled)
+    .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+    background-color: ${({ theme }) => theme.colors.common.primary};
+  }
+
+  & .DayPicker-Caption > div {
+    color: ${({ theme }) => theme.colors.common.text};
+  }
+
+  & .DayPicker-Weekday abbr[title] {
+    color: ${({ theme }) => theme.colors.common.textAlt};
+  }
 `;
 
 const DateInput = styled(Input)`
   width: 75%;
+  border-bottom: none;
 
   :hover {
     cursor: pointer;
