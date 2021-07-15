@@ -8,16 +8,34 @@ interface IThemeContext {
   setTheme: (themeName: string) => void;
 }
 
+function loadThemeFormLocalStorage() {
+  return localStorage.getItem('theme');
+}
+
+function saveThemeToLocalStorage(themeName: string) {
+  localStorage.setItem('theme', themeName);
+}
+
 export const ThemeManagementContext = createContext<IThemeContext>({
   theme: themes.light,
   setTheme: () => {}
 });
 
+const DEFAULT_THEME_NAME = themes.light.name;
+
 export const ThemeManagementProvider: FC = ({ children }) => {
-  const [themeName, setThemeName] = useState('light');
+  const [themeName, setThemeName] = useState(
+    loadThemeFormLocalStorage() || DEFAULT_THEME_NAME
+  );
 
   const value = useMemo(
-    () => ({ theme: themes[themeName], setTheme: setThemeName }),
+    () => ({
+      theme: themes[themeName],
+      setTheme: (value: string) => {
+        setThemeName(value);
+        saveThemeToLocalStorage(value);
+      }
+    }),
     [themeName]
   );
 
