@@ -40,8 +40,8 @@ const MoonIcon = styled(FontAwesomeIcon)`
 `;
 
 export const ThemeToggle: FC = () => {
-  const [value, setValue] = useState(false);
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [value, setValue] = useState(theme.name === 'dark');
 
   useEffect(() => {
     setTheme(value ? 'dark' : 'light');
