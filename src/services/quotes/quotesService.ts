@@ -1,29 +1,24 @@
+import { stitchClient } from 'stitch/client';
 import { IQuote } from 'types/IQuote';
 import { IQuotesService } from './IQuotesService';
 
-class QuotesService implements IQuotesService {
-  getDailyQuote = async (category?: string): Promise<IQuote | undefined> => {
+class QuotableService implements IQuotesService {
+  getDailyQuote: () => Promise<IQuote | undefined> = async () => {
     try {
-      const resp = await fetch(
-        `https://quotes.rest/qod?category=${category}&language=en`
-      );
-      const json = await resp.json();
-      const {
-        contents: { quotes }
-      } = json;
-
-      if (!quotes.length) {
-        throw new Error('Response has no quote');
-      }
+      const quote = await stitchClient.callFunction('getQuoteOfDay', []);
 
       return {
-        author: quotes[0].author,
-        text: quotes[0].quote
+        author: quote.author,
+        text: quote.content
       };
     } catch (e) {
       console.error(e);
     }
   };
+
+  getFavourites = async (): Promise<IQuote[]> => {
+    return Promise.resolve([]);
+  };
 }
 
-export const quotesService = new QuotesService();
+export const quotesService = new QuotableService();

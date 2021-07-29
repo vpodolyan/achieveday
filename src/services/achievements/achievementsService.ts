@@ -1,13 +1,13 @@
 import { IAchievement } from 'types/IAchievement';
 import { IAchievementsService } from './IAchievementsService';
 import { IAchievementsDataService } from './IAchievementsDataService';
-import { MongoService } from '../mongo/MongoService';
+import { MongoAchievementsService } from '../mongo/MongoAchievementsService';
 
 class AchievementsService implements IAchievementsService {
   dataService: IAchievementsDataService;
 
   constructor() {
-    this.dataService = new MongoService();
+    this.dataService = new MongoAchievementsService();
   }
 
   getAchievements(date?: Date) {
