@@ -1,26 +1,16 @@
-import {
-  RemoteMongoClient,
-  RemoteMongoCollection
-} from 'mongodb-stitch-browser-sdk';
-import { stitchClient } from 'stitch/client';
+import { RemoteMongoCollection } from 'mongodb-stitch-browser-sdk';
 import { IAchievement } from 'types/IAchievement';
 
 import { IAchievementsDataService } from '../achievements/IAchievementsDataService';
+import { MongoService } from './MongoService';
 
-export class MongoService implements IAchievementsDataService {
-  mongoClient: RemoteMongoClient;
-
+export class MongoAchievementsService implements IAchievementsDataService {
   achievementsCollection: RemoteMongoCollection<IAchievement>;
 
   constructor() {
-    this.mongoClient = stitchClient.getServiceClient(
-      RemoteMongoClient.factory,
-      'mongodb-atlas'
-    );
+    const mongoService = new MongoService();
 
-    this.achievementsCollection = this.mongoClient
-      .db('achieveday_db')
-      .collection<IAchievement>('achievements');
+    this.achievementsCollection = mongoService.getCollection('achievements');
   }
 
   async getAchievements(date?: Date) {
