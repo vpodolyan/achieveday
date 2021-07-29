@@ -2,7 +2,7 @@ import { stitchClient } from 'stitch/client';
 import { IQuote } from 'types/IQuote';
 import { IQuotesService } from './IQuotesService';
 
-class QuotableService implements IQuotesService {
+class QuotesService implements IQuotesService {
   getDailyQuote: () => Promise<IQuote | undefined> = async () => {
     try {
       const quote = await stitchClient.callFunction('getQuoteOfDay', []);
@@ -21,4 +21,4 @@ class QuotableService implements IQuotesService {
   };
 }
 
-export const quotesService = new QuotableService();
+export const quotesService = new QuotesService();
