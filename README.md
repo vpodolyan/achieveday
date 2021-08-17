@@ -6,3 +6,7 @@ Achieveday is a small productivity tool and source of inspiration. Write daily a
 ### Launch ###
 
 For Stitch integration, we need to define `MONGO_STITCH_APP_ID` environment variable on Netlify or in `.env` file in the root directory.
+
+### Credits ###
+
+Many thanks to [@lukePeavey](https://github.com/lukePeavey) for [Quotable API](https://github.com/lukePeavey/quotable) which is used as the source of inspirational quotes.
