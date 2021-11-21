@@ -2,6 +2,7 @@ import './utils/i18n';
 
 import { quotesMiddleware } from 'middlewares/quotesMiddleware';
 import { render } from 'react-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -20,11 +21,15 @@ const store = createStore(
     : middlewares
 );
 
+const queryClient = new QueryClient();
+
 render(
   <>
     <Provider store={store}>
       <ThemeManagementProvider>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </ThemeManagementProvider>
     </Provider>
   </>,
