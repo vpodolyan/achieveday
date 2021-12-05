@@ -1,1 +1,1 @@
-export type MongoCollectionName = 'achievements';
+export type MongoCollectionName = 'achievements' | 'favourite_quotes';

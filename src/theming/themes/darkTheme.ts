@@ -5,11 +5,11 @@ export const darkTheme: ITheme = {
   name: 'dark',
   colors: {
     common: {
-      headerBackground: '#6929F7',
       primary: '#6929F7',
-      primaryDarker: '#4D02B1',
+      primaryAlt: '#4D02B1',
       secondary: '#31056B',
       background: '#1C0040',
+      headerBackground: '#6929F7',
       text: '#CDC1D9',
       textAlt: '#BD9DE2',
       textLighter: '#F0E6FA',
@@ -28,6 +28,9 @@ export const darkTheme: ITheme = {
     },
     loginPage: {
       background: '#63c8f8'
+    },
+    quoteCard: {
+      background: '#6929F7'
     }
   }
 };

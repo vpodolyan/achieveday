@@ -1,3 +1,4 @@
+import { navigate, Router } from '@reach/router';
 import { setUser } from 'actions';
 import { createContext, FC, useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -5,11 +6,10 @@ import { StitchAuthService } from 'services/auth/StitchAuthService';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'theming/GlobalStyle';
 import { useTheme } from 'theming/useTheme';
-
-import { navigate, Router } from '@reach/router';
-
+import { paths } from 'utils/paths';
 import { stitchClient } from '../stitch/client';
 import { AchievementsPage } from './pages/AchievementsPage/AchievementsPage';
+import { FavouriteQuotes } from './pages/FavouriteQuotesPage/FavouriteQuotesPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { WithAuthPage } from './WithAuthPage';
 
@@ -20,10 +20,6 @@ const authContexValue = {
 };
 
 export const AuthContext = createContext(authContexValue);
-
-const paths = {
-  achievements: 'achievements'
-};
 
 export const App: FC = () => {
   const dispatch = useDispatch();
@@ -51,7 +47,6 @@ export const App: FC = () => {
           id: stitchClient.auth.user.id
         })
       );
-      navigate(paths.achievements);
     }
   }, [dispatch]);
 
@@ -60,10 +55,14 @@ export const App: FC = () => {
       <GlobalStyle />
       <AuthContext.Provider value={authContexValue}>
         <Router id="router-root">
-          <LoginPage path="/" />
+          <LoginPage path="/" default />
           <WithAuthPage
             Component={AchievementsPage}
             path={paths.achievements}
+          />
+          <WithAuthPage
+            Component={FavouriteQuotes}
+            path={paths.favouriteQuotes}
           />
         </Router>
       </AuthContext.Provider>
