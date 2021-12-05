@@ -3,7 +3,6 @@ import { FC, memo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { IQuote } from 'types/IQuote';
 import { IAppState } from 'types/state/IAppState';
-
 import { Quote } from './Quote';
 
 interface IProps {

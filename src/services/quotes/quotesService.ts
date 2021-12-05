@@ -9,15 +9,12 @@ class QuotesService implements IQuotesService {
 
       return {
         author: quote.author,
-        text: quote.content
+        text: quote.content,
+        _id: quote._id
       };
     } catch (e) {
       console.error(e);
     }
-  };
-
-  getFavourites = async (): Promise<IQuote[]> => {
-    return Promise.resolve([]);
   };
 }
 

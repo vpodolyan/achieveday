@@ -5,24 +5,20 @@ import { MainContainer } from 'components/MainContainer/MainContainer';
 import { NewAchievement } from 'components/NewAchievement/NewAchievement';
 import { QuoteOfDayController } from 'components/QuoteOfDayController/QuoteOfDayController';
 import { FC } from 'react';
-import { useTheme } from 'theming/useTheme';
+import { useTranslation } from 'react-i18next';
 
 export const AchievementsPage: FC = () => {
-  const { theme } = useTheme();
+  const { t } = useTranslation('achievements');
+
   return (
-    <div
-      style={{
-        height: '100%',
-        backgroundColor: theme.colors.common.background
-      }}
-    >
+    <>
       <HeaderBar />
-      <MainContainer>
+      <MainContainer title={t('title')}>
         <DatePickerContainer />
         <AchievementsForSelectedDate />
         <NewAchievement />
         <QuoteOfDayController />
       </MainContainer>
-    </div>
+    </>
   );
 };

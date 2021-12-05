@@ -1,17 +1,26 @@
-import { FC } from 'react';
+import { RouteComponentProps, useNavigate } from '@reach/router';
+import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RouteComponentProps } from '@reach/router';
-import { LoginPageContainer } from './LoginPageContainer';
-import { LoginForm } from './LoginForm';
-import { SignInWithGoogleButton } from './SignInWithGoogleButton';
-import { Title } from './Title';
-import { SubTitle } from './Subtitle';
+import { stitchClient } from 'stitch/client';
+import { paths } from 'utils/paths';
 import { DevelopmentBadge } from './DevelopmentBadge';
+import { LoginForm } from './LoginForm';
+import { LoginPageContainer } from './LoginPageContainer';
+import { SignInWithGoogleButton } from './SignInWithGoogleButton';
+import { SubTitle } from './Subtitle';
+import { Title } from './Title';
 
 type IProps = RouteComponentProps;
 
 export const LoginPage: FC<IProps> = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (stitchClient.auth.isLoggedIn) {
+      navigate(paths.achievements);
+    }
+  }, [stitchClient.auth.isLoggedIn]);
 
   return (
     <LoginPageContainer>

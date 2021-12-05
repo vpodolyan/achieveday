@@ -6,7 +6,11 @@ export const lightTheme: ITheme = {
   colors: {
     common: {
       primary: '#1B8FD3',
+      primaryAlt: '#444444',
       secondary: '#fff',
+      background: '#fff',
+      headerBackground: '#fff',
+      textAlt: '#6c757d',
       pageTitle: '#317eac',
       inputBorder: '#ccc',
       inputText: '#444444',
@@ -20,6 +24,9 @@ export const lightTheme: ITheme = {
     },
     loginPage: {
       background: '#63c8f8'
+    },
+    quoteCard: {
+      background: '#ffffff'
     }
   }
 };
