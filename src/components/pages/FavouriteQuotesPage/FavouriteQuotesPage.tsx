@@ -6,6 +6,7 @@ import { FC, Fragment, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInfiniteQuery } from 'react-query';
 import { favouriteQuotesService } from 'services/quotes/favouriteQuotesService';
+import { NoFavouriteQuotesMessage } from './NoFavouriteQuotesMessage';
 
 export const FavouriteQuotes: FC = () => {
   const { t } = useTranslation('favouriteQuotes');
@@ -46,6 +47,7 @@ export const FavouriteQuotes: FC = () => {
             <Spinner size={2} />
           </div>
         )}
+        <NoFavouriteQuotesMessage isDataLoading={isLoading} data={data} />
         {data?.pages.map((page, i) => (
           <Fragment key={`page-${i}`}>
             {page.map((quote) => (
