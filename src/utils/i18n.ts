@@ -1,5 +1,4 @@
 import i18n from 'i18next';
-
 import { initReactI18next } from 'react-i18next';
 
 const weekdaysLong = {
@@ -83,6 +82,7 @@ export const localeUtils = {
 const translation = require('../../assets/locales/en/translation.json');
 const common = require('../../assets/locales/en/common.json');
 const achievements = require('../../assets/locales/en/achievements.json');
+const favouriteQuotes = require('../../assets/locales/en/favouriteQuotes.json');
 
 i18n.use(initReactI18next).init({
   lng: 'en',
@@ -92,7 +92,8 @@ i18n.use(initReactI18next).init({
     en: {
       translation,
       common,
-      achievements
+      achievements,
+      favouriteQuotes
     }
   },
   react: {
