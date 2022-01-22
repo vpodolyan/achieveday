@@ -3,10 +3,13 @@ import { MainContainer } from 'components/MainContainer/MainContainer';
 import { QuoteCard } from 'components/QuoteCard/QuoteCard';
 import { Spinner } from 'components/Spinner/Spinner';
 import { FC, Fragment, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useInfiniteQuery } from 'react-query';
 import { favouriteQuotesService } from 'services/quotes/favouriteQuotesService';
+import { NoFavouriteQuotesMessage } from './NoFavouriteQuotesMessage';
 
 export const FavouriteQuotes: FC = () => {
+  const { t } = useTranslation('favouriteQuotes');
   const { isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage } =
     useInfiniteQuery(
       'favouriteQuotes',
@@ -38,12 +41,13 @@ export const FavouriteQuotes: FC = () => {
   return (
     <>
       <HeaderBar />
-      <MainContainer title="Favourite quotes">
+      <MainContainer title={t('title')}>
         {isLoading && (
           <div className="d-flex justify-content-center align-items-center mt-5">
             <Spinner size={2} />
           </div>
         )}
+        <NoFavouriteQuotesMessage isDataLoading={isLoading} data={data} />
         {data?.pages.map((page, i) => (
           <Fragment key={`page-${i}`}>
             {page.map((quote) => (
