@@ -18,9 +18,9 @@ export class MongoQuotesService implements IFavouriteQuotesService {
   async getFavourites(page: number = 0) {
     return this.quotesCollection
       .aggregate([
+        { $sort: { _id: -1 } },
         { $skip: page * this.pageSize },
-        { $limit: this.pageSize },
-        { $sort: { _id: -1 } }
+        { $limit: this.pageSize }
       ])
       .asArray();
   }
