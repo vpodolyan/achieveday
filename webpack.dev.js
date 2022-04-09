@@ -14,12 +14,14 @@ module.exports = merge(common, {
     new ReactRefreshWebpackPlugin()
   ],
   devServer: {
-    contentBase: './',
+    allowedHosts: 'all',
     open: true,
-    compress: true,
     hot: true,
     port: 4000,
-    historyApiFallback: true
+    historyApiFallback: true,
+    static: {
+      directory: './',
+    },
   },
   module: {
     rules: [
