@@ -2,7 +2,7 @@ import { HeaderBar } from 'components/HeaderBar/HeaderBar';
 import { MainContainer } from 'components/MainContainer/MainContainer';
 import { QuoteCard } from 'components/QuoteCard/QuoteCard';
 import { Spinner } from 'components/Spinner/Spinner';
-import { FC, Fragment, useEffect } from 'react';
+import { FC, Fragment, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInfiniteQuery } from 'react-query';
 import { favouriteQuotesService } from 'services/quotes/favouriteQuotesService';
@@ -22,19 +22,24 @@ export const FavouriteQuotes: FC = () => {
       }
     );
 
+  const endOfTheListElement = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + window.scrollY === document.body.scrollHeight) {
-        if (!isFetchingNextPage && hasNextPage) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isFetchingNextPage && hasNextPage) {
           fetchNextPage();
         }
-      }
-    };
+      },
+      { rootMargin: '100px' }
+    );
 
-    window.addEventListener('scroll', handleScroll);
+    if (endOfTheListElement.current) {
+      observer.observe(endOfTheListElement.current);
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
     };
   }, [hasNextPage, isFetchingNextPage]);
 
@@ -55,6 +60,7 @@ export const FavouriteQuotes: FC = () => {
             ))}
           </Fragment>
         ))}
+        {data?.pages && <div ref={endOfTheListElement}></div>}
       </MainContainer>
     </>
   );
