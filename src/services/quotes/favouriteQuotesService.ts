@@ -21,8 +21,8 @@ class FavouriteQuotesService implements IFavouriteQuotesService {
     return this.dataService.makeFavourite(quote);
   }
 
-  removeFromFavourites(quote: IQuote) {
-    return this.dataService.removeFromFavourites(quote);
+  removeFromFavourites(quoteId: string) {
+    return this.dataService.removeFromFavourites(quoteId);
   }
 }
 
