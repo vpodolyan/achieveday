@@ -55,7 +55,7 @@ export const MakeFavouriteButton: FC<IProps> = ({ className }) => {
       return;
     }
 
-    const result = await favouriteQuotesService.removeFromFavourites(quote);
+    const result = await favouriteQuotesService.removeFromFavourites(quote._id);
 
     if (result) {
       setIsFavourite(false);

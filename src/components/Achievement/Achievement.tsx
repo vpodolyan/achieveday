@@ -1,24 +1,15 @@
 import { FC, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
-import { faTimes, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { EditAchievement } from './EditAchievement';
+import { DeleteButton } from 'components/DeleteButton/DeleteButton';
 
 const TrophyIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.common.text};
-`;
-
-const DeleteIcon = styled(FontAwesomeIcon)`
-  font-size: 0.8rem;
-  transition: color 0.2s;
-
-  &:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.common.primary};
-  }
 `;
 
 const TextContainer = styled.div`
@@ -70,9 +61,8 @@ export const Achievement: FC<IProps> = ({
       ) : (
         <TextContainer className="pl-2">
           {textValue}
-          <DeleteIcon
+          <DeleteButton
             className="ml-2 align-middle"
-            icon={faTimes}
             onClick={(e) => {
               e.stopPropagation();
               onAchivDelete(id);

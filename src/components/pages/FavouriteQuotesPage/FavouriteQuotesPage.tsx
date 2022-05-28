@@ -10,17 +10,23 @@ import { NoFavouriteQuotesMessage } from './NoFavouriteQuotesMessage';
 
 export const FavouriteQuotes: FC = () => {
   const { t } = useTranslation('favouriteQuotes');
-  const { isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage } =
-    useInfiniteQuery(
-      'favouriteQuotes',
-      ({ pageParam = 0 }) => {
-        return favouriteQuotesService.getFavourites(pageParam);
-      },
-      {
-        getNextPageParam: (lastPage, pages) =>
-          lastPage.length ? pages.length : false
-      }
-    );
+  const {
+    isLoading,
+    data,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+    refetch
+  } = useInfiniteQuery(
+    'favouriteQuotes',
+    ({ pageParam = 0 }) => {
+      return favouriteQuotesService.getFavourites(pageParam);
+    },
+    {
+      getNextPageParam: (lastPage, pages) =>
+        lastPage.length ? pages.length : false
+    }
+  );
 
   const endOfTheListElement = useRef<HTMLDivElement>(null);
 
@@ -56,7 +62,13 @@ export const FavouriteQuotes: FC = () => {
         {data?.pages.map((page, i) => (
           <Fragment key={`page-${i}`}>
             {page.map((quote) => (
-              <QuoteCard key={quote._id.toHexString()} quote={quote} />
+              <QuoteCard
+                key={quote._id.toHexString()}
+                quote={quote}
+                onUnfavourite={() => {
+                  refetch();
+                }}
+              />
             ))}
           </Fragment>
         ))}

@@ -49,9 +49,9 @@ export class MongoQuotesService implements IFavouriteQuotesService {
     return { ...favouriteQuote, _id: result.insertedId };
   }
 
-  async removeFromFavourites(quote: IQuote) {
+  async removeFromFavourites(quoteId: string) {
     const result = await this.quotesCollection.deleteOne({
-      quoteId: quote._id
+      quoteId
     });
 
     return result.deletedCount > 0;
