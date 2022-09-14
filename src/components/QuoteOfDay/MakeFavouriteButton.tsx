@@ -7,6 +7,10 @@ import { favouriteQuotesService } from 'services/quotes/favouriteQuotesService';
 import styled from 'styled-components';
 import { IAppState } from 'types/state/IAppState';
 
+const Container = styled.div`
+  width: 24px;
+`;
+
 const StarIcon = styled(FontAwesomeIcon)<{ isFavourited: boolean }>`
   font-size: 1rem;
   color: ${({ theme, isFavourited }) =>
@@ -80,7 +84,7 @@ export const MakeFavouriteButton: FC<IProps> = ({ className }) => {
   };
 
   return (
-    <div className={className}>
+    <Container className={className}>
       {loading ? (
         <Spinner size={1} />
       ) : (
@@ -90,6 +94,6 @@ export const MakeFavouriteButton: FC<IProps> = ({ className }) => {
           onClick={handleFavouriteButtonClick}
         />
       )}
-    </div>
+    </Container>
   );
 };
