@@ -53,7 +53,7 @@ class QuotesService implements IQuotesService {
         const userId = authService.getUserId() || '';
         const quotableApiQuote = await response.json();
 
-        const newQuoteOfDay: any = {
+        const newQuoteOfDay = {
           _id: qod?._id,
           quote: quotableApiQuote,
           date: new Date(),
