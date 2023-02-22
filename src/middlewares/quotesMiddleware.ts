@@ -7,7 +7,7 @@ export const quotesMiddleware = (store: Store) => (next) => async (action) => {
   const nextAction = next(action);
 
   if (action.type === GET_DAILY_QUOTE) {
-    const quote = await quotesService.getDailyQuote();
+    const quote = await quotesService.getQuoteOfDay();
 
     if (!quote) {
       store.dispatch(getDaiylyQuoteFailAction());

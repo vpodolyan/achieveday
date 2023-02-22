@@ -3,16 +3,22 @@ import { IFavouriteQuotesService } from 'services/quotes/IFavouriteQuotesService
 import { stitchClient } from 'stitch/client';
 import { IFavouriteQuote } from 'types/IFavouriteQuote';
 import { IQuote } from 'types/IQuote';
+import { IQuoteOfDay } from 'types/IQuoteOfDay';
+import { IQuoteOfDayService } from './IQuoteOfDayService';
 import { MongoService } from './MongoService';
 
-export class MongoQuotesService implements IFavouriteQuotesService {
+export class MongoQuotesService
+  implements IFavouriteQuotesService, IQuoteOfDayService
+{
   quotesCollection: RemoteMongoCollection<IFavouriteQuote>;
+  quoteOfDayCollection: RemoteMongoCollection<IQuoteOfDay>;
   pageSize: number = 20;
 
   constructor() {
     const mongoService = new MongoService();
 
     this.quotesCollection = mongoService.getCollection('favourite_quotes');
+    this.quoteOfDayCollection = mongoService.getCollection('quote_of_day');
   }
 
   async getFavourites(page: number = 0) {
@@ -55,5 +61,17 @@ export class MongoQuotesService implements IFavouriteQuotesService {
     });
 
     return result.deletedCount > 0;
+  }
+
+  async getCurrentQuoteOfDay() {
+    return this.quoteOfDayCollection.findOne();
+  }
+
+  async setCurrentQuoteOfDay(qod: IQuoteOfDay) {
+    if (qod?._id) {
+      this.quoteOfDayCollection.findOneAndReplace({ _id: qod._id }, qod);
+    } else {
+      this.quoteOfDayCollection.insertOne(qod);
+    }
   }
 }

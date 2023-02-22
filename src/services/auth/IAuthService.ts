@@ -19,7 +19,12 @@ export interface IAuthService {
   logOut();
 
   /**
-   * Retrives true is the user is authenticated and logged in.
+   * Retrieves true is the user is authenticated and logged in.
    */
   isAuthenticated(): boolean;
+
+  /**
+   * Retrieves current user id or undefined if the user is not authorized.
+   */
+  getUserId(): string | undefined;
 }
