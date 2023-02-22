@@ -2,7 +2,7 @@ import { navigate, Router } from '@reach/router';
 import { setUser } from 'actions';
 import { createContext, FC, useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { StitchAuthService } from 'services/auth/StitchAuthService';
+import { authService } from 'services/auth/authService';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'theming/GlobalStyle';
 import { useTheme } from 'theming/useTheme';
@@ -12,8 +12,6 @@ import { AchievementsPage } from './pages/AchievementsPage/AchievementsPage';
 import { FavouriteQuotes } from './pages/FavouriteQuotesPage/FavouriteQuotesPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { WithAuthPage } from './WithAuthPage';
-
-const authService = new StitchAuthService(stitchClient);
 
 const authContexValue = {
   authService

@@ -38,4 +38,8 @@ export class StitchAuthService implements IAuthService {
   isAuthenticated() {
     return this.client.auth.isLoggedIn;
   }
+
+  getUserId() {
+    return this.client.auth.user?.id;
+  }
 }
