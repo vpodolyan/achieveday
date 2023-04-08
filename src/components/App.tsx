@@ -49,9 +49,13 @@ export const App: FC = () => {
   }, [dispatch]);
 
   return (
+    // @ts-expect-error There's type issue relate with styled-components + React v18, probably will be fixed in v6.0.0
+    // https://github.com/styled-components/styled-components/issues/3738
     <ThemeProvider theme={theme}>
+      {/* @ts-expect-error Please see the comment above */}
       <GlobalStyle />
       <AuthContext.Provider value={authContexValue}>
+        {/* @ts-expect-error TODO: React Router is no longer maintained, we need to migrate to React Router */}
         <Router id="router-root">
           <LoginPage path="/" default />
           <WithAuthPage

@@ -1,4 +1,4 @@
-import { createContext, FC, useMemo, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import { ITheme } from 'types/ITheme';
 
 import { themes } from './themes';
@@ -23,7 +23,7 @@ export const ThemeManagementContext = createContext<IThemeContext>({
 
 const DEFAULT_THEME_NAME = themes.light.name;
 
-export const ThemeManagementProvider: FC = ({ children }) => {
+export const ThemeManagementProvider = ({ children }) => {
   const [themeName, setThemeName] = useState(
     loadThemeFormLocalStorage() || DEFAULT_THEME_NAME
   );
