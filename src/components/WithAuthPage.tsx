@@ -14,6 +14,6 @@ export const WithAuthPage: FC<IProps> = ({ Component }) => {
   if (authService.isAuthenticated()) {
     return <Component />;
   }
-
+  // @ts-expect-error TODO: React Router is no longer maintained, we need to migrate to React Router
   return <Redirect to="/" />;
 };

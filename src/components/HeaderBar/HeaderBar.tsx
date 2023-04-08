@@ -3,7 +3,7 @@ import { Match, navigate } from '@reach/router';
 import { AuthContext } from 'components/App';
 import { ButtonOutline } from 'components/ButtonOutline/ButtonOutline';
 import { ThemeToggle } from 'components/ThemeToggle/ThemeToggle';
-import { FC, useContext } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -17,13 +17,14 @@ const UserName = styled.span`
   color: ${({ theme }) => theme.colors.common.userName};
 `;
 
-export const HeaderBar: FC = ({ children }) => {
+export const HeaderBar = ({ children }: { children?: React.ReactNode }) => {
   const { t } = useTranslation('common');
   const user = useSelector<IAppState, IUser>((state) => state.user);
   const { authService } = useContext(AuthContext);
 
   return (
     <HeaderBarContainer>
+      {/* @ts-expect-error TODO: React Router is no longer maintained, we need to migrate to React Router */}
       <Match path={paths.favouriteQuotes}>
         {({ match }) => (
           <HeaderBarIconButton
@@ -34,6 +35,7 @@ export const HeaderBar: FC = ({ children }) => {
           />
         )}
       </Match>
+      {/* @ts-expect-error TODO: React Router is no longer maintained, we need to migrate to React Router */}
       <Match path={paths.achievements}>
         {({ match }) => (
           <HeaderBarIconButton

@@ -1,7 +1,7 @@
 import './utils/i18n';
 
 import { quotesMiddleware } from 'middlewares/quotesMiddleware';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
@@ -23,7 +23,10 @@ const store = createStore(
 
 const queryClient = new QueryClient();
 
-render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
   <>
     <Provider store={store}>
       <ThemeManagementProvider>
@@ -32,6 +35,5 @@ render(
         </QueryClientProvider>
       </ThemeManagementProvider>
     </Provider>
-  </>,
-  document.getElementById('root')
+  </>
 );

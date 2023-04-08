@@ -9,6 +9,7 @@ const Title = styled.h1`
 
 interface IProps {
   title: string;
+  children?: React.ReactNode;
 }
 
 export const MainContainer: FC<IProps> = ({ children, title }) => {
