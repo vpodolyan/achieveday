@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'standard',
+    'prettier',
     'plugin:react/recommended',
     'plugin:prettier/recommended'
   ],
@@ -28,7 +29,7 @@ module.exports = {
     '@typescript-eslint/no-useless-constructor': 'error',
     'max-len': 'off',
     'no-underscore-dangle': 'off',
-    'semi': 'off',
+    semi: 'off',
     '@typescript-eslint/semi': 'error',
     'import/extensions': [
       'error',
@@ -42,7 +43,7 @@ module.exports = {
     ]
   },
   settings: {
-    'react': {
+    react: {
       version: 'detect'
     },
     'import/resolver': {
