@@ -1,13 +1,8 @@
-import {
-  getAchievements as getAchievementsAction,
-  getAchievementsSuccess,
-  removeAchievement,
-  updateAchievement
-} from 'actions';
 import { AchievementsList } from 'components/AchievementsList/AchievementsList';
 import { Spinner } from 'components/Spinner/Spinner';
-import { FC, useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { FC } from 'react';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useSelector } from 'react-redux';
 import { achievementService } from 'services/achievements/achievementsService';
 import styled from 'styled-components';
 import { IAchievement } from 'types/IAchievement';
@@ -21,50 +16,44 @@ const Container = styled.div`
 `;
 
 export const AchievementsForSelectedDate: FC = () => {
-  const loading = useSelector<IAppState>((state) => state.achievements.loading);
-
   const selectedDate = useSelector<IAppState, Date>(
     (state) => state.datePicker.value
   );
 
-  const achievements = useSelector<IAppState, IAchievement[]>(
-    (state) => state.achievements.data
+  const queryClient = useQueryClient();
+
+  const { data, isLoading } = useQuery(['achievements', selectedDate], () =>
+    achievementService.getAchievements(selectedDate || new Date())
   );
 
-  const dispatch = useDispatch();
+  const updateMutation = useMutation((a: IAchievement) =>
+    achievementService.updateAchievement(a)
+  );
 
-  const handleAchievementDelete = (id) => {
-    dispatch(removeAchievement(id));
+  const deleteMutation = useMutation(
+    (id: string) => achievementService.deleteAchievement(id),
+    {
+      onSuccess: () => queryClient.invalidateQueries('achievements')
+    }
+  );
+
+  const handleAchievementDelete = async (id) => {
+    deleteMutation.mutate(id);
   };
-
-  const getAchievements = useCallback(
-    async (date) => {
-      dispatch(getAchievementsAction());
-      const achievements = await achievementService.getAchievements(
-        date || new Date()
-      );
-      dispatch(getAchievementsSuccess(achievements));
-    },
-    [dispatch, getAchievementsAction, getAchievementsSuccess]
-  );
 
   const handleAchievementEdit = (achievement: IAchievement) => {
-    dispatch(updateAchievement(achievement));
+    updateMutation.mutate(achievement);
   };
-
-  useEffect(() => {
-    getAchievements(selectedDate);
-  }, [getAchievements, selectedDate]);
 
   return (
     <Container>
-      {loading ? (
+      {isLoading ? (
         <div className="pt-5">
           <Spinner size={2} />
         </div>
       ) : (
         <AchievementsList
-          achievements={achievements}
+          achievements={data || []}
           onAchievementDelete={handleAchievementDelete}
           onAchievementEdit={handleAchievementEdit}
         />

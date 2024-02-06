@@ -27,7 +27,7 @@ export const AchievementsList: FC<IProps> = ({
             key={achievement._id?.toString()}
             id={achievement._id}
             text={achievement.text}
-            onAchivDelete={onAchievementDelete}
+            onAchievementDelete={onAchievementDelete}
             onApplyChanges={(text) =>
               onAchievementEdit({ ...achievement, text })
             }
