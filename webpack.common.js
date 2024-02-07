@@ -26,18 +26,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          }
-        ]
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|ttf|eot)$/,
-        use: ['file-loader']
+        type: 'asset/resource'
       }
     ]
   },

@@ -1,22 +1,19 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./src",
-        "outDir": "./build",
-        "allowJs": true,
-        "checkJs": false,
-        "module": "es2020",
-        "target": "es6",
-        "jsx": "react-jsx",
-        "moduleResolution": "node",
-        "lib": ["es2020", "dom"],
-        "strictNullChecks": true,
-        "noUnusedLocals": true,
-        "allowSyntheticDefaultImports": true
-    },
-    "include": [
-        "./src/**/*"
-    ],
-    "exclude": [
-        "./node_modules"
-    ]
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./build",
+    "allowJs": true,
+    "checkJs": false,
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "lib": ["es2020", "dom"],
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
 }
