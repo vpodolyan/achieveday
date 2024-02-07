@@ -15,13 +15,13 @@ module.exports = merge(common, {
   ],
   devServer: {
     allowedHosts: 'all',
-    open: true,
+    open: false,
     hot: true,
     port: 4000,
     historyApiFallback: true,
     static: {
-      directory: './',
-    },
+      directory: './'
+    }
   },
   module: {
     rules: [
