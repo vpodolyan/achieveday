@@ -1,9 +1,12 @@
-import { addAchievement } from 'actions';
 import { Input } from 'components/Input';
 import { FC, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useMutation, useQueryClient } from 'react-query';
+import { useSelector } from 'react-redux';
+import { achievementService } from 'services/achievements/achievementsService';
 import styled from 'styled-components';
+import { IAchievement } from 'types/IAchievement';
 import { IUser } from 'types/IUser';
+import { QUERY_KEYS } from 'types/QueryKeys';
 import { IAppState } from 'types/state/IAppState';
 
 const NewAchievementInput = styled(Input)`
@@ -30,7 +33,19 @@ export const NewAchievement: FC = () => {
   const user = useSelector<IAppState, IUser>((state) => state.user);
   const date = useSelector<IAppState, Date>((state) => state.datePicker.value);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+  const queryClient = useQueryClient();
+
+  const addAchievementMutation = useMutation(
+    (achievement: IAchievement) =>
+      achievementService.addAchievement(achievement),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: QUERY_KEYS.achievements });
+      }
+    }
+  );
 
   const handleAddClick = (e) => {
     e.preventDefault();
@@ -45,9 +60,16 @@ export const NewAchievement: FC = () => {
       return;
     }
 
-    dispatch(
-      addAchievement({ text: trimmedText, owner_id: user.id, createDate: date })
-    );
+    addAchievementMutation.mutate({
+      text: trimmedText,
+      owner_id: user.id,
+      createDate: date,
+      _id: undefined
+    });
+
+    // dispatch(
+    //   addAchievement({ text: trimmedText, owner_id: user.id, createDate: date })
+    // );
 
     if (input && input.current) {
       input.current.focus();
