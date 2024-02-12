@@ -19,14 +19,14 @@ const TextContainer = styled.div`
 interface IProps {
   id: object;
   text: string;
-  onAchivDelete: (id: object) => void;
+  onAchievementDelete: (id: object) => void;
   onApplyChanges: (text: string) => void;
 }
 
 export const Achievement: FC<IProps> = ({
   id,
   text,
-  onAchivDelete,
+  onAchievementDelete,
   onApplyChanges
 }) => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -65,7 +65,7 @@ export const Achievement: FC<IProps> = ({
             className="ml-2 align-middle"
             onClick={(e) => {
               e.stopPropagation();
-              onAchivDelete(id);
+              onAchievementDelete(id);
             }}
           />
         </TextContainer>

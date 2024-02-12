@@ -3,17 +3,11 @@ import { QuoteOfDay } from 'components/QuoteOfDay';
 import isToday from 'date-fns/isToday';
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IAchievement } from 'types/IAchievement';
+import { useAchievements } from 'services/achievements/hooks/useAchievements';
 import { IAppState } from 'types/state/IAppState';
 
 export const QuoteOfDayController: FC = () => {
-  const achievements = useSelector<IAppState, IAchievement[]>(
-    (state) => state.achievements.data
-  );
-
-  const areAchievementsLoading = useSelector<IAppState, boolean>(
-    (state) => state.achievements.loading
-  );
+  const { isLoading, data } = useAchievements();
 
   const date = useSelector<IAppState, Date>(
     (state) => state.datePicker.value,
@@ -24,8 +18,7 @@ export const QuoteOfDayController: FC = () => {
     (state) => state.quotes.lastSuccessFetchDate
   );
 
-  const showQuoteOfDay =
-    !areAchievementsLoading && isToday(date) && achievements.length > 0;
+  const showQuoteOfDay = !isLoading && isToday(date) && !!data?.length;
 
   const dispatch = useDispatch();
 

@@ -9,10 +9,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { ThemeManagementProvider } from 'theming/ThemeManagementProvider';
 
 import { App } from './components/App';
-import { achievementsMiddleware } from './middlewares/achievementsMiddleware';
 import { reducers } from './reducers';
 
-const middlewares = applyMiddleware(achievementsMiddleware, quotesMiddleware);
+const middlewares = applyMiddleware(quotesMiddleware);
 
 const store = createStore(
   reducers,

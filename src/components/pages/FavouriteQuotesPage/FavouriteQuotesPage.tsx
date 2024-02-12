@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useInfiniteQuery } from 'react-query';
 import { favouriteQuotesService } from 'services/quotes/favouriteQuotesService';
 import { NoFavouriteQuotesMessage } from './NoFavouriteQuotesMessage';
+import { QUERY_KEYS } from 'types/QueryKeys';
 
 export const FavouriteQuotes: FC = () => {
   const { t } = useTranslation('favouriteQuotes');
@@ -18,7 +19,7 @@ export const FavouriteQuotes: FC = () => {
     isFetchingNextPage,
     refetch
   } = useInfiniteQuery(
-    'favouriteQuotes',
+    QUERY_KEYS.favouriteQuotes,
     ({ pageParam = 0 }) => {
       return favouriteQuotesService.getFavourites(pageParam);
     },

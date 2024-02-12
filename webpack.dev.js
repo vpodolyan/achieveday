@@ -1,7 +1,7 @@
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const ReactRefreshTypeScript = require('react-refresh-typescript');
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
+const common = require('./webpack.common');
 
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -15,13 +15,13 @@ module.exports = merge(common, {
   ],
   devServer: {
     allowedHosts: 'all',
-    open: true,
+    open: false,
     hot: true,
     port: 4000,
     historyApiFallback: true,
     static: {
-      directory: './',
-    },
+      directory: './'
+    }
   },
   module: {
     rules: [
