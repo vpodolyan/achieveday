@@ -33,8 +33,6 @@ export const NewAchievement: FC = () => {
   const user = useSelector<IAppState, IUser>((state) => state.user);
   const date = useSelector<IAppState, Date>((state) => state.datePicker.value);
 
-  // const dispatch = useDispatch();
-
   const queryClient = useQueryClient();
 
   const addAchievementMutation = useMutation(
@@ -66,10 +64,6 @@ export const NewAchievement: FC = () => {
       createDate: date,
       _id: undefined
     });
-
-    // dispatch(
-    //   addAchievement({ text: trimmedText, owner_id: user.id, createDate: date })
-    // );
 
     if (input && input.current) {
       input.current.focus();
