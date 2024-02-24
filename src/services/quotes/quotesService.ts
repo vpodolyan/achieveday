@@ -61,8 +61,6 @@ class QuotesService implements IQuotesService {
           userId
         };
 
-        console.log(newQuoteOfDay);
-
         await this.dataService.setCurrentQuoteOfDay(newQuoteOfDay);
 
         return this.quotableToQuote(newQuoteOfDay.quote);
