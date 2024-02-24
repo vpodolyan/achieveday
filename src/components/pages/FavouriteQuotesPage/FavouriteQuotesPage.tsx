@@ -4,7 +4,7 @@ import { QuoteCard } from 'components/QuoteCard/QuoteCard';
 import { Spinner } from 'components/Spinner/Spinner';
 import { FC, Fragment, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { favouriteQuotesService } from 'services/quotes/favouriteQuotesService';
 import { NoFavouriteQuotesMessage } from './NoFavouriteQuotesMessage';
 import { QUERY_KEYS } from 'types/QueryKeys';
@@ -18,16 +18,15 @@ export const FavouriteQuotes: FC = () => {
     fetchNextPage,
     isFetchingNextPage,
     refetch
-  } = useInfiniteQuery(
-    QUERY_KEYS.favouriteQuotes,
-    ({ pageParam = 0 }) => {
+  } = useInfiniteQuery({
+    queryKey: [QUERY_KEYS.favouriteQuotes],
+    queryFn: ({ pageParam = 0 }) => {
       return favouriteQuotesService.getFavourites(pageParam);
     },
-    {
-      getNextPageParam: (lastPage, pages) =>
-        lastPage.length ? pages.length : false
-    }
-  );
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, pages) =>
+      lastPage.length ? pages.length : false
+  });
 
   const endOfTheListElement = useRef<HTMLDivElement>(null);
 

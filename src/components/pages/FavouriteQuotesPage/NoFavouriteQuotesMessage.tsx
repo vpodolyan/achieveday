@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { InfiniteData } from 'react-query';
+import { InfiniteData } from '@tanstack/react-query';
 import styled from 'styled-components';
 import { IFavouriteQuote } from 'types/IFavouriteQuote';
 

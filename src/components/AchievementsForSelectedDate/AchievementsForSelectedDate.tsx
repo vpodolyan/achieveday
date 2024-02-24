@@ -1,7 +1,7 @@
 import { AchievementsList } from 'components/AchievementsList/AchievementsList';
 import { Spinner } from 'components/Spinner/Spinner';
 import { FC } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { achievementService } from 'services/achievements/achievementsService';
 import { useAchievements } from 'services/achievements/hooks/useAchievements';
 import styled from 'styled-components';
@@ -20,16 +20,15 @@ export const AchievementsForSelectedDate: FC = () => {
 
   const { data, isLoading } = useAchievements();
 
-  const updateMutation = useMutation((a: IAchievement) =>
-    achievementService.updateAchievement(a)
-  );
+  const updateMutation = useMutation({
+    mutationFn: (a: IAchievement) => achievementService.updateAchievement(a)
+  });
 
-  const deleteMutation = useMutation(
-    (id: string) => achievementService.deleteAchievement(id),
-    {
-      onSuccess: () => queryClient.invalidateQueries(QUERY_KEYS.achievements)
-    }
-  );
+  const deleteMutation = useMutation({
+    mutationFn: (id: string) => achievementService.deleteAchievement(id),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.achievements] })
+  });
 
   const handleAchievementDelete = async (id) => {
     deleteMutation.mutate(id);

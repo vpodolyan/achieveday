@@ -1,6 +1,6 @@
 import { Input } from 'components/Input';
 import { FC, useRef, useState } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
 import { achievementService } from 'services/achievements/achievementsService';
 import styled from 'styled-components';
@@ -35,15 +35,13 @@ export const NewAchievement: FC = () => {
 
   const queryClient = useQueryClient();
 
-  const addAchievementMutation = useMutation(
-    (achievement: IAchievement) =>
+  const addAchievementMutation = useMutation({
+    mutationFn: (achievement: IAchievement) =>
       achievementService.addAchievement(achievement),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: QUERY_KEYS.achievements });
-      }
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.achievements] });
     }
-  );
+  });
 
   const handleAddClick = (e) => {
     e.preventDefault();
