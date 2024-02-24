@@ -2,10 +2,9 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Spinner } from 'components/Spinner/Spinner';
 import { FC, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { favouriteQuotesService } from 'services/quotes/favouriteQuotesService';
+import { useQuoteOfDay } from 'services/quotes/hooks/useQuoteOfDay';
 import styled from 'styled-components';
-import { IAppState } from 'types/state/IAppState';
 
 const Container = styled.div`
   width: 24px;
@@ -30,7 +29,7 @@ export const MakeFavouriteButton: FC<IProps> = ({ className }) => {
 
   const [loading, setLoading] = useState(true);
 
-  const quote = useSelector((state: IAppState) => state.quotes.dailyQuote);
+  const { data: quote } = useQuoteOfDay(true);
 
   useEffect(() => {
     if (quote) {

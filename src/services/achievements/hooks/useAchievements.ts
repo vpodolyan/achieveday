@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
 import { QUERY_KEYS } from 'types/QueryKeys';
 import { IAppState } from 'types/state/IAppState';
@@ -9,10 +9,11 @@ export function useAchievements() {
     (state) => state.datePicker.value
   );
 
-  const { isLoading, data } = useQuery(
-    [QUERY_KEYS.achievements, selectedDate],
-    () => achievementService.getAchievements(selectedDate || new Date())
-  );
+  const { isLoading, data } = useQuery({
+    queryKey: [QUERY_KEYS.achievements, selectedDate],
+    queryFn: () =>
+      achievementService.getAchievements(selectedDate || new Date())
+  });
 
   return { isLoading, data };
 }
