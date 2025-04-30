@@ -2,7 +2,6 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Author } from './Author';
-import { MakeFavouriteButton } from './MakeFavouriteButton';
 import { Title } from './Title';
 
 interface IProps {
@@ -26,7 +25,6 @@ export const Quote = memo<IProps>(
         <Title>“{text}” &mdash;</Title>
         <QuteWrapper>
           <Author>{author || t('uknown')}</Author>
-          <MakeFavouriteButton className="ml-1" />
         </QuteWrapper>
       </>
     );

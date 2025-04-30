@@ -1,5 +1,5 @@
 export interface IQuotableApiQuote {
-  _id: string;
+  _id?: string;
   author: string;
   content: string;
 }

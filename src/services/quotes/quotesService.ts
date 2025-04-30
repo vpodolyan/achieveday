@@ -3,26 +3,13 @@ import { MongoQuotesService } from 'services/mongo/MongoQuotesService';
 import { IQuote } from 'types/IQuote';
 import { IQuotableApiQuote } from 'types/IQutableApiQuote';
 import { IQuotesService } from './IQuotesService';
+import { isQouteOfDayOutdated } from './utils/isQouteOfDayOutdated';
 
 class QuotesService implements IQuotesService {
   private dataService: MongoQuotesService;
 
   constructor() {
     this.dataService = new MongoQuotesService();
-  }
-
-  private isOutdated(quote): boolean {
-    if (!quote || !quote.expirationDate) {
-      return true;
-    }
-
-    const now = Date.now();
-
-    if (now > quote.expirationDate.getTime()) {
-      return true;
-    }
-
-    return false;
   }
 
   private quotableToQuote(qod: IQuotableApiQuote): IQuote {
@@ -41,7 +28,7 @@ class QuotesService implements IQuotesService {
 
       const qod = await this.dataService.getCurrentQuoteOfDay();
 
-      if (!qod || this.isOutdated(qod)) {
+      if (!qod || isQouteOfDayOutdated(qod)) {
         const response = await fetch(
           'https://api.quotable.io/random?tags=inspirational'
         );
@@ -55,7 +42,7 @@ class QuotesService implements IQuotesService {
 
         const newQuoteOfDay = {
           _id: qod?._id,
-          quote: quotableApiQuote,
+          quote: this.quotableToQuote(quotableApiQuote),
           date: new Date(),
           expirationDate,
           userId
@@ -63,10 +50,10 @@ class QuotesService implements IQuotesService {
 
         await this.dataService.setCurrentQuoteOfDay(newQuoteOfDay);
 
-        return this.quotableToQuote(newQuoteOfDay.quote);
+        return newQuoteOfDay.quote;
       }
 
-      return this.quotableToQuote(qod?.quote);
+      return qod?.quote;
     } catch (e) {
       console.error(e);
     }
