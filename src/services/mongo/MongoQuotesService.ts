@@ -48,8 +48,6 @@ export class MongoQuotesService
       userId: stitchClient.auth.user.id
     };
 
-    // @ts-expect-error We need to figure out how to omit _id in the type here
-    // while keeping the full type in the collection type defenition.
     const result = await this.quotesCollection.insertOne(favouriteQuote);
 
     return { ...favouriteQuote, _id: result.insertedId };

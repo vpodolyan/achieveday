@@ -1,8 +1,8 @@
 import { IMongoItem } from './IMongoItem';
-import { IQuotableApiQuote } from './IQutableApiQuote';
+import { IQuote } from './IQuote';
 
 export interface IQuoteOfDay extends IMongoItem {
-  quote: IQuotableApiQuote;
+  quote: IQuote;
   date: Date;
   expirationDate: Date;
   userId: string;
