@@ -9,4 +9,4 @@ For Stitch integration, we need to define `MONGO_STITCH_APP_ID` environment vari
 
 ### Credits
 
-I want to thank Mistral AI for the free API tier as well as [@lukePeavey](https://github.com/lukePeavey) for [Quotable API](https://github.com/lukePeavey/quotable) which was used as the source of inspirational quotes before AI integration.
+I want to thank [Mistral AI](https://mistral.ai/) for the free API tier as well as [@lukePeavey](https://github.com/lukePeavey) for [Quotable API](https://github.com/lukePeavey/quotable) which was used as the source of inspirational quotes before AI integration.
