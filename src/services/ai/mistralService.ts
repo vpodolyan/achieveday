@@ -15,6 +15,7 @@ class MistralService {
     try {
       const response = await this.client.chat.complete({
         model: model,
+        temperature: 1.5,
         messages: [{ role: 'user', content: prompt }]
       });
 

@@ -37,19 +37,19 @@ class AIPhrasesService implements IQuotesService {
 
       if (!qod || isQouteOfDayOutdated(qod)) {
         try {
-          const phrase = await mistralService.prompt(
-            'Please come up with a motivational phrase. It should be new and unique. Display the phrase only'
-          );
-
           const expirationDate = new Date();
           expirationDate.setDate(expirationDate.getDate() + 1);
           expirationDate.setHours(0, 0, 0, 0);
 
           const userId = authService.getUserId() || '';
 
+          const phrase = await mistralService.prompt(
+            'Compose a motivational phrase focused on personal growth and self-improvement. Do not use qutation marks. Display the phrase only.'
+          );
+
           const quote = {
             author: 'MistralAI',
-            text: phrase?.toString().replace(/^"|"$/g, '') || ''
+            text: phrase?.toString() || ''
           };
 
           const newQuoteOfDay = {
